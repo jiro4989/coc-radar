@@ -12,5 +12,5 @@ if [ "$TRAVIS_BRANCH" = master ]; then
   ./update_json
   git add docs/js
   git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]"
-  git push https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git HEAD:
+  git push https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git HEAD:master
 fi
