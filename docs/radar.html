@@ -49,7 +49,7 @@
                 // tagが一致しない、かつIDがURLとも一致しないならばグラフに含めない
                 const urlPaths = pc.url.split("/");
                 if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && urlPaths[urlPaths.length -
-                    1] !== queryParam["id"]) {
+                        1] !== queryParam["id"]) {
                     continue;
                 }
 
@@ -82,12 +82,12 @@
                     datasets: datasets
                 },
                 options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 20
+                        }
                     }
                 }
             });
