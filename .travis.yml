@@ -4,11 +4,9 @@ language: c
 
 os:
   - linux
-  - osx
 
 env:
   - PATH=$HOME/.nimble/bin:$PATH
-    APP_NAME=coc
 
 cache:
   directories:
@@ -33,20 +31,21 @@ before_script:
   - set +e
 
 script:
-  - set -e
-  - nimble ci
-  - set +e
+  - echo script
 
-before_deploy:
-  - mkdir -p dist/${APP_NAME}_${TRAVIS_OS_NAME}
-  - cp -rf LICENSE README* bin dist/${APP_NAME}_${TRAVIS_OS_NAME}/
-  - tar -C dist -czf ${APP_NAME}_${TRAVIS_OS_NAME}{.tar.gz,}
-
-deploy:
-  provider: releases
-  api_key: "$GITHUB_OAUTH_TOKEN"
-  keep-history: false
-  skip_cleanup: true
-  file: ${APP_NAME}_${TRAVIS_OS_NAME}.tar.gz
-  on:
-    tags: true
+after_success:
+  - openssl aes-256-cbc -K $encrypted_8c393341f536_key -iv $encrypted_8c393341f536_iv -in coc_radar_key.enc -out coc_radar_key -d
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email "jiroron666@gmail.com"
+  - git config --global user.name "jiro4989"
+  - git clone git@github.com:jiro4989/coc.git
+  - cd coc
+  - nimble install
+  - coc -h
+  - cd ..
+  - nim c -d:release update_json.nim
+  - ./update_json
+  - git add docs/js
+  - git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
+  - git push origin master
