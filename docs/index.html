@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>coc-radar 探索者検索</title>
     <style>
-        input {
+        input[type="text"] {
             padding: 0.8em;
             outline: none;
             border: 1px solid #DDD;
@@ -16,6 +16,10 @@
             border-radius: 3px;
             font-size: 16px;
             width: 60vw;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.6);
         }
 
         input:hover,
@@ -62,13 +66,19 @@
 
         tr th:nth-child(1),
         tr td:nth-child(1) {
-            width: 18vw;
+            width: 3vw;
             text-align: center;
         }
 
         tr th:nth-child(2),
         tr td:nth-child(2) {
-            width: 70vw;
+            width: 18vw;
+            text-align: center;
+        }
+
+        tr th:nth-child(3),
+        tr td:nth-child(3) {
+            width: 60vw;
         }
 
         h1 {
@@ -125,6 +135,15 @@
 
         function addPc(body, pc) {
             const tr = document.createElement("tr");
+
+            // 選択チェックボックスの生成
+            const checkTd = document.createElement("td");
+            const check = document.createElement("input");
+            check.type = "checkbox";
+            check.name = "pc";
+            check.value = pc.url;
+            checkTd.appendChild(check);
+            tr.appendChild(checkTd);
 
             // タグ要素の生成
             const tagTd = document.createElement("td");
@@ -208,6 +227,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>選択</th>
                     <th>タグ</th>
                     <th>探索者名</th>
                 </tr>
