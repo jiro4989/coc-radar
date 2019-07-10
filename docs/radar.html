@@ -16,6 +16,7 @@
         }
 
         @media screen and (min-width: 1024px) {
+
             .left,
             .right {
                 flex: 1;
@@ -32,6 +33,13 @@
             .half-chart {
                 flex: 1;
             }
+        }
+
+        h2 {
+            color: #0da1c6;
+            padding: 0.5em 0;
+            border-top: solid 3px #0da1c6;
+            border-bottom: solid 3px #0da1c6;
         }
 
         .board {
@@ -180,29 +188,36 @@
     </div>
     <div class="center">
         <div class="board">
+            <h2>能力値</h2>
             <canvas id="abilityChart"></canvas>
         </div>
         <div class="board">
+            <h2>全技能</h2>
             <canvas id="artsChart"></canvas>
         </div>
         <div class="half-area">
             <div class="half-chart board">
+                <h2>戦闘技能</h2>
                 <canvas id="battleChart"></canvas>
             </div>
             <div class="half-chart board">
+                <h2>探索技能</h2>
                 <canvas id="findChart"></canvas>
             </div>
         </div>
         <div class="half-area">
             <div class="half-chart board">
+                <h2>行動技能</h2>
                 <canvas id="actionChart"></canvas>
             </div>
             <div class="half-chart board">
+                <h2>交渉技能</h2>
                 <canvas id="negotiationChart"></canvas>
             </div>
         </div>
         <div class="half-area">
             <div class="half-chart board">
+                <h2>知識技能</h2>
                 <canvas id="intelligenceChart"></canvas>
             </div>
         </div>
