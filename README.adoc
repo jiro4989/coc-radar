@@ -1,3 +1,14 @@
+:toc: left
+:sectnums:
+
 = coc-radar
 
 CoCの探索者のパラメータを表示する。
+
+== ライブラリ
+
+* https://www.chartjs.org/docs/latest/[Chart.js]
+
+== LICENSE
+
+MIT

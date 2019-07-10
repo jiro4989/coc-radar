@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>coc-radar - CoCキャラクター保管所の探索者のデータをレーダーに</title>
+    <script src="js/Chart.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
+    <script>
+        const dataUrl = "https://raw.githubusercontent.com/jiro4989/coc-radar/js/data.json"
+        window.onload = async function() {
+            const data = await fetch(dataUrl);
+            const json = data.json();
+            console.log(json);
+            console.log(json[0]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
