@@ -78,12 +78,25 @@
             for (let pc of json) {
                 const tr = document.createElement("tr");
 
+                // タグ要素の生成
                 const tagTd = document.createElement("td");
-                tagTd.innerText = "TAG";
+                for (let tag of pc.tags) {
+                    const span = document.createElement("span");
+                    span.className = "tag"
+                    const a = document.createElement("a");
+                    a.innerText = tag;
+                    a.href = "todo";
+                    span.appendChild(a);
+                    tagTd.appendChild(span);
+                }
                 tr.appendChild(tagTd);
 
+                // 探索者名とURL
                 const pageTd = document.createElement("td");
-                pageTd.innerText = pc.name;
+                const a = document.createElement("a");
+                a.href = pc.url; // TODO
+                a.innerText = pc.name;
+                pageTd.append(a);
                 tr.appendChild(pageTd);
 
                 body.appendChild(tr);
