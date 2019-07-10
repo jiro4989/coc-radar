@@ -50,13 +50,13 @@
     <script>
         const $ = (q) => document.querySelector(q);
         const colors = [
-            "rgba(255, 0, 0, 0.1)",
-            "rgba(255, 69, 0, 0.1)",
-            "rgba(255, 255, 0, 0.1)",
-            "rgba(0, 128, 0, 0.1)",
-            "rgba(0, 0, 255, 0.1)",
-            "rgba(75, 0, 130, 0.1)",
-            "rgba(238, 130, 238, 0.1)",
+            "rgba(255, 0, 0, 0.2)",
+            "rgba(255, 69, 0, 0.2)",
+            "rgba(255, 255, 0, 0.2)",
+            "rgba(0, 128, 0, 0.2)",
+            "rgba(0, 0, 255, 0.2)",
+            "rgba(75, 0, 130, 0.2)",
+            "rgba(238, 130, 238, 0.2)",
         ];
 
         function getUrlQueryParametor() {
@@ -100,7 +100,9 @@
                 let d = {
                     label: pc.name,
                     data: data,
-                    backgroundColor: colors[i]
+                    backgroundColor: colors[i],
+                    borderColor: colors[i].replace("0.2", "0.3"), // FIXME 力技すぎる
+                    borderWidth: 2
                 }
                 i++;
                 if (colors.length <= i) {
