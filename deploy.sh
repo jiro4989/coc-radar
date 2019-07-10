@@ -11,6 +11,6 @@ if [ "$TRAVIS_BRANCH" = master ]; then
   nim c -d:release update_json.nim
   ./update_json
   git add docs/js
-  git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
-  git push https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+  git commit -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER) [ci skip]"
+  git push https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git HEAD:
 fi
