@@ -35,6 +35,13 @@
             }
         }
 
+        h1 {
+            padding-bottom: .5em;
+            border-bottom: 1px solid #ccc;
+            color: #888;
+            text-align: center;
+        }
+
         h2 {
             color: #0da1c6;
             padding: 0.5em 0;
@@ -53,6 +60,7 @@
         body {
             width: 100vw;
             display: flex;
+            font-family: arial, sans-serif;
         }
     </style>
     <script>
@@ -187,6 +195,10 @@
     <div class="left">
     </div>
     <div class="center">
+        <div>
+            <h1>coc-radar</h1>
+        </div>
+
         <div class="board">
             <h2>能力値</h2>
             <canvas id="abilityChart"></canvas>
