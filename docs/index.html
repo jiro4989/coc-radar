@@ -69,37 +69,74 @@
     <script>
         const $ = (q) => document.querySelector(q);
         const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+        let json;
+
+        function addPc(body, pc) {
+            const tr = document.createElement("tr");
+
+            // タグ要素の生成
+            const tagTd = document.createElement("td");
+            for (let tag of pc.tags) {
+                const span = document.createElement("span");
+                span.className = "tag"
+                const a = document.createElement("a");
+                a.innerText = tag;
+                a.href = "todo";
+                span.appendChild(a);
+                tagTd.appendChild(span);
+            }
+            tr.appendChild(tagTd);
+
+            // 探索者名とURL
+            const pageTd = document.createElement("td");
+            const a = document.createElement("a");
+            a.href = pc.url; // TODO
+            a.innerText = pc.name;
+            pageTd.append(a);
+            tr.appendChild(pageTd);
+
+            body.appendChild(tr);
+        }
 
         window.onload = async function () {
             const data = await fetch(dataUrl);
-            const json = await data.json();
+            json = await data.json();
 
             const body = $("#resultBody");
             for (let pc of json) {
-                const tr = document.createElement("tr");
+                addPc(body, pc);
+            }
+        }
 
-                // タグ要素の生成
-                const tagTd = document.createElement("td");
-                for (let tag of pc.tags) {
-                    const span = document.createElement("span");
-                    span.className = "tag"
-                    const a = document.createElement("a");
-                    a.innerText = tag;
-                    a.href = "todo";
-                    span.appendChild(a);
-                    tagTd.appendChild(span);
+        function clearResult() {
+            const body = $("#resultBody");
+            while (body.firstChild) {
+                body.removeChild(body.firstChild);
+            }
+        }
+
+        function searchRedraw(inputText) {
+            clearResult();
+            const body = $("#resultBody");
+            pc: for (let pc of json) {
+                // 入力画からのときは全てのデータを表示する
+                if (inputText === "") {
+                    addPc(body, pc);
+                    continue
                 }
-                tr.appendChild(tagTd);
 
-                // 探索者名とURL
-                const pageTd = document.createElement("td");
-                const a = document.createElement("a");
-                a.href = pc.url; // TODO
-                a.innerText = pc.name;
-                pageTd.append(a);
-                tr.appendChild(pageTd);
-
-                body.appendChild(tr);
+                // タグを検索
+                for (let tag of pc.tags) {
+                    if (tag.includes(inputText)) {
+                        addPc(body, pc);
+                        continue pc;
+                    }
+                }
+                // 名前を検索
+                if (pc.name.includes(inputText)) {
+                    addPc(body, pc);
+                    continue pc;
+                }
             }
         }
     </script>
@@ -111,7 +148,7 @@
         <hr>
     </header>
     <div class="main">
-        <input type="text" id="searchInput" />
+        <input type="text" id="searchInput" onkeyup="searchRedraw(this.value)" />
         <table>
             <thead>
                 <tr>
