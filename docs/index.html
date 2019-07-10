@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>coc-radar 探索者検索</title>
     <style>
-        input[type="text"] {
+        input[type="text"],
+        input[type="button"] {
             padding: 0.8em;
             outline: none;
             border: 1px solid #DDD;
@@ -15,7 +16,11 @@
             -moz-border-radius: 3px;
             border-radius: 3px;
             font-size: 16px;
-            width: 60vw;
+            width: 50vw;
+        }
+
+        input[type="button"] {
+            width: 8vw;
         }
 
         input[type="checkbox"] {
@@ -130,6 +135,7 @@
     </style>
     <script>
         const $ = (q) => document.querySelector(q);
+        const $$ = (q) => document.querySelectorAll(q);
         const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
         let json;
 
@@ -140,7 +146,7 @@
             const checkTd = document.createElement("td");
             const check = document.createElement("input");
             check.type = "checkbox";
-            check.name = "pc";
+            check.name = "pcCheck";
             check.value = pc.url;
             checkTd.appendChild(check);
             tr.appendChild(checkTd);
@@ -214,6 +220,22 @@
                 }
             }
         }
+
+        function jumpToRadarPage() {
+            let i = 0;
+            let values = [];
+            for (let check of $$('input[name="pcCheck"]')) {
+                if (check.checked) {
+                    const url = check.value;
+                    const urlPaths = url.split("/");
+                    const id = urlPaths[urlPaths.length - 1];
+                    values.push("id" + i + "=" + id);
+                    i++;
+                }
+            }
+            const url = "radar.html?" + values.join("&");
+            window.location.href = url;
+        }
     </script>
 </head>
 
@@ -224,6 +246,7 @@
             <h1>coc-radar</h1>
         </header>
         <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
+        <input type="button" value="表示" onclick="jumpToRadarPage()" />
         <table>
             <thead>
                 <tr>

@@ -83,6 +83,24 @@
             return result;
         }
 
+        function checkQueryParamId(queryParam, id) {
+            // idは0から始まり、URLの数だけ数値が増加する
+            for (let j = 0; j < 100000; j++) {
+                const key = "id" + j;
+                if (key in queryParam) {
+                    const v = queryParam[key];
+                    if (id === v) {
+                        return true;
+                    }
+                    continue;
+                }
+                // ここに到達するということはidNの数値を超過したということ
+                // よって後続のインデックスのidをチェックする必要はない
+                return false;
+            }
+            return false;
+        }
+
         function setChart(queryParam, json, headers, chartId, ticks) {
             let labels = [];
             for (let k of headers) {
@@ -94,8 +112,8 @@
             for (let pc of json) {
                 // tagが一致しない、かつIDがURLとも一致しないならばグラフに含めない
                 const urlPaths = pc.url.split("/");
-                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && urlPaths[urlPaths.length -
-                        1] !== queryParam["id"]) {
+                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && !checkQueryParamId(queryParam,
+                        urlPaths[urlPaths.length - 1])) {
                     continue;
                 }
 
