@@ -5,7 +5,7 @@ set -eu
 if [ "$TRAVIS_BRANCH" = master ]; then
   git clone https://github.com/jiro4989/coc.git
   cd coc
-  nimble install
+  nimble install -Y
   coc -h
   cd ..
   nim c -d:release update_json.nim
