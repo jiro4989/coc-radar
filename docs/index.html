@@ -197,27 +197,30 @@
         }
 
         function searchRedraw(inputText) {
-            clearResult();
+            // clearResult();
             const body = $("#resultBody");
+            const rows = body.children;
+            let i = -1;
             pc: for (let pc of json) {
+                i++;
+                rows[i].style.display = 'table-row';
+
                 // 入力画からのときは全てのデータを表示する
                 if (inputText === "") {
-                    addPc(body, pc);
                     continue
                 }
 
                 // タグを検索
                 for (let tag of pc.tags) {
                     if (tag.includes(inputText)) {
-                        addPc(body, pc);
                         continue pc;
                     }
                 }
                 // 名前を検索
                 if (pc.name.includes(inputText)) {
-                    addPc(body, pc);
                     continue pc;
                 }
+                rows[i].style.display = 'none';
             }
         }
 
