@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>coc-radar - CoCキャラクター保管所の探索者のデータをレーダーに</title>
+    <script src="js/Chart.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
+    <script>
+        const colors = [
+            "rgba(255, 0, 0, 0.1)",
+            "rgba(255, 69, 0, 0.1)",
+            "rgba(255, 255, 0, 0.1)",
+            "rgba(0, 128, 0, 0.1)",
+            "rgba(0, 0, 255, 0.1)",
+            "rgba(75, 0, 130, 0.1)",
+            "rgba(238, 130, 238, 0.1)",
+        ];
+
+        const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+        window.onload = async function () {
+            const data = await fetch(dataUrl);
+            const json = await data.json();
+
+            const headers = ["STR", "CON", "POW", "DEX", "APP", "SIZ", "INT", "EDU", "HP", "MP"];
+            let labels = [];
+            for (let k of headers) {
+                labels.push(k);
+            }
+
+            let datasets = [];
+            let i = 0;
+            for (let pc of json) {
+                let dataset = [];
+                const params = pc.params;
+                for (let key of Object.keys(params)) {
+                    const p = params[key];
+                    let data = [];
+                    for (let k of headers) {
+                        data.push(p[k]);
+                    }
+                    let d = {
+                        data: data,
+                        backgroundColor: colors[i]
+                    }
+                    i++;
+                    if (colors.length <= i) {
+                        i = 0;
+                    }
+                    datasets.push(d);
+                    break; // TODO 今は能力値だけ表示するためbreak
+                }
+            }
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="myChart"></canvas>
+</body>
+
+</html>

@@ -5,78 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>coc-radar - CoCキャラクター保管所の探索者のデータをレーダーに</title>
-    <script src="js/Chart.min.js"> </script>
-    <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
-    <script>
-        const colors = [
-            "rgba(255, 0, 0, 0.1)",
-            "rgba(255, 69, 0, 0.1)",
-            "rgba(255, 255, 0, 0.1)",
-            "rgba(0, 128, 0, 0.1)",
-            "rgba(0, 0, 255, 0.1)",
-            "rgba(75, 0, 130, 0.1)",
-            "rgba(238, 130, 238, 0.1)",
-        ];
+    <title>coc-radar 検索ページ</title>
+    <style>
+        input {
+            padding: 0.8em;
+            outline: none;
+            border: 1px solid #DDD;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+            width: 80vw;
+        }
 
+        input:hover,
+        input:focus {
+            background-color: #fff;
+            border-color: #59b1eb;
+            color: #59b1eb;
+            transition: all 300ms 0s ease;
+        }
+
+        thead,
+        tbody {
+            display: block;
+        }
+
+        tbody {
+            overflow-y: scroll;
+            height: 80vh;
+        }
+
+        table {
+            border-bottom: 5px solid #2A86BC;
+        }
+
+        table th {
+            border-bottom: 5px solid #2A86BC;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            text-align: center;
+        }
+
+        table td {
+            border-bottom: 2px dotted #ccc;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        tr th:nth-child(1),
+        tr td:nth-child(1) {
+            width: 18vw;
+            text-align: center;
+        }
+
+        tr th:nth-child(2),
+        tr td:nth-child(2) {
+            width: 70vw;
+        }
+    </style>
+    <script>
+        const $ = (q) => document.querySelector(q);
         const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+
         window.onload = async function () {
             const data = await fetch(dataUrl);
             const json = await data.json();
 
-            const headers = ["STR", "CON", "POW", "DEX", "APP", "SIZ", "INT", "EDU", "HP", "MP"];
-            let labels = [];
-            for (let k of headers) {
-                labels.push(k);
-            }
-
-            let datasets = [];
-            let i = 0;
+            const body = $("#resultBody");
             for (let pc of json) {
-                let dataset = [];
-                const params = pc.params;
-                for (let key of Object.keys(params)) {
-                    const p = params[key];
-                    let data = [];
-                    for (let k of headers) {
-                        data.push(p[k]);
-                    }
-                    let d = {
-                        data: data,
-                        backgroundColor: colors[i]
-                    }
-                    i++;
-                    if (colors.length <= i) {
-                        i = 0;
-                    }
-                    datasets.push(d);
-                    break; // TODO 今は能力値だけ表示するためbreak
-                }
-            }
+                const tr = document.createElement("tr");
 
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
+                const tagTd = document.createElement("td");
+                tagTd.innerText = "TAG";
+                tr.appendChild(tagTd);
+
+                const pageTd = document.createElement("td");
+                pageTd.innerText = pc.name;
+                tr.appendChild(pageTd);
+
+                body.appendChild(tr);
+            }
         }
     </script>
 </head>
 
 <body>
-    <canvas id="myChart"></canvas>
+    <header>
+        <h1>coc-radar 検索ページ</h1>
+        <hr>
+    </header>
+    <div class="main">
+        <input type="text" id="searchInput" />
+        <table>
+            <thead>
+                <tr>
+                    <th>タグ</th>
+                    <th>探索者名</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody"></tbody>
+        </table>
+    </div>
 </body>
 
 </html>
