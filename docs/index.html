@@ -15,7 +15,7 @@
             -moz-border-radius: 3px;
             border-radius: 3px;
             font-size: 16px;
-            width: 80vw;
+            width: 60vw;
         }
 
         input:hover,
@@ -33,15 +33,15 @@
 
         tbody {
             overflow-y: scroll;
-            height: 80vh;
+            height: 70vh;
         }
 
         table {
-            border-bottom: 5px solid #2A86BC;
+            border-bottom: 5px solid #1dc1d6;
         }
 
         table th {
-            border-bottom: 5px solid #2A86BC;
+            border-bottom: 5px solid #1dc1d6;
             border-top: none;
             border-left: none;
             border-right: none;
@@ -55,6 +55,10 @@
             border-right: none;
         }
 
+        th, td {
+            padding: 0.5em;
+        }
+
         tr th:nth-child(1),
         tr td:nth-child(1) {
             width: 18vw;
@@ -64,6 +68,53 @@
         tr th:nth-child(2),
         tr td:nth-child(2) {
             width: 70vw;
+        }
+
+        h1 {
+            padding-bottom: .5em;
+            border-bottom: 1px solid #ccc;
+            color: #888;
+            text-align: center;
+        }
+
+        body {
+            width: 100vw;
+            display: flex;
+            font-family: arial, sans-serif;
+        }
+
+        @media screen and (min-width: 1024px) {
+
+            .left,
+            .right {
+                flex: 1;
+            }
+
+            .center {
+                flex: 5;
+            }
+        }
+
+        .tag {
+            padding: 3px 6px;
+            margin-right: 8px;
+            margin-left: 1px;
+            font-size: 75%;
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 0 3px #ddd;
+            white-space: nowrap;
+            background-color: #58ACFA;
+        }
+
+        .tag:before {
+            content: '# '
+        }
+        .tag a:link,
+        .tag a:visited
+         {
+            color: #eee;
+            text-decoration: none;
         }
     </style>
     <script>
@@ -147,12 +198,12 @@
 </head>
 
 <body>
-    <header>
-        <h1>coc-radar 検索ページ</h1>
-        <hr>
-    </header>
-    <div class="main">
-        <input type="text" id="searchInput" onkeyup="searchRedraw(this.value)" />
+    <div class="left"></div>
+    <div class="center">
+        <header>
+            <h1>coc-radar 検索</h1>
+        </header>
+        <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
         <table>
             <thead>
                 <tr>
@@ -163,6 +214,7 @@
             <tbody id="resultBody"></tbody>
         </table>
     </div>
+    <div class="right"></div>
 </body>
 
 </html>
