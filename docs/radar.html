@@ -8,6 +8,13 @@
     <title>coc-radar - CoCキャラクター保管所の探索者のデータをレーダーに</title>
     <script src="js/Chart.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
+    <style>
+        .half-chart {
+            display: inline-block;
+            width: 40vw;
+            height: 50vh;
+        }
+    </style>
     <script>
         const $ = (q) => document.querySelector(q);
         const colors = [
@@ -30,15 +37,7 @@
             return result;
         }
 
-        const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
-        window.onload = async function () {
-            // URLクエリパラメータからtagとidを取得する。
-            const queryParam = getUrlQueryParametor();
-
-            const data = await fetch(dataUrl);
-            const json = await data.json();
-
-            const headers = ["STR", "CON", "POW", "DEX", "APP", "SIZ", "INT", "EDU", "HP", "MP"];
+        function setChart(queryParam, json, headers, chartId, ticks) {
             let labels = [];
             for (let k of headers) {
                 labels.push(k);
@@ -54,30 +53,32 @@
                     continue;
                 }
 
+                // 能力値、戦闘技能〜とかのをループ
                 let dataset = [];
                 const params = pc.params;
+                let data = [];
                 for (let key of Object.keys(params)) {
                     const p = params[key];
-                    let data = [];
                     for (let k of headers) {
-                        data.push(p[k]);
+                        if (k in p) {
+                            data.push(p[k]);
+                        }
                     }
-                    let d = {
-                        label: pc.name,
-                        data: data,
-                        backgroundColor: colors[i]
-                    }
-                    i++;
-                    if (colors.length <= i) {
-                        i = 0;
-                    }
-                    datasets.push(d);
-                    break; // TODO 今は能力値だけ表示するためbreak
                 }
+                let d = {
+                    label: pc.name,
+                    data: data,
+                    backgroundColor: colors[i]
+                }
+                i++;
+                if (colors.length <= i) {
+                    i = 0;
+                }
+                datasets.push(d);
             }
 
-            var ctx = $('#abilityChart').getContext('2d');
-            var abilityChart = new Chart(ctx, {
+            let ctx = $(chartId).getContext('2d');
+            let chart = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: labels,
@@ -85,33 +86,57 @@
                 },
                 options: {
                     scale: {
-                        ticks: {
-                            beginAtZero: true,
-                            min: 0,
-                            max: 20
-                        }
+                        ticks: ticks
                     }
                 }
             });
+        }
 
-            var ctx2 = $('#artsChart').getContext('2d');
-            var artsChart = new Chart(ctx2, {
-                type: 'radar',
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
-                options: {
-                    scale: {
-                        ticks: {
-                            beginAtZero: true,
-                            min: 0,
-                            max: 100
-                        }
-                    }
-                }
+        const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+        window.onload = async function () {
+            // URLクエリパラメータからtagとidを取得する。
+            const queryParam = getUrlQueryParametor();
+
+            const data = await fetch(dataUrl);
+            const json = await data.json();
+
+            const abilityHeaders = ["STR", "CON", "POW", "DEX", "APP", "SIZ", "INT", "EDU", "HP", "MP"];
+            setChart(queryParam, json, abilityHeaders, "#abilityChart", {
+                beginAtZero: true,
+                min: 0,
+                max: 20
             });
 
+            const btlHeaders = ["回避", "キック", "組み付き", "こぶし（パンチ）", "頭突き", "投擲", "マーシャルアーツ", "拳銃", "サブマシンガン",
+                "ショットガン", "マシンガン", "ライフル",
+            ];
+            const findHeaders = ["応急手当", "鍵開け", "隠す", "隠れる", "聞き耳", "忍び歩き", "写真術", "精神分析", "追跡", "登攀", "図書館",
+                "目星",
+            ];
+            const actHeaders = ["運転", "機械修理", "重機械操作", "乗馬", "水泳", "製作", "操縦", "跳躍", "電気修理", "ナビゲート", "変装", ];
+            const negoHeaders = ["言いくるめ", "信用", "値切り", "説得", "母国語", ];
+            const intHeaders = ["医学", "オカルト", "化学", "クトゥルフ神話", "芸術", "経理", "考古学", "コンピューター", "心理学", "人類学",
+                "生物学",
+                "地質学", "電子工学", "天文学", "博物学", "物理学", "法律", "薬学", "歴史",
+            ];
+
+            let artsHeaders = [];
+            for (let v of btlHeaders) artsHeaders.push(v);
+            for (let v of findHeaders) artsHeaders.push(v);
+            for (let v of actHeaders) artsHeaders.push(v);
+            for (let v of negoHeaders) artsHeaders.push(v);
+            for (let v of intHeaders) artsHeaders.push(v);
+            const ticks = {
+                beginAtZero: true,
+                min: 0,
+                max: 100
+            };
+            setChart(queryParam, json, artsHeaders, "#artsChart", ticks);
+            setChart(queryParam, json, btlHeaders, "#battleChart", ticks);
+            setChart(queryParam, json, findHeaders, "#findChart", ticks);
+            setChart(queryParam, json, actHeaders, "#actionChart", ticks);
+            setChart(queryParam, json, negoHeaders, "#negotiationChart", ticks);
+            setChart(queryParam, json, intHeaders, "#intelligenceChart", ticks);
         }
     </script>
 </head>
@@ -119,6 +144,21 @@
 <body>
     <canvas id="abilityChart"></canvas>
     <canvas id="artsChart"></canvas>
+    <div class="half-chart">
+        <canvas id="battleChart"></canvas>
+    </div>
+    <div class="half-chart">
+        <canvas id="findChart"></canvas>
+    </div>
+    <div class="half-chart">
+        <canvas id="actionChart"></canvas>
+    </div>
+    <div class="half-chart">
+        <canvas id="negotiationChart"></canvas>
+    </div>
+    <div class="half-chart">
+        <canvas id="intelligenceChart"></canvas>
+    </div>
 </body>
 
 </html>
