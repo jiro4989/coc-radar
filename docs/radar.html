@@ -54,6 +54,12 @@
             display: flex;
             font-family: arial, sans-serif;
         }
+
+        h1 a:link,
+        h1 a:visited {
+            color: #888;
+            text-decoration: none;
+        }
     </style>
     <script>
         const $ = (q) => document.querySelector(q);
@@ -188,7 +194,7 @@
     </div>
     <div class="center">
         <header>
-            <h1>coc-radar</h1>
+            <h1><a href="index.html">coc-radar</a></h1>
         </header>
 
         <div class="board">
@@ -227,7 +233,7 @@
         </div>
         <footer style="text-align: center;">
             <p>
-                &copy;次郎 <a href="https://twitter.com/jiro_saburomaru">&#064;jiro_saburomaru</a>
+                &copy; 次郎 <a href="https://twitter.com/jiro_saburomaru">&#064;jiro_saburomaru</a>
             </p>
             <p>
                 レーダー出力対象の追加の要望は<a href="https://github.com/jiro4989/coc-radar/issues">こちら</a>。
