@@ -81,7 +81,7 @@
                 span.className = "tag"
                 const a = document.createElement("a");
                 a.innerText = tag;
-                a.href = "todo";
+                a.href = "radar.html?tag=" + tag;
                 span.appendChild(a);
                 tagTd.appendChild(span);
             }
@@ -90,7 +90,11 @@
             // 探索者名とURL
             const pageTd = document.createElement("td");
             const a = document.createElement("a");
-            a.href = pc.url; // TODO
+
+            // データ取得元のページのURLの最後のパスを主キーとする
+            const urlPaths = pc.url.split("/");
+            const id = urlPaths[urlPaths.length - 1];
+            a.href = "radar.html?id=" + id;
             a.innerText = pc.name;
             pageTd.append(a);
             tr.appendChild(pageTd);
