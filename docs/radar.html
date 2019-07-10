@@ -19,8 +19,23 @@
             "rgba(238, 130, 238, 0.1)",
         ];
 
+        function getUrlQueryParametor() {
+            let pair = location.search.substring(1).split('&');
+            let result = {};
+            for (let elem of pair) {
+                let kv = elem.split("=");
+                result[kv[0]] = decodeURIComponent(kv[1]);
+            }
+            return result;
+        }
+
         const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
         window.onload = async function () {
+            // URLクエリパラメータからtagとidを取得する。
+            // tagとidならtagを優先して処理し、tagが先に見つかった場合はidは調べない
+            const queryParam = getUrlQueryParametor();
+            console.log(queryParam);
+
             const data = await fetch(dataUrl);
             const json = await data.json();
 
