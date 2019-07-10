@@ -9,6 +9,7 @@
     <script src="js/Chart.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
     <script>
+        const $ = (q) => document.querySelector(q);
         const colors = [
             "rgba(255, 0, 0, 0.1)",
             "rgba(255, 69, 0, 0.1)",
@@ -75,8 +76,8 @@
                 }
             }
 
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
+            var ctx = $('#abilityChart').getContext('2d');
+            var abilityChart = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: labels,
@@ -92,12 +93,32 @@
                     }
                 }
             });
+
+            var ctx2 = $('#artsChart').getContext('2d');
+            var artsChart = new Chart(ctx2, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
         }
     </script>
 </head>
 
 <body>
-    <canvas id="myChart"></canvas>
+    <canvas id="abilityChart"></canvas>
+    <canvas id="artsChart"></canvas>
 </body>
 
 </html>
