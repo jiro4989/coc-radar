@@ -83,7 +83,12 @@
 
         tr th:nth-child(3),
         tr td:nth-child(3) {
-            width: 60vw;
+            width: 45vw;
+        }
+        tr th:nth-child(4),
+        tr td:nth-child(4) {
+            width: 15vw;
+            text-align: center;
         }
 
         h1 {
@@ -171,10 +176,18 @@
             // データ取得元のページのURLの最後のパスを主キーとする
             const urlPaths = pc.url.split("/");
             const id = urlPaths[urlPaths.length - 1];
-            a.href = "radar.html?id=" + id;
+            a.href = "radar.html?id0=" + id;
             a.innerText = pc.name;
             pageTd.append(a);
             tr.appendChild(pageTd);
+
+            // キャラクター保管所へのURL生成
+            const pcTd = document.createElement("td");
+            const pcA = document.createElement("a");
+            pcA.href = pc.url;
+            pcA.innerText = "保管所";
+            pcTd.appendChild(pcA);
+            tr.appendChild(pcTd);
 
             body.appendChild(tr);
         }
@@ -256,6 +269,7 @@
                     <th>選択</th>
                     <th>タグ</th>
                     <th>探索者名</th>
+                    <th>キャラクター保管所</th>
                 </tr>
             </thead>
             <tbody id="resultBody"></tbody>
