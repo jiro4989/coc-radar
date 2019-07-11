@@ -142,7 +142,7 @@
     <script>
         const $ = (q) => document.querySelector(q);
         const $$ = (q) => document.querySelectorAll(q);
-        const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+        const dataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
         let json;
 
         function addPc(body, pc) {
@@ -153,7 +153,7 @@
             const check = document.createElement("input");
             check.type = "checkbox";
             check.name = "pcCheck";
-            check.value = pc.url;
+            check.value = pc.id;
             checkTd.appendChild(check);
             tr.appendChild(checkTd);
 
@@ -243,10 +243,7 @@
             let values = [];
             for (let check of $$('input[name="pcCheck"]')) {
                 if (check.checked) {
-                    const url = check.value;
-                    const urlPaths = url.split("/");
-                    const id = urlPaths[urlPaths.length - 1];
-                    values.push("id" + i + "=" + id);
+                    values.push("id" + i + "=" + check.value);
                     i++;
                 }
             }
