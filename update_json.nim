@@ -1,24 +1,17 @@
 import parsecsv, strutils, sequtils
 from os import execShellCmd
 
-type
-  Args = object
-    url: string
-    opt: string
-
-var args: seq[Args]
+var urls: seq[string]
 
 var p: CsvParser
 p.open("conf/page.csv")
 p.readHeaderRow()
 while p.readRow():
   let url = p.row[1].strip
-  let isList = p.row[2].strip
-  var opt: Args
-  opt.url = url
-  if isList == "true":
-    opt.opt = "-l"
-  args.add(opt)
+  urls.add(url)
 
-let params = args.mapIt(it.url).join(" ")
-quit(execShellCmd("coc -f json -l " & params & " > docs/js/data.json"))
+let params = urls.join(" ")
+let exitCode = execShellCmd("coc -X -f json -w 1000 " & params & " > docs/js/data.json")
+if exitCode != 0:
+  stderr.writeLine("Error occured")
+  quit(1)
