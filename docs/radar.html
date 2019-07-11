@@ -101,31 +101,35 @@
             return false;
         }
 
-        function setChart(queryParam, json, headers, chartId, ticks) {
+        function setChart(queryParam, json, genres, fields, chartId, ticks) {
             let labels = [];
-            for (let k of headers) {
-                labels.push(k);
+            for (let genre of genres) {
+                let pc = json[0];
+                for (let field of fields) {
+                    if ((genre in pc.param) && (field in pc.param[genre])) {
+                        let label = pc.param[genre][field].name;
+                        labels.push(label);
+                    }
+                }
             }
 
             let datasets = [];
             let i = 0;
             for (let pc of json) {
                 // tagが一致しない、かつIDがURLとも一致しないならばグラフに含めない
-                const urlPaths = pc.url.split("/");
-                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && !checkQueryParamId(queryParam,
-                        urlPaths[urlPaths.length - 1])) {
+                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && !checkQueryParamId(queryParam, pc.id)) {
                     continue;
                 }
 
                 // 能力値、戦闘技能〜とかのをループ
                 let dataset = [];
-                const params = pc.params;
+                const params = pc.param;
                 let data = [];
-                for (let key of Object.keys(params)) {
-                    const p = params[key];
-                    for (let k of headers) {
-                        if (k in p) {
-                            data.push(p[k]);
+                for (let genre of genres) {
+                    for (let field of fields) {
+                        if ((genre in pc.param) && (field in pc.param[genre])) {
+                            let num = pc.param[genre][field].num;
+                            data.push(num);
                         }
                     }
                 }
@@ -158,51 +162,86 @@
             });
         }
 
-        const dataUrl = "https://jiro4989.github.io/coc-radar/js/data.json"
+        // クエリパラメータのタグとIDから探索者のIDの一覧を取得する
+        function getIds(queryParam, json) {
+            // idは0から始まり、URLの数だけ数値が増加する
+            let idList = [];
+
+            // tagパラメータからtagに紐づくidを取得する
+            const tag = queryParam["tag"]
+            for (let pc of json) {
+                // 同じtagが見つかった時
+                if (0 <= pc.tags.indexOf(tag)) {
+                    idList.push(pc.id);
+                    continue;
+                }
+            }
+
+            // id0 .. id10000って感じのクエリパラメータからidを取得する
+            for (let j = 0; j < 100000; j++) {
+                const key = "id" + j;
+                if (key in queryParam) {
+                    const id = queryParam[key];
+                    idList.push(id);
+                    continue;
+                }
+                // ここに到達するということはidNの数値を超過したということ
+                // よって後続のインデックスのidをチェックする必要はない
+                break;
+            }
+
+            return idList;
+        }
+
+        const root = "https://jiro4989.github.io/coc-radar";
+        const indexFileUrl = root + "/data/index.json"
         window.onload = async function () {
             // URLクエリパラメータからtagとidを取得する。
             const queryParam = getUrlQueryParametor();
 
-            const data = await fetch(dataUrl);
-            const json = await data.json();
+            // index.jsonでは探索者の能力値は取得していないため追加で取得が必要
+            const data = await fetch(indexFileUrl);
+            let json = await data.json();
+            const ids = getIds(queryParam, json);
 
-            const abilityHeaders = ["STR", "CON", "POW", "DEX", "APP", "SIZ", "INT", "EDU", "HP", "MP"];
-            setChart(queryParam, json, abilityHeaders, "#abilityChart", {
+            // 探索者id.jsonをfetchして必要なjsonだけ読み込む
+            json = [];
+            for (let id of ids) {
+                const resp = await fetch(root + "/data/" + id + ".json")
+                const data = await resp.json();
+                json.push(data);
+            }
+
+            const abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
+            setChart(queryParam, json, ["ability"], abilityFields, "#abilityChart", {
                 beginAtZero: true,
                 min: 0,
                 max: 20
             });
 
-            const btlHeaders = ["回避", "キック", "組み付き", "こぶし（パンチ）", "頭突き", "投擲", "マーシャルアーツ", "拳銃", "サブマシンガン",
-                "ショットガン", "マシンガン", "ライフル",
-            ];
-            const findHeaders = ["応急手当", "鍵開け", "隠す", "隠れる", "聞き耳", "忍び歩き", "写真術", "精神分析", "追跡", "登攀", "図書館",
-                "目星",
-            ];
-            const actHeaders = ["運転", "機械修理", "重機械操作", "乗馬", "水泳", "製作", "操縦", "跳躍", "電気修理", "ナビゲート", "変装", ];
-            const negoHeaders = ["言いくるめ", "信用", "値切り", "説得", "母国語", ];
-            const intHeaders = ["医学", "オカルト", "化学", "クトゥルフ神話", "芸術", "経理", "考古学", "コンピューター", "心理学", "人類学",
-                "生物学",
-                "地質学", "電子工学", "天文学", "博物学", "物理学", "法律", "薬学", "歴史",
-            ];
+            const btlFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle"];
+            const findFields = ["firstAid", "lockPicking", "hide", "disappear", "ear", "quietStep", "photography", "psychoAnalysis", "tracking", "climbing", "library", "aim", ];
+            const actFields = ["driving", "repairingMachine", "operatingHeavyMachine", "ridingHorse", "swimming", "creating", "control", "jumping", "repairingElectric", "navigate", "disguise", ];
+            const negoFields = ["winOver", "credit", "haggle", "argue", "nativeLanguage", ];
+            const knowledgeFields = ["medicine", "occult", "chemistry", "cthulhuMythology", "art", "accounting", "archeology", "computer", "psychology", "anthropology", "biology", "geology", "electronicEngineering", "astronomy", "naturalHistory", "physics", "law", "pharmacy", "history", ];
 
-            let artsHeaders = [];
-            for (let v of btlHeaders) artsHeaders.push(v);
-            for (let v of findHeaders) artsHeaders.push(v);
-            for (let v of actHeaders) artsHeaders.push(v);
-            for (let v of negoHeaders) artsHeaders.push(v);
-            for (let v of intHeaders) artsHeaders.push(v);
+            let artsFields = [];
+            for (let v of btlFields) artsFields.push(v);
+            for (let v of findFields) artsFields.push(v);
+            for (let v of actFields) artsFields.push(v);
+            for (let v of negoFields) artsFields.push(v);
+            for (let v of knowledgeFields) artsFields.push(v);
             const ticks = {
                 beginAtZero: true,
                 min: 0,
                 max: 100
             };
-            setChart(queryParam, json, artsHeaders, "#artsChart", ticks);
-            setChart(queryParam, json, btlHeaders, "#battleChart", ticks);
-            setChart(queryParam, json, findHeaders, "#findChart", ticks);
-            setChart(queryParam, json, actHeaders, "#actionChart", ticks);
-            setChart(queryParam, json, negoHeaders, "#negotiationChart", ticks);
-            setChart(queryParam, json, intHeaders, "#intelligenceChart", ticks);
+            setChart(queryParam, json, ["battleArts", "findArts", "actionArts", "negotiationArts", "knowledgeArts"], artsFields, "#artsChart", ticks);
+            setChart(queryParam, json, ["battleArts"], btlFields, "#battleChart", ticks);
+            setChart(queryParam, json, ["findArts"], findFields, "#findChart", ticks);
+            setChart(queryParam, json, ["actionArts"], actFields, "#actionChart", ticks);
+            setChart(queryParam, json, ["negotiationArts"], negoFields, "#negotiationChart", ticks);
+            setChart(queryParam, json, ["knowledgeArts"], knowledgeFields, "#knowledgeChart", ticks);
         }
     </script>
 </head>
@@ -246,7 +285,7 @@
         <div class="half-area">
             <div class="half-chart board">
                 <h2>知識技能</h2>
-                <canvas id="intelligenceChart"></canvas>
+                <canvas id="knowledgeChart"></canvas>
             </div>
         </div>
         <footer style="text-align: center;">
