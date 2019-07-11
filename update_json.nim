@@ -11,7 +11,7 @@ while p.readRow():
   urls.add(url)
 
 let params = urls.join(" ")
-let exitCode = execShellCmd("coc -X -f json -w 1000 " & params & " > docs/js/data.json")
+let exitCode = execShellCmd("coc -rXf json -t 1000 " & params & " > docs/js/data.json")
 if exitCode != 0:
   stderr.writeLine("Error occured")
   quit(1)
