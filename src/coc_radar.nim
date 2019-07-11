@@ -1,5 +1,7 @@
-import parsecsv, strutils, sequtils, json, marshal, strformat
-from os import execShellCmd
+import parsecsv, strutils, sequtils, json, marshal, strformat, logging
+from os import execShellCmd, createDir
+
+addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 
 type
   IndexPc* = ref object
@@ -106,10 +108,12 @@ type
 
 proc scrape(confFiles: seq[string]): int =
   ## 指定のCSVからURLを取得してスクレイピングする。
+  info "Start main:"
   var urls: seq[string]
 
   # 設定ファイルからURLを取得
   for conf in confFiles:
+    info &"Read config file: {conf}"
     var p: CsvParser
     p.open(conf)
     p.readHeaderRow()
@@ -122,18 +126,26 @@ proc scrape(confFiles: seq[string]): int =
   let params = urls.join(" ")
   result = execShellCmd("coc -lrXf json -t 1000 " & params)
   if result != 0:
-    stderr.writeLine("Error occured")
+    error "Error occured"
+    return
+  info "Success main:"
 
 proc generateJson(): int =
   ## 標準入力から1行ごとのJSONを受け取って、index.jsonと探索者のID.jsonを生成する。
-  const outDir = "docs/js"
+  info "Start main:"
+  const outDir = "docs/data"
+  createDir(outDir)
+  info &"Created directory: {outDir}"
+
   # index.jsonの生成
   var indexPcs: seq[string]
   var line: string
   while stdin.readLine(line):
     # 各探索者ごとのデータJSONを生成
     let pc = line.parseJson.to(Pc)[]
-    writeFile(&"{outDir}/{pc.id}.json", $$pc)
+    let pcFile = &"{outDir}/{pc.id}.json"
+    writeFile(pcFile, $$pc)
+    info &"Created pc file: {pcFile}"
 
     # index.jsonではparamは不要なのでそれらを持たないオブジェクトを生成
     let indexPc = IndexPc(
@@ -142,7 +154,10 @@ proc generateJson(): int =
       tags: pc.tags,
       url: pc.url)
     indexPcs.add($$indexPc[])
-  writeFile(&"{outDir}/index.json", "[\n" & indexPcs.join(",\n") & "\n]")
+  let indexFile = &"{outDir}/index.json"
+  writeFile(indexFile, "[\n" & indexPcs.join(",\n") & "\n]")
+  info &"Created index file: {indexFile}"
+  info "Success main:"
 
 when isMainModule:
   import cligen
