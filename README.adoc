@@ -3,13 +3,30 @@
 
 = coc-radar
 
-CoCの探索者のパラメータを表示する。
+https://charasheet.vampire-blood.net/[キャラクター保管所]のクトゥルフの探索者の
+能力値をレーダーチャートで表示するWebサイト。
 
-== ページ
+サイトは以下。
 
 * https://jiro4989.github.io/coc-radar/[coc-radar - github.io]
 
+== 実装
+
+https://github.com/jiro4989/coc[coc]というキャラクター保管所のクトゥルフPC作成ツ
+ールのデータからJSONを生成するツールをバッチ処理に使用している。
+
+masterブランチが更新されたタイミングでTravisCIで前述のツールを使用してデータを取
+得し、docs/js/data.jsonを更新してpushする。
+
+よって、masterブランチの更新のタイミングでしかデータが更新されない。
+
+== グラフ化したい探索者を追加
+
+https://github.com/jiro4989/coc-radar/issues/1[issues]に方法を記載。
+
 == ライブラリ
+
+JSONをレーダーチャートに変換するために、以下のライブラリを使用している。
 
 * https://www.chartjs.org/docs/latest/[Chart.js]
 
