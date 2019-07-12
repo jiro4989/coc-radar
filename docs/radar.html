@@ -7,8 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>coc-radar - 能力値レーダーチャート</title>
     <script src="js/Chart.min.js"> </script>
+    <script src="js/progressbar.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
     <style>
+        #progress, #back {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            margin: auto;
+            pointer-events: none;
+        }
+        #progress {
+            width: 128px;
+            height: 64px;
+        }
+
+        #back {
+            opacity: 0.4;
+            background-color: #000;
+        }
+
         @media screen and (max-width: 1024px) {
             .board {
                 width: 95vw;
@@ -117,7 +137,8 @@
             let i = 0;
             for (let pc of json) {
                 // tagが一致しない、かつIDがURLとも一致しないならばグラフに含めない
-                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && !checkQueryParamId(queryParam, pc.id)) {
+                if (pc.tags.filter(tag => tag === queryParam["tag"]).length < 1 && !checkQueryParamId(queryParam, pc
+                        .id)) {
                     continue;
                 }
 
@@ -193,6 +214,25 @@
             return idList;
         }
 
+        function loopSleep(_loopLimit, _interval, _mainFunc) {
+            var loopLimit = _loopLimit;
+            var interval = _interval;
+            var mainFunc = _mainFunc;
+            var i = 0;
+            var loopFunc = function () {
+                var result = mainFunc(i);
+                if (result === false) {
+                    // break機能
+                    return;
+                }
+                i = i + 1;
+                if (i < loopLimit) {
+                    setTimeout(loopFunc, interval);
+                }
+            }
+            loopFunc();
+        }
+
         const root = "https://jiro4989.github.io/coc-radar";
         const indexFileUrl = root + "/data/index.json"
         window.onload = async function () {
@@ -204,13 +244,35 @@
             let json = await data.json();
             const ids = getIds(queryParam, json);
 
+            let progress = new ProgressBar.Circle('#progress', {
+                color: '#1dc1d6',
+                trailColor: '#eee',
+                strokeWidth: 10,
+                duration: 2500,
+                easing: 'easeInOut'
+            });
+
+            let interval = 1 / ids.length;
+            let progressVal = 0;
             // 探索者id.jsonをfetchして必要なjsonだけ読み込む
             json = [];
             for (let id of ids) {
                 const resp = await fetch(root + "/data/" + id + ".json")
                 const data = await resp.json();
                 json.push(data);
+                progressVal += interval;
+                progress.animate(progressVal, {
+                    duration: 250
+                });
             }
+            // $('#back').style.height = document.body.clientHeight;
+            // フェードアウト
+            loopSleep(100, 1, function (i) {
+                let op = 1 - i / 100;
+                $('#progress').style.opacity = op;
+                $('#back').style.opacity = 0.4 - i / 100 * 0.4;
+            });
+            
 
             const abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
             setChart(queryParam, json, ["ability"], abilityFields, "#abilityChart", {
@@ -219,11 +281,21 @@
                 max: 20
             });
 
-            const btlFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle"];
-            const findFields = ["firstAid", "lockPicking", "hide", "disappear", "ear", "quietStep", "photography", "psychoAnalysis", "tracking", "climbing", "library", "aim", ];
-            const actFields = ["driving", "repairingMachine", "operatingHeavyMachine", "ridingHorse", "swimming", "creating", "control", "jumping", "repairingElectric", "navigate", "disguise", ];
+            const btlFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts",
+                "handGun", "submachineGun", "shotGun", "machineGun", "rifle"
+            ];
+            const findFields = ["firstAid", "lockPicking", "hide", "disappear", "ear", "quietStep",
+                "photography", "psychoAnalysis", "tracking", "climbing", "library", "aim",
+            ];
+            const actFields = ["driving", "repairingMachine", "operatingHeavyMachine", "ridingHorse",
+                "swimming", "creating", "control", "jumping", "repairingElectric", "navigate", "disguise",
+            ];
             const negoFields = ["winOver", "credit", "haggle", "argue", "nativeLanguage", ];
-            const knowledgeFields = ["medicine", "occult", "chemistry", "cthulhuMythology", "art", "accounting", "archeology", "computer", "psychology", "anthropology", "biology", "geology", "electronicEngineering", "astronomy", "naturalHistory", "physics", "law", "pharmacy", "history", ];
+            const knowledgeFields = ["medicine", "occult", "chemistry", "cthulhuMythology", "art", "accounting",
+                "archeology", "computer", "psychology", "anthropology", "biology", "geology",
+                "electronicEngineering", "astronomy", "naturalHistory", "physics", "law", "pharmacy",
+                "history",
+            ];
 
             let artsFields = [];
             for (let v of btlFields) artsFields.push(v);
@@ -236,7 +308,9 @@
                 min: 0,
                 max: 100
             };
-            setChart(queryParam, json, ["battleArts", "findArts", "actionArts", "negotiationArts", "knowledgeArts"], artsFields, "#artsChart", ticks);
+            setChart(queryParam, json, ["battleArts", "findArts", "actionArts", "negotiationArts",
+                "knowledgeArts"
+            ], artsFields, "#artsChart", ticks);
             setChart(queryParam, json, ["battleArts"], btlFields, "#battleChart", ticks);
             setChart(queryParam, json, ["findArts"], findFields, "#findChart", ticks);
             setChart(queryParam, json, ["actionArts"], actFields, "#actionChart", ticks);
@@ -296,6 +370,10 @@
                 レーダー出力対象の追加の要望は<a href="https://github.com/jiro4989/coc-radar/issues">こちら</a>。
             </p>
         </footer>
+
+        <div id="back">
+        </div>
+        <div id="progress"></div>
     </div>
     <div class="right">
     </div>
