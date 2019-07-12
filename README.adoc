@@ -10,7 +10,7 @@ https://charasheet.vampire-blood.net/[キャラクター保管所]のクトゥ�
 
 サイトは以下。
 
-* https://jiro4989.github.io/coc-radar/[coc-radar - github.io]
+* https://jiro4989.github.io/coc-radar/index.html[coc-radar - github.io]
 
 == 実装
 
