@@ -3,6 +3,8 @@
 
 = coc-radar
 
+image:https://travis-ci.org/jiro4989/coc-radar.svg?branch=master["Build Status", link="https://travis-ci.org/jiro4989/coc-radar"]
+
 https://charasheet.vampire-blood.net/[キャラクター保管所]のクトゥルフの探索者の
 能力値をレーダーチャートで表示するWebサイト。
 
