@@ -117,6 +117,13 @@
             }
         }
 
+        .row-area {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0.8em;
+            width: 80vw;
+        }
+
         .tag {
             padding: 3px 6px;
             margin-right: 8px;
@@ -125,7 +132,6 @@
             color: white;
             border-radius: 6px;
             box-shadow: 0 0 3px #ddd;
-            white-space: nowrap;
             background-color: #58ACFA;
         }
 
@@ -164,7 +170,7 @@
                 span.className = "tag"
                 const a = document.createElement("a");
                 a.innerText = tag;
-                a.href = "radar.html?tag=" + tag;
+                a.href = "radar.html?tag=" + encodeURI(tag);
                 span.appendChild(a);
                 tagTd.appendChild(span);
             }
@@ -193,6 +199,24 @@
             body.appendChild(tr);
         }
 
+        function setTagList() {
+            // タグ一覧の生成 (重複除外)
+            let tagMap = {};
+            for (let elem of $$('.tag > a')) {
+                tagMap[elem.href] = elem;
+            }
+            for (let key of Object.keys(tagMap)) {
+                let elem = tagMap[key];
+                const span = document.createElement("span");
+                span.className = "tag";
+                const a = document.createElement("a");
+                a.href = elem.href;
+                a.innerText = elem.innerText;
+                span.appendChild(a);
+                $('#tagsArea').appendChild(span);
+            }
+        }
+
         window.onload = async function () {
             const data = await fetch(dataUrl);
             json = await data.json();
@@ -201,6 +225,7 @@
             for (let pc of json) {
                 addPc(body, pc);
             }
+            setTagList();
         }
 
         function clearResult() {
@@ -261,6 +286,7 @@
         </header>
         <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
         <input type="button" value="表示" onclick="jumpToRadarPage()" />
+        <div id="tagsArea" class="row-area"></div>
         <table>
             <thead>
                 <tr>
