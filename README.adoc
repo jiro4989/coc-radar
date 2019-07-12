@@ -26,9 +26,10 @@ https://github.com/jiro4989/coc-radar/issues/1[issues]に方法を記載。
 
 == ライブラリ
 
-JSONをレーダーチャートに変換するために、以下のライブラリを使用している。
+使用している外部ライブラリは以下の通り。
 
 * https://www.chartjs.org/docs/latest/[Chart.js]
+* https://github.com/kimmobrunfeldt/progressbar.js<Paste>[ProgressBar.js]
 
 == LICENSE
 
