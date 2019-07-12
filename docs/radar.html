@@ -83,15 +83,7 @@
     </style>
     <script>
         const $ = (q) => document.querySelector(q);
-        const colors = [
-            "rgba(255, 0, 0, 0.2)",
-            "rgba(255, 69, 0, 0.2)",
-            "rgba(255, 255, 0, 0.2)",
-            "rgba(0, 128, 0, 0.2)",
-            "rgba(0, 0, 255, 0.2)",
-            "rgba(75, 0, 130, 0.2)",
-            "rgba(238, 130, 238, 0.2)",
-        ];
+        let colors = [];
 
         function getUrlQueryParametor() {
             let pair = location.search.substring(1).split('&');
@@ -133,6 +125,7 @@
                 }
             }
 
+            const colorInterval = Math.floor(colors.length / json.length);
             let datasets = [];
             let i = 0;
             for (let pc of json) {
@@ -154,11 +147,12 @@
                         }
                     }
                 }
+                const n = i * colorInterval;
                 let d = {
                     label: pc.name,
                     data: data,
-                    backgroundColor: colors[i],
-                    borderColor: colors[i].replace("0.2", "0.3"), // FIXME 力技すぎる
+                    backgroundColor: colors[n],
+                    borderColor: colors[n].replace("0.2", "0.3"), // FIXME 力技すぎる
                     borderWidth: 2
                 }
                 i++;
@@ -233,11 +227,38 @@
             loopFunc();
         }
 
+        function createColors(span) {
+            const gradation = (span, r1, g1, b1, r2, g2, b2) => {
+                const rd = (r2 - r1) / span;
+                const gd = (g2 - g1) / span;
+                const bd = (b2 - b1) / span;
+                let cs = [];
+                for (let i=0; i<span; i++) {
+                    const r = r1 + i * rd;
+                    const g = g1 + i * gd;
+                    const b = b1 + i * bd;
+                    cs.push('rgba(' + r + ', ' + g + ', ' + b + ', 0.2)');
+                }
+                return cs;
+            }
+            let colors = [];
+            gradation(span, 255, 0, 0, 255, 69, 0).forEach((item) => colors.push(item));
+            gradation(span, 255, 69, 0, 255, 255, 0).forEach((item) => colors.push(item));
+            gradation(span, 255, 255, 0, 0, 128, 0).forEach((item) => colors.push(item));
+            gradation(span, 0, 128, 0, 0, 0, 255).forEach((item) => colors.push(item));
+            gradation(span, 0, 0, 255, 75, 0, 130).forEach((item) => colors.push(item));
+            gradation(span, 75, 0, 130, 238, 130, 238).forEach((item) => colors.push(item));
+            gradation(span, 238, 130, 238, 255, 0, 0).forEach((item) => colors.push(item));
+            return colors;
+        }
+
         const root = "https://jiro4989.github.io/coc-radar";
         const indexFileUrl = root + "/data/index.json"
         window.onload = async function () {
             // URLクエリパラメータからtagとidを取得する。
             const queryParam = getUrlQueryParametor();
+
+            colors = createColors(10);
 
             // index.jsonでは探索者の能力値は取得していないため追加で取得が必要
             const data = await fetch(indexFileUrl);
