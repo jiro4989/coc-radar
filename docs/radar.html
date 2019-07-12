@@ -10,7 +10,8 @@
     <script src="js/progressbar.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/Chart.min.css">
     <style>
-        #progress, #back {
+        #progress,
+        #back {
             position: fixed;
             top: 0px;
             right: 0px;
@@ -19,6 +20,7 @@
             margin: auto;
             pointer-events: none;
         }
+
         #progress {
             width: 128px;
             height: 64px;
@@ -113,7 +115,7 @@
             return false;
         }
 
-        function setChart(queryParam, json, genres, fields, chartId, ticks) {
+        function setChart(queryParam, json, genres, fields, chartId, options, graphType) {
             let labels = [];
             for (let genre of genres) {
                 let pc = json[0];
@@ -164,16 +166,12 @@
 
             let ctx = $(chartId).getContext('2d');
             let chart = new Chart(ctx, {
-                type: 'radar',
+                type: graphType,
                 data: {
                     labels: labels,
                     datasets: datasets
                 },
-                options: {
-                    scale: {
-                        ticks: ticks
-                    }
-                }
+                options: options
             });
         }
 
@@ -233,7 +231,7 @@
                 const gd = (g2 - g1) / span;
                 const bd = (b2 - b1) / span;
                 let cs = [];
-                for (let i=0; i<span; i++) {
+                for (let i = 0; i < span; i++) {
                     const r = r1 + i * rd;
                     const g = g1 + i * gd;
                     const b = b1 + i * bd;
@@ -293,14 +291,18 @@
                 $('#progress').style.opacity = op;
                 $('#back').style.opacity = 0.4 - i / 100 * 0.4;
             });
-            
 
+            const radarOptions = {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 20
+                    }
+                }
+            };
             const abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
-            setChart(queryParam, json, ["ability"], abilityFields, "#abilityChart", {
-                beginAtZero: true,
-                min: 0,
-                max: 20
-            });
+            setChart(queryParam, json, ["ability"], abilityFields, "#abilityChart", radarOptions, 'radar');
 
             const btlFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts",
                 "handGun", "submachineGun", "shotGun", "machineGun", "rifle"
@@ -324,19 +326,25 @@
             for (let v of actFields) artsFields.push(v);
             for (let v of negoFields) artsFields.push(v);
             for (let v of knowledgeFields) artsFields.push(v);
-            const ticks = {
-                beginAtZero: true,
-                min: 0,
-                max: 100
+            const barOptions = {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100
+                        }
+                    }]
+                }
             };
             setChart(queryParam, json, ["battleArts", "findArts", "actionArts", "negotiationArts",
                 "knowledgeArts"
-            ], artsFields, "#artsChart", ticks);
-            setChart(queryParam, json, ["battleArts"], btlFields, "#battleChart", ticks);
-            setChart(queryParam, json, ["findArts"], findFields, "#findChart", ticks);
-            setChart(queryParam, json, ["actionArts"], actFields, "#actionChart", ticks);
-            setChart(queryParam, json, ["negotiationArts"], negoFields, "#negotiationChart", ticks);
-            setChart(queryParam, json, ["knowledgeArts"], knowledgeFields, "#knowledgeChart", ticks);
+            ], artsFields, "#artsChart", barOptions, 'bar');
+            setChart(queryParam, json, ["battleArts"], btlFields, "#battleChart", barOptions, 'bar');
+            setChart(queryParam, json, ["findArts"], findFields, "#findChart", barOptions, 'bar');
+            setChart(queryParam, json, ["actionArts"], actFields, "#actionChart", barOptions, 'bar');
+            setChart(queryParam, json, ["negotiationArts"], negoFields, "#negotiationChart", barOptions, 'bar');
+            setChart(queryParam, json, ["knowledgeArts"], knowledgeFields, "#knowledgeChart", barOptions, 'bar');
         }
     </script>
 </head>
