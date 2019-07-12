@@ -44,4 +44,11 @@ after_success:
   - echo -e "\n\tForwardAgent yes"           >> ~/.ssh/config
   - git config --global user.email "jiroron666@gmail.com"
   - git config --global user.name "jiro4989"
+  - git clone https://github.com/jiro4989/coc.git
+  - cd coc
+  - nimble install -Y
+  - coc -h
+  - cd ..
+  - nimble install -Y
+  - coc_radar -h
   - ./deploy.sh
