@@ -14,7 +14,7 @@
     "webpack": "^4.35.3"
   },
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "react-scripts start",
     "build": "NODE_ENV=development webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
