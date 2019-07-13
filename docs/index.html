@@ -8,7 +8,7 @@
     <title>coc-radar 探索者検索</title>
     <style>
         #searchInput,
-        #searchButton {
+        .search-area-button {
             padding: 0.8em;
             outline: none;
             border: 1px solid #DDD;
@@ -19,8 +19,8 @@
             width: 50vw;
         }
 
-        #searchButton {
-            width: 8vw;
+        .search-area-button {
+            width: 150px;
         }
 
         .tag-button {
@@ -130,6 +130,10 @@
             flex-wrap: wrap;
             padding: 0.8em;
             width: 80vw;
+        }
+
+        .row-area * {
+            margin: 2px 2px;
         }
 
         .tag {
@@ -298,6 +302,12 @@
             }
         }
 
+        function resetCheckBox() {
+            for (let check of $$('input[name="pcCheck"]')) {
+                check.checked = false;
+            }
+        }
+
         window.onload = async function () {
             const data = await fetch(dataUrl);
             json = await data.json();
@@ -319,8 +329,13 @@
         <header>
             <h1>coc-radar</h1>
         </header>
-        <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
-        <input type="button" id="searchButton" value="表示" />
+        <div class="row-area">
+            <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
+            <div>
+                <input type="button" id="searchButton" class="search-area-button" value="表示" />
+                <input type="button" value="選択解除" class="search-area-button" onclick="resetCheckBox()" />
+            </div>
+        </div>
         <div id="tagsArea" class="row-area"></div>
         <table>
             <thead>
