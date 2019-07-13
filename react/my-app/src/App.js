@@ -16,6 +16,7 @@ class App extends React.Component {
         url: ""
       }],
       filteredPlayers: [],
+      tags: [],
     };
   }
 
@@ -28,9 +29,21 @@ class App extends React.Component {
           playersLoaded: true,
           players: json,
           filteredPlayers: json,
+          tags: this.filterTags(json),
         })
       })
       .catch((err) => console.error(err));
+  }
+
+  filterTags = (players) => {
+    // ハッシュマップに追加することで重複を除外
+    let tagMap = {};
+    players.forEach((player) => {
+      player.tags.forEach((tag) => {
+        tagMap[tag] = 1;
+      });
+    });
+    return Object.keys(tagMap);
   }
 
   filterPlayers = (event) => {
@@ -61,10 +74,36 @@ class App extends React.Component {
               <input type="button" className="user-input" value="選択全解除"></input>
             </div>
           </div>
-          <div id="tagsArea" className="row-area"></div>
+          <Tags tags={this.state.tags} />
           <PlayerTable players={this.state.filteredPlayers} />
         </div>
       </div>
+    );
+  }
+}
+
+class Tags extends React.Component {
+  render() {
+    const tags = this.props.tags.map((tag) => {
+      return (<Tag key={tag} tag={tag} />)
+    });
+    return (
+      <div className="row-area">
+        {tags}
+      </div>
+    );
+  }
+}
+
+class Tag extends React.Component {
+  render() {
+    const tag = this.props.tag;
+    const url = "radar.html?tag=" + encodeURI(tag);
+    return (
+      <span>
+        <a href={url}>{tag}</a>
+        <input type="button" value="検索" className="tag-button"></input>
+      </span>
     );
   }
 }
@@ -78,14 +117,9 @@ class PlayerTable extends React.Component {
       </td>;
 
       // タグを生成
-      const tags = Object.keys(p.tags).map((index) => {
-        const tag = p.tags[index];
+      const tags = p.tags.map((tag) => {
         const key = p.id + "_" + tag;
-        const url = "radar.html?tag=" + encodeURI(tag);
-        return <td key={key}><span>
-          <a href={url}>{tag}</a>
-          <input type="button" value="検索" className="tag-button"></input>
-        </span></td>
+        return <td key={key}><Tag tag={tag} /></td>
       });
 
       // 探索者を生成
