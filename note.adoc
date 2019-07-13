@@ -1,0 +1,11 @@
+
+npm i webpack -g
+npx ほにゃらら
+
+
+* https://qiita.com/soarflat/items/28bf799f7e0335b68186[webpackについて]
+
+npm install webpack-cli --save-dev
+
+
+npm install -g parcel

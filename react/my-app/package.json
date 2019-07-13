@@ -27,5 +27,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-preset-react-app": "^9.0.0",
+    "webpack-cli": "^3.3.5"
   }
 }
