@@ -4,14 +4,12 @@
   "private": true,
   "dependencies": {
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "webpack": "^4.35.3"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +36,6 @@
     "@babel/core": "^7.5.4",
     "babel-preset-react-app": "^9.0.0",
     "css-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "webpack-cli": "^3.3.5"
+    "style-loader": "^0.23.1"
   }
 }
