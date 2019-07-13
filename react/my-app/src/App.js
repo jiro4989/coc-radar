@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
+const radarUrl = "radar.html"
 
 class App extends React.Component {
   constructor(props) {
@@ -85,6 +86,25 @@ class App extends React.Component {
     this.setState({players: players});
   }
 
+  gotoRadarPage = (event) => {
+    const ids = this.state.players.filter((player) => player.checked)
+                    .map((player, i) => `id${i}=${encodeURI(player.id)}`);
+    if (ids.length <= 0) {
+      alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
+      return;
+    }
+    const url = radarUrl + "?" + ids.join("&");
+    switch (event.button) {
+      case 0: // 左クリック
+        window.location.href = url;
+        break;
+      case 1: // 中クリック
+        // 別タブで画面を表示する
+        window.open(url, '_blank');
+        break;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -95,7 +115,7 @@ class App extends React.Component {
             <div className="row-area">
               <input type="text" className="user-text-input user-input" onChange={this.filterPlayers}></input>
               <div>
-                <input type="button" className="user-input" value="表示"></input>
+                <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
                 <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
               </div>
             </div>
@@ -129,7 +149,7 @@ class Tags extends React.Component {
 class Tag extends React.Component {
   render() {
     const tag = this.props.tag;
-    const url = "radar.html?tag=" + encodeURI(tag);
+    const url = radarUrl + '?' + encodeURI(tag);
     return (
       <span className="tag">
         <a href={url}>{tag}</a>
@@ -143,36 +163,35 @@ class PlayerTable extends React.Component {
   render() {
     const rows = this.props.players.map((p, pIndex) => {
       // チェックボックスの生成
-      const checkBox = <td>
-        <input
+      const checkBox = <input
           type="checkbox"
           value={p.id}
           checked={p.checked}
           onChange={() => this.props.switchSelected(pIndex, !p.checked)}
           >
         </input>
-      </td>;
 
       // タグを生成
       const tags = p.tags.map((tag) => {
         const key = p.id + "_" + tag;
-        return <td key={key}><Tag tag={tag} /></td>
+        return <Tag key={key} tag={tag} />
       });
 
       // 探索者を生成
       const pcRadarUrl = "radar.html?id0=" + p.id;
-      const name = <td>
-        <a href={pcRadarUrl}>{p.name}</a>
-      </td>
+      const name = <a href={pcRadarUrl}>{p.name}</a>
 
       // キャラクター保管所のURLを生成
-      const url = <td>
-        <a href={p.url}>
-          保管所
-        </a>
-        </td>
+      const url = <a href={p.url}>保管所</a>
 
-      return <tr key={p.id}>{checkBox}{tags}{name}{url}</tr>
+      return (
+        <tr key={p.id}>
+          <td>{checkBox}</td>
+          <td>{tags}</td>
+          <td>{name}</td>
+          <td>{url}</td>
+        </tr>
+      )
     });
 
     return (
