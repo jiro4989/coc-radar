@@ -2,9 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
+import Radar from './Radar';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
+class Index extends React.Component {
+  render() {
+    return <BrowserRouter>
+      <div>
+        <Route exact path='/' component={App} />
+        <Route path='/radar/tags/:tag' component={Radar} />
+      </div>
+    </BrowserRouter>
+  }
+}
+
+ReactDOM.render(<Index />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

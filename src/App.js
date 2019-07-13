@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
-const radarUrl = "radar.html"
+const radarUrl = "radar/tags/"
 
 class App extends React.Component {
   constructor(props) {
@@ -148,7 +148,7 @@ class Tags extends React.Component {
 class Tag extends React.Component {
   render() {
     const tag = this.props.tag;
-    const url = radarUrl + '?' + encodeURI(tag);
+    const url = radarUrl + encodeURI(tag);
     return (
       <span className="tag">
         <a href={url}>{tag}</a>
