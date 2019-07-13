@@ -2,7 +2,7 @@ import React from 'react';
 import './css/App.css';
 import Header from './Header';
 import Footer from './Footer';
-import { Radar } from 'react-chartjs-2';
+import { Radar, Bar } from 'react-chartjs-2';
 
 const rootUrl = "https://jiro4989.github.io/coc-radar/data"
 const indexDataUrl = `${rootUrl}/index.json`
@@ -186,13 +186,13 @@ class RadarPage extends React.Component {
     }
 
     const graphs = [
-      <RadarGraph title="能力値" data={abilityData} options={circleOptions} />,
-      <RadarGraph title="全技能" data={artsData} options={barOptions} />,
-      <RadarGraph title="戦闘技能" data={battleData} options={barOptions} />,
-      <RadarGraph title="探索技能" data={findData} options={barOptions} />,
-      <RadarGraph title="行動技能" data={actionData} options={barOptions} />,
-      <RadarGraph title="交渉技能" data={negotiationData} options={barOptions} />,
-      <RadarGraph title="知識技能" data={knowledgeData} options={barOptions} />,
+      <RadarGraph key="1" title="能力値" data={abilityData} options={circleOptions} />,
+      <BarGraph key="2" title="全技能" data={artsData} options={barOptions} />,
+      <BarGraph key="3" title="戦闘技能" data={battleData} options={barOptions} />,
+      <BarGraph key="4" title="探索技能" data={findData} options={barOptions} />,
+      <BarGraph key="5" title="行動技能" data={actionData} options={barOptions} />,
+      <BarGraph key="6" title="交渉技能" data={negotiationData} options={barOptions} />,
+      <BarGraph key="7" title="知識技能" data={knowledgeData} options={barOptions} />,
     ];
 
     return (
@@ -217,6 +217,17 @@ class RadarGraph extends React.Component {
       <div className="board">
         <h2>{this.props.title}</h2>
         <Radar data={this.props.data} options={this.props.options} />
+      </div>
+    );
+  }
+}
+
+class BarGraph extends React.Component {
+  render() {
+    return (
+      <div className="board">
+        <h2>{this.props.title}</h2>
+        <Bar data={this.props.data} options={this.props.options} />
       </div>
     );
   }
