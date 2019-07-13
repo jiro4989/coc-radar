@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
-import Radar from './Radar';
+import RadarPage from './RadarPage';
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom'
@@ -12,7 +12,7 @@ class Index extends React.Component {
     return <BrowserRouter>
       <div>
         <Route exact path='/' component={App} />
-        <Route path='/radar/tags/:tag' component={Radar} />
+        <Route path='/radar/tags/:tag' component={RadarPage} />
       </div>
     </BrowserRouter>
   }
