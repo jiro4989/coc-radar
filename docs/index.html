@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>coc-radar 探索者検索</title>
     <style>
-        input[type="text"],
-        input[type="button"] {
+        #searchInput,
+        #searchButton {
             padding: 0.8em;
             outline: none;
             border: 1px solid #DDD;
@@ -19,8 +19,16 @@
             width: 50vw;
         }
 
-        input[type="button"] {
+        #searchButton {
             width: 8vw;
+        }
+
+        .tag-button {
+            background-color: #efefef;
+            border-radius: 2px;
+            border-style: none;
+            border-color: #58ACFA;
+            color: #58ACFA;
         }
 
         input[type="checkbox"] {
@@ -135,6 +143,10 @@
             background-color: #58ACFA;
         }
 
+        .tag a {
+            padding: 0px 10px 0px 0px;
+        }
+
         .tag:before {
             content: '# '
         }
@@ -151,6 +163,28 @@
         const dataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
         let json;
 
+        function createTagElement(tag, href, innerText) {
+            const span = document.createElement("span");
+            span.className = "tag"
+
+            const a = document.createElement("a");
+            a.href = href;
+            a.innerText = innerText;
+            span.appendChild(a);
+
+            const btn = document.createElement("input");
+            btn.type = "button";
+            btn.className = "tag-button";
+            btn.value = "検索";
+            btn.onclick = function () {
+                $('#searchInput').value = tag;
+                searchRedraw(tag);
+            }
+            span.appendChild(btn);
+
+            return span;
+        }
+
         function addPc(body, pc) {
             const tr = document.createElement("tr");
 
@@ -166,13 +200,9 @@
             // タグ要素の生成
             const tagTd = document.createElement("td");
             for (let tag of pc.tags) {
-                const span = document.createElement("span");
-                span.className = "tag"
-                const a = document.createElement("a");
-                a.innerText = tag;
-                a.href = "radar.html?tag=" + encodeURI(tag);
-                span.appendChild(a);
-                tagTd.appendChild(span);
+                const href = "radar.html?tag=" + encodeURI(tag);
+                const elem = createTagElement(tag, href, tag);
+                tagTd.appendChild(elem);
             }
             tr.appendChild(tagTd);
 
@@ -206,13 +236,9 @@
             }
             for (let key of Object.keys(tagMap)) {
                 let elem = tagMap[key];
-                const span = document.createElement("span");
-                span.className = "tag";
-                const a = document.createElement("a");
-                a.href = elem.href;
-                a.innerText = elem.innerText;
-                span.appendChild(a);
-                $('#tagsArea').appendChild(span);
+                const tag = elem.innerText;
+                const tagElem = createTagElement(tag, elem.href, tag);
+                $('#tagsArea').appendChild(tagElem);
             }
         }
 
@@ -274,7 +300,6 @@
             }
             setTagList();
         }
-
     </script>
 </head>
 
@@ -285,7 +310,7 @@
             <h1>coc-radar</h1>
         </header>
         <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
-        <input type="button" value="表示" onclick="jumpToRadarPage()" />
+        <input type="button" id="searchButton" value="表示" onclick="jumpToRadarPage()" />
         <div id="tagsArea" class="row-area"></div>
         <table>
             <thead>
