@@ -21,6 +21,7 @@ class App extends React.Component {
       }],
       filteredPlayers: [],
       tags: [],
+      searchWord: "",
     };
   }
 
@@ -60,6 +61,7 @@ class App extends React.Component {
 
   filterPlayers = (event) => {
     const val = event.target.value;
+    this.setState({searchWord: val});
     const filtered = this.state.players.filter((p) => {
       // タグの名称、あるいは探索者の名前に一致すればtrue
       if (val === "") return true;
@@ -72,9 +74,14 @@ class App extends React.Component {
     this.setState({filteredPlayers: filtered});
   }
 
-  switchSelected = (index, checked) => {
+  switchSelected = (id, checked) => {
     const copyPlyaers = this.state.players.slice();
-    copyPlyaers[index].checked = checked;
+    for (let pc of copyPlyaers) {
+      if (pc.id === id) {
+        pc.checked = checked;
+        break;
+      }
+    }
     this.setState({players: copyPlyaers});
   }
 
@@ -105,6 +112,11 @@ class App extends React.Component {
     }
   }
 
+  updateSearchWord = (val) => {
+    this.setState({searchWord: val});
+    this.filterPlayers({target: {value: val}})
+  }
+
   render() {
     return (
       <div className="App">
@@ -113,13 +125,13 @@ class App extends React.Component {
           <Header />
           <div className="main">
             <div className="row-area">
-              <input type="text" className="user-text-input user-input" onChange={this.filterPlayers}></input>
+              <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
               <div>
                 <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
                 <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
               </div>
             </div>
-            <Tags tags={this.state.tags} />
+            <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
             <PlayerTable
               players={this.state.filteredPlayers}
               switchSelected={this.switchSelected}
@@ -136,7 +148,7 @@ class App extends React.Component {
 class Tags extends React.Component {
   render() {
     const tags = this.props.tags.map((tag) => {
-      return (<Tag key={tag} tag={tag} />)
+      return (<Tag key={tag} tag={tag} updateSearchWord={this.props.updateSearchWord} />)
     });
     return (
       <div className="row-area">
@@ -153,7 +165,12 @@ class Tag extends React.Component {
     return (
       <span className="tag">
         <a href={url}>{tag}</a>
-        <input type="button" value="検索" className="tag-button"></input>
+        <input type="button"
+               value="検索"
+               className="tag-button"
+               onClick={() => this.props.updateSearchWord(tag)}
+          >
+        </input>
       </span>
     );
   }
@@ -161,13 +178,13 @@ class Tag extends React.Component {
 
 class PlayerTable extends React.Component {
   render() {
-    const rows = this.props.players.map((p, pIndex) => {
+    const rows = this.props.players.map((p) => {
       // チェックボックスの生成
       const checkBox = <input
           type="checkbox"
           value={p.id}
           checked={p.checked}
-          onChange={() => this.props.switchSelected(pIndex, !p.checked)}
+          onChange={() => this.props.switchSelected(p.id, !p.checked)}
           >
         </input>
 
