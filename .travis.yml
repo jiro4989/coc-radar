@@ -20,6 +20,7 @@ addons:
       - libsdl1.2-dev
       - libgc-dev
       - libsfml-dev
+      - npm
 
 before_install:
   - if [ ! -e $HOME/.nimble/bin/nim ]; then curl https://nim-lang.org/choosenim/init.sh -sSf -o init.sh && bash init.sh -y && choosenim "#v0.20.0"; fi
@@ -31,7 +32,16 @@ before_script:
   - set +e
 
 script:
-  - echo script
+  - git clone https://github.com/jiro4989/coc.git
+  - cd coc
+  - nimble install -Y
+  - coc -h
+  - cd ..
+  - nimble install -Y
+  - coc_radar -h
+  - cd react/my-app
+  - npm i
+  - npm build
 
 after_success:
   - openssl aes-256-cbc -K $encrypted_8c393341f536_key -iv $encrypted_8c393341f536_iv -in coc_radar_key.enc -out coc_radar_key -d
@@ -44,11 +54,4 @@ after_success:
   - echo -e "\n\tForwardAgent yes"           >> ~/.ssh/config
   - git config --global user.email "jiroron666@gmail.com"
   - git config --global user.name "jiro4989"
-  - git clone https://github.com/jiro4989/coc.git
-  - cd coc
-  - nimble install -Y
-  - coc -h
-  - cd ..
-  - nimble install -Y
-  - coc_radar -h
   - ./deploy.sh
