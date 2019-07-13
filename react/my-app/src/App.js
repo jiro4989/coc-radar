@@ -8,20 +8,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchWord: "",
       playersLoaded: false,
       players: [{
-        id: "1111",
-        name: "山本",
-        tags: ["jiro", "saburo"],
-        url: "https://hogefuga.tmp/"
-      },{
-        id: "1112",
-        name: "田中",
-        tags: ["shiro", "goro"],
-        url: "https://hogefuga.tmp/2"
+        id: "",
+        name: "",
+        tags: [],
+        url: ""
       }],
-      languages: [ 'go', 'nim', 'python', 'bash', 'java'],
+      filteredPlayers: [],
     };
   }
 
@@ -32,20 +26,28 @@ class App extends React.Component {
       .then((json) => {
         this.setState({
           playersLoaded: true,
-          players: json
+          players: json,
+          filteredPlayers: json,
         })
       })
       .catch((err) => console.error(err));
   }
 
-  render() {
-    let list = [];
-    if (this.state.playersLoaded) {
-      for (let lang of this.state.languages) {
-        list.push(<li>{lang}</li>)
+  filterPlayers = (event) => {
+    const val = event.target.value;
+    const filtered = this.state.players.filter((p) => {
+      // タグの名称、あるいは探索者の名前に一致すればtrue
+      if (val === "") return true;
+      for (let tag of p.tags) {
+        if (tag.includes(val)) return true;
       }
-    }
+      if (p.name.includes(val)) return true;
+      return false;
+    });
+    this.setState({filteredPlayers: filtered});
+  }
 
+  render() {
     return (
       <div className="App">
         <header>
@@ -53,33 +55,15 @@ class App extends React.Component {
         </header>
         <div className="main">
           <div className="row-area">
-            <input type="text" className="user-input" value={this.state.searchWord} onChange={(e) => this.setState({searchWord: e.target.value})}></input>
+            <input type="text" className="user-input" onChange={this.filterPlayers}></input>
             <div>
               <input type="button" className="user-input" value="表示"></input>
               <input type="button" className="user-input" value="選択全解除"></input>
             </div>
-            <div>{this.state.searchWord}</div>
           </div>
           <div id="tagsArea" className="row-area"></div>
-          <PlayerTable players={this.state.players} />
+          <PlayerTable players={this.state.filteredPlayers} />
         </div>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <div>My favorite languages are below.</div>
-        <ul>{list}</ul>
-        <ol>{list}</ol> */}
       </div>
     );
   }
