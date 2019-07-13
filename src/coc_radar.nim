@@ -124,7 +124,7 @@ proc scrape(confFiles: seq[string]): int =
 
   # URLをコマンドの引数に変換して実行
   let params = urls.join(" ")
-  result = execShellCmd("coc -lrXf json -t 1000 " & params)
+  result = execShellCmd("coc -lrXsf json -t 1000 " & params)
   if result != 0:
     error "Error occured"
     return

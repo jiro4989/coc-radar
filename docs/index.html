@@ -181,8 +181,7 @@
             const a = document.createElement("a");
 
             // データ取得元のページのURLの最後のパスを主キーとする
-            const urlPaths = pc.url.split("/");
-            const id = urlPaths[urlPaths.length - 1];
+            const id = pc.id;
             a.href = "radar.html?id0=" + id;
             a.innerText = pc.name;
             pageTd.append(a);
@@ -215,17 +214,6 @@
                 span.appendChild(a);
                 $('#tagsArea').appendChild(span);
             }
-        }
-
-        window.onload = async function () {
-            const data = await fetch(dataUrl);
-            json = await data.json();
-
-            const body = $("#resultBody");
-            for (let pc of json) {
-                addPc(body, pc);
-            }
-            setTagList();
         }
 
         function clearResult() {
@@ -275,6 +263,18 @@
             const url = "radar.html?" + values.join("&");
             window.location.href = url;
         }
+
+        window.onload = async function () {
+            const data = await fetch(dataUrl);
+            json = await data.json();
+
+            const body = $("#resultBody");
+            for (let pc of json) {
+                addPc(body, pc);
+            }
+            setTagList();
+        }
+
     </script>
 </head>
 
