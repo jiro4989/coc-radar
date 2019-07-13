@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       playersLoaded: false,
       players: [{
+        checked: false,
         id: "",
         name: "",
         tags: [],
@@ -23,16 +24,23 @@ class App extends React.Component {
   componentDidMount() {
     return fetch(indexDataUrl)
       .then((resp) => resp.json())
-      // .then((json) => console.log(json))
       .then((json) => {
+        const players = this.addChecked(json);
         this.setState({
           playersLoaded: true,
-          players: json,
-          filteredPlayers: json,
-          tags: this.filterTags(json),
+          players: players,
+          filteredPlayers: players,
+          tags: this.filterTags(players),
         })
       })
       .catch((err) => console.error(err));
+  }
+
+  addChecked = (players) => {
+    return players.map((player) => {
+      player.checked = false;
+      return player;
+    })
   }
 
   filterTags = (players) => {
@@ -60,6 +68,20 @@ class App extends React.Component {
     this.setState({filteredPlayers: filtered});
   }
 
+  switchSelected = (index, checked) => {
+    const copyPlyaers = this.state.players.slice();
+    copyPlyaers[index].checked = checked;
+    this.setState({players: copyPlyaers});
+  }
+
+  clearSelected = (__) => {
+    const players = this.state.players.map((player, index) => {
+      player.checked = false;
+      return player;
+    });
+    this.setState({players: players});
+  }
+
   render() {
     return (
       <div className="App">
@@ -71,11 +93,14 @@ class App extends React.Component {
             <input type="text" className="user-input" onChange={this.filterPlayers}></input>
             <div>
               <input type="button" className="user-input" value="表示"></input>
-              <input type="button" className="user-input" value="選択全解除"></input>
+              <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
             </div>
           </div>
           <Tags tags={this.state.tags} />
-          <PlayerTable players={this.state.filteredPlayers} />
+          <PlayerTable
+            players={this.state.filteredPlayers}
+            switchSelected={this.switchSelected}
+            />
         </div>
       </div>
     );
@@ -110,10 +135,16 @@ class Tag extends React.Component {
 
 class PlayerTable extends React.Component {
   render() {
-    const rows = this.props.players.map((p) => {
+    const rows = this.props.players.map((p, pIndex) => {
       // チェックボックスの生成
       const checkBox = <td>
-        <input type="checkbox" value={p.id}></input>
+        <input
+          type="checkbox"
+          value={p.id}
+          checked={p.checked}
+          onChange={() => this.props.switchSelected(pIndex, !p.checked)}
+          >
+        </input>
       </td>;
 
       // タグを生成
