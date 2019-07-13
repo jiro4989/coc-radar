@@ -4,7 +4,8 @@ import Header from './Header';
 import Footer from './Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
-const radarUrl = "radar/tags/"
+const radarPlayerUrl = "radar/players/"
+const radarTagUrl = "radar/tags/"
 
 class App extends React.Component {
   constructor(props) {
@@ -92,7 +93,7 @@ class App extends React.Component {
       alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
       return;
     }
-    const url = radarUrl + "?" + ids.join("&");
+    const url = radarTagUrl + "?" + ids.join("&");
     switch (event.button) {
       case 0: // 左クリック
         window.location.href = url;
@@ -148,7 +149,7 @@ class Tags extends React.Component {
 class Tag extends React.Component {
   render() {
     const tag = this.props.tag;
-    const url = radarUrl + encodeURI(tag);
+    const url = radarTagUrl + encodeURI(tag);
     return (
       <span className="tag">
         <a href={url}>{tag}</a>
@@ -177,7 +178,7 @@ class PlayerTable extends React.Component {
       });
 
       // 探索者を生成
-      const pcRadarUrl = "radar.html?id0=" + p.id;
+      const pcRadarUrl = radarPlayerUrl + p.id;
       const name = <a href={pcRadarUrl}>{p.name}</a>
 
       // キャラクター保管所のURLを生成

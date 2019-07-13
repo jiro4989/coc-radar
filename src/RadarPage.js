@@ -51,6 +51,7 @@ class RadarPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      playerId: props.match.params.id,
       tag: props.match.params.tag,
       players: [],
       playersLoaded: false,
@@ -61,19 +62,22 @@ class RadarPage extends React.Component {
     return fetch(indexDataUrl)
       .then((resp) => resp.json())
       .then((json) => {
-        json.filter((player) => 0 <= player.tags.indexOf(this.state.tag))
-            .forEach((player) => {
-              const url = `${rootUrl}/${player.id}.json`;
-              fetch(url)
-                .then((resp) => resp.json())
-                .then((player) => {
-                  this.setState({
-                    playersLoaded: true,
-                    players: this.state.players.concat([player]),
-                  });
-                })
-                .catch((err) => console.error(err));
-            });
+        json.filter((player) => {
+          return 0 <= player.tags.indexOf(this.state.tag) 
+            || player.id === this.state.playerId
+        })
+        .forEach((player) => {
+          const url = `${rootUrl}/${player.id}.json`;
+          fetch(url)
+            .then((resp) => resp.json())
+            .then((player) => {
+              this.setState({
+                playersLoaded: true,
+                players: this.state.players.concat([player]),
+              });
+            })
+            .catch((err) => console.error(err));
+        });
       })
       .catch((err) => console.error(err));
   }

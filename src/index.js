@@ -12,6 +12,7 @@ class Index extends React.Component {
     return <BrowserRouter>
       <div>
         <Route exact path='/' component={App} />
+        <Route path='/radar/players/:id' component={RadarPage} />
         <Route path='/radar/tags/:tag' component={RadarPage} />
       </div>
     </BrowserRouter>
