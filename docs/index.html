@@ -290,6 +290,10 @@
                     i++;
                 }
             }
+            if (i <= 0) {
+                alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
+                return;
+            }
             const url = "radar.html?" + values.join("&");
             switch (event.button) {
                 case 0: // 左クリック
