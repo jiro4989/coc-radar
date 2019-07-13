@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './Header';
+import Footer from './Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
 
@@ -21,6 +23,7 @@ class App extends React.Component {
     };
   }
 
+  // 一覧ファイルのリクエスト
   componentDidMount() {
     return fetch(indexDataUrl)
       .then((resp) => resp.json())
@@ -75,7 +78,7 @@ class App extends React.Component {
   }
 
   clearSelected = (__) => {
-    const players = this.state.players.map((player, index) => {
+    const players = this.state.players.map((player) => {
       player.checked = false;
       return player;
     });
@@ -85,23 +88,26 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>coc-radar</h1>
-        </header>
-        <div className="main">
-          <div className="row-area">
-            <input type="text" className="user-input" onChange={this.filterPlayers}></input>
-            <div>
-              <input type="button" className="user-input" value="表示"></input>
-              <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+        <div className="left"></div>
+        <div className="center">
+          <Header />
+          <div className="main">
+            <div className="row-area">
+              <input type="text" className="user-text-input user-input" onChange={this.filterPlayers}></input>
+              <div>
+                <input type="button" className="user-input" value="表示"></input>
+                <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+              </div>
             </div>
+            <Tags tags={this.state.tags} />
+            <PlayerTable
+              players={this.state.filteredPlayers}
+              switchSelected={this.switchSelected}
+              />
           </div>
-          <Tags tags={this.state.tags} />
-          <PlayerTable
-            players={this.state.filteredPlayers}
-            switchSelected={this.switchSelected}
-            />
+          <Footer />
         </div>
+        <div className="right"></div>
       </div>
     );
   }
@@ -125,7 +131,7 @@ class Tag extends React.Component {
     const tag = this.props.tag;
     const url = "radar.html?tag=" + encodeURI(tag);
     return (
-      <span>
+      <span className="tag">
         <a href={url}>{tag}</a>
         <input type="button" value="検索" className="tag-button"></input>
       </span>
