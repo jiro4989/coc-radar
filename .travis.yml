@@ -39,7 +39,6 @@ script:
   - cd ..
   - nimble install -Y
   - coc_radar -h
-  - cd react/my-app
   - npm i
   - npm run build
 
