@@ -277,7 +277,7 @@
             }
         }
 
-        function jumpToRadarPage() {
+        function jumpToRadarPage(event) {
             let i = 0;
             let values = [];
             for (let check of $$('input[name="pcCheck"]')) {
@@ -287,7 +287,15 @@
                 }
             }
             const url = "radar.html?" + values.join("&");
-            window.location.href = url;
+            switch (event.button) {
+                case 0: // 左クリック
+                    window.location.href = url;
+                    break;
+                case 1: // 中クリック
+                    // 別タブで画面を表示する
+                    window.open(url, '_blank');
+                    break;
+            }
         }
 
         window.onload = async function () {
@@ -299,6 +307,8 @@
                 addPc(body, pc);
             }
             setTagList();
+
+            $("#searchButton").addEventListener("mousedown", jumpToRadarPage);
         }
     </script>
 </head>
@@ -310,7 +320,7 @@
             <h1>coc-radar</h1>
         </header>
         <input type="text" id="searchInput" placeholder="タグ、あるいは探索者名で検索" onkeyup="searchRedraw(this.value)" />
-        <input type="button" id="searchButton" value="表示" onclick="jumpToRadarPage()" />
+        <input type="button" id="searchButton" value="表示" />
         <div id="tagsArea" class="row-area"></div>
         <table>
             <thead>
