@@ -1,0 +1,11 @@
+= coc-radar
+
+とりあえずアプリを起動
+
+npm start
+
+とりあえずJSファイルを生成
+
+npm build
+
+public/js/index.jsが生成される
