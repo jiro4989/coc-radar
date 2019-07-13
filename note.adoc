@@ -9,3 +9,5 @@ npm install webpack-cli --save-dev
 
 
 npm install -g parcel
+
+parcel src/index.html
