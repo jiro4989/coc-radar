@@ -5,7 +5,7 @@ class Header extends React.Component {
         return (
           <header>
             <h1>
-              <a href="/index.html">coc-radar</a>
+              <a href="/">coc-radar</a>
             </h1>
           </header>
         );
