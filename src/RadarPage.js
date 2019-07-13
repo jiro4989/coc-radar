@@ -3,6 +3,7 @@ import './css/App.css';
 import Header from './Header';
 import Footer from './Footer';
 import { Radar, Bar } from 'react-chartjs-2';
+import queryString from 'query-string';
 
 const rootUrl = "https://jiro4989.github.io/coc-radar/data"
 const indexDataUrl = `${rootUrl}/index.json`
@@ -47,11 +48,29 @@ function createColors(span) {
 
 const colors = createColors(10);
 
+function includeId(queryParams, playerId) {
+  const params = queryString.parse(queryParams.search);
+  // idは0から始まり、URLの数だけ数値が増加する
+  for (let j = 0; j < 100000; j++) {
+    const key = "id" + j;
+    if (key in params) {
+      const v = params[key];
+      if (playerId === v) return true;
+      continue;
+    }
+    // ここに到達するということはidNの数値を超過したということ
+    // よって後続のインデックスのidをチェックする必要はない
+    return false;
+  }
+  return false;
+}
+
 class RadarPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       playerId: props.match.params.id,
+      params: props.location,
       tag: props.match.params.tag,
       players: [],
       playersLoaded: false,
@@ -65,6 +84,7 @@ class RadarPage extends React.Component {
         json.filter((player) => {
           return 0 <= player.tags.indexOf(this.state.tag) 
             || player.id === this.state.playerId
+            || includeId(this.state.params, player.id)
         })
         .forEach((player) => {
           const url = `${rootUrl}/${player.id}.json`;
@@ -133,26 +153,6 @@ class RadarPage extends React.Component {
     if (this.state.playersLoaded) {
       abilityData = this.createChartData(["ability"], abilityFields);
     }
-    const circleOptions = {
-      scale: {
-          ticks: {
-              beginAtZero: true,
-              min: 0,
-              max: 20
-          }
-      }
-    };
-    const barOptions = {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100
-                }
-            }]
-        }
-    };
 
     let artsData = {data: {labels: [], datasets: []}}
     if (this.state.playersLoaded) {
@@ -188,6 +188,27 @@ class RadarPage extends React.Component {
     if (this.state.playersLoaded) {
       knowledgeData = this.createChartData(["knowledgeArts"], knowledgeFields);
     }
+
+    const circleOptions = {
+      scale: {
+          ticks: {
+              beginAtZero: true,
+              min: 0,
+              max: 20
+          }
+      }
+    };
+    const barOptions = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100
+                }
+            }]
+        }
+    };
 
     const graphs = [
       <RadarGraph key="1" title="能力値" data={abilityData} options={circleOptions} />,

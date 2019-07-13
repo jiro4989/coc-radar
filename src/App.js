@@ -4,8 +4,8 @@ import Header from './Header';
 import Footer from './Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
-const radarPlayerUrl = "radar/players/"
-const radarTagUrl = "radar/tags/"
+const radarPlayerUrl = "players/"
+const radarTagUrl = "tags/"
 
 class App extends React.Component {
   constructor(props) {
@@ -93,7 +93,7 @@ class App extends React.Component {
       alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
       return;
     }
-    const url = radarTagUrl + "?" + ids.join("&");
+    const url = radarPlayerUrl + "?" + ids.join("&");
     switch (event.button) {
       case 0: // 左クリック
         window.location.href = url;
