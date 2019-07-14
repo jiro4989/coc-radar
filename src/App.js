@@ -130,7 +130,13 @@ class App extends React.Component {
               <h2>検索</h2>
               <div className="left">
                 <div className="row-area">
-                  <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
+                  <input
+                    type="text"
+                    className="user-text-input user-input"
+                    value={this.state.searchWord}
+                    onChange={this.filterPlayers}
+                    placeholder="タグ、あるいは探索者名で検索"
+                    />
                   <div>
                     <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
                   </div>
