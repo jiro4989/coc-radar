@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/coc-radar/precache-manifest.31158fbafbe29a8533cd33412679e68f.js"
+  "/coc-radar/precache-manifest.9a1adff107cfdce496ebae3671fdb297.js"
 );
 
 self.addEventListener('message', (event) => {
