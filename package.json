@@ -1,14 +1,15 @@
 {
-  "name": "my-app",
+  "name": "coc-radar",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "homepage": "https://jiro4989.github.io/coc-radar",
   "dependencies": {
     "autoprefixer": "^9.6.1",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "chart.js": "^2.8.0",
+    "gh-pages": "^2.0.1",
     "history": "^4.9.0",
     "parcel-bundler": "^1.12.3",
     "query-string": "^6.8.1",
@@ -24,21 +25,27 @@
     "react-static-plugin-source-filesystem": "^7.0.0"
   },
   "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
+    "deploy": "npm run build && gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "babel-preset-react-app": "^9.0.0",

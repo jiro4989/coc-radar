@@ -1,7 +1,6 @@
 import React from 'react';
-import 'css/PCRadar.css';
+import '../css/PCRadar.css';
 import { Radar, Bar } from 'react-chartjs-2';
-import queryString from 'query-string';
 
 const abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
 const battleFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle" ];
@@ -49,31 +48,6 @@ class PCRadar extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  // componentDidMount() {
-  //   return fetch(indexDataUrl)
-  //     .then((resp) => resp.json())
-  //     .then((json) => {
-  //       json.filter((player) => {
-  //         return 0 <= player.tags.indexOf(this.state.tag) 
-  //           || player.id === this.state.playerId
-  //           // || includeId(this.state.params, player.id)
-  //       })
-  //       .forEach((player) => {
-  //         const url = `${rootUrl}/${player.id}.json`;
-  //         fetch(url)
-  //           .then((resp) => resp.json())
-  //           .then((player) => {
-  //             this.setState({
-  //               playersLoaded: true,
-  //               players: this.state.players.concat([player]),
-  //             });
-  //           })
-  //           .catch((err) => console.error(err));
-  //       });
-  //     })
-  //     .catch((err) => console.error(err));
-  // }
 
   createChartData = (json, genres, fields) => {
     // 凡例を追加
