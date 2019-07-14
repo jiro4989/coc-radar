@@ -200,7 +200,7 @@ class RadarGraph extends React.Component {
   render() {
     return (
       <div className="board">
-        <h2>{this.props.title}</h2>
+        <h2 name={this.props.title}>{this.props.title}</h2>
         <Radar data={this.props.data} options={this.props.options} />
       </div>
     );

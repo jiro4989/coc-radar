@@ -169,21 +169,6 @@ footer {
   text-align: center;
 }
 
-/* .pc-link a {
-  padding: 0 5px;
-} */
-
-.vault-link {
-  color: #efefef;
-  border-radius: 6px;
-  background-color: #58ACFA;
-  padding: 3px 5px;
-}
-
-.pc {
-  padding-left: 8px;
-}
-
 .parent {
   border: solid 1px #333;
   border-radius: 10px;

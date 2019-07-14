@@ -112,25 +112,7 @@ class App extends React.Component {
       return player;
     });
     this.setState({players: players});
-  }
-
-  gotoRadarPage = (event) => {
-    const ids = this.state.players.filter((player) => player.checked)
-                    .map((player, i) => `id${i}=${encodeURI(player.id)}`);
-    if (ids.length <= 0) {
-      alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
-      return;
-    }
-    const url = radarPlayerUrl + "?" + ids.join("&");
-    switch (event.button) {
-      case 0: // 左クリック
-        window.location.href = url;
-        break;
-      case 1: // 中クリック
-        // 別タブで画面を表示する
-        window.open(url, '_blank');
-        break;
-    }
+    this.switchSelected(-1, false);
   }
 
   updateSearchWord = (val) => {
@@ -150,7 +132,6 @@ class App extends React.Component {
                 <div className="row-area">
                   <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
                   <div>
-                    <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
                     <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
                   </div>
                 </div>
@@ -226,10 +207,7 @@ class PlayerTable extends React.Component {
 
       // 探索者を生成
       const pcRadarUrl = radarPlayerUrl + p.id;
-      const name = <span className="pc-link">
-        <a href={p.url} className="vault-link">[ 保 ]</a>
-        <a href={pcRadarUrl} className="pc">{p.name}</a>
-      </span>
+      const name = <a href={p.url}>{p.name}</a>
 
       // キャラクター保管所のURLを生成
       const url = <a href={p.url}>保管所</a>
