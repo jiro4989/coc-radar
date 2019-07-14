@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/coc-radar/static/css/main.6f775aad.chunk.css",
+    "main.js": "/coc-radar/static/js/main.c4ea2ebf.chunk.js",
+    "main.js.map": "/coc-radar/static/js/main.c4ea2ebf.chunk.js.map",
+    "runtime~main.js": "/coc-radar/static/js/runtime~main.1109413f.js",
+    "runtime~main.js.map": "/coc-radar/static/js/runtime~main.1109413f.js.map",
+    "static/js/2.87342b93.chunk.js": "/coc-radar/static/js/2.87342b93.chunk.js",
+    "static/js/2.87342b93.chunk.js.map": "/coc-radar/static/js/2.87342b93.chunk.js.map",
+    "index.html": "/coc-radar/index.html",
+    "precache-manifest.7900ba3cf965a0be08a82bc2b050c0fe.js": "/coc-radar/precache-manifest.7900ba3cf965a0be08a82bc2b050c0fe.js",
+    "service-worker.js": "/coc-radar/service-worker.js",
+    "static/css/main.6f775aad.chunk.css.map": "/coc-radar/static/css/main.6f775aad.chunk.css.map"
+  }
+}
