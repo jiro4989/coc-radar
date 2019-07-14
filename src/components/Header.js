@@ -6,7 +6,7 @@ class Header extends React.Component {
           <header className="App-header">
             <div>
               <h1>
-                <a href="/">coc-radar</a>
+                <a href="/coc-radar">coc-radar</a>
               </h1>
             </div>
           </header>

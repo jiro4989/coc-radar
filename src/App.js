@@ -5,11 +5,9 @@ import Footer from './components/Footer';
 import PCRadar from './components/PCRadar';
 import queryString from 'query-string';
 import { createBrowserHistory } from 'history';
-let history = null;
-if (typeof window !== 'undefined') {
-  history = createBrowserHistory();
-}
+let history = createBrowserHistory();
 
+const pathname = '/coc-radar'
 const rootUrl = "https://jiro4989.github.io/coc-radar"
 const apiRootUrl = `${rootUrl}/data`
 const indexDataUrl = `${apiRootUrl}/index.json`
@@ -34,10 +32,7 @@ function parseQueryIds(params) {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let queryParam = {}
-    if (typeof window !== 'undefined') {
-      queryParam = queryString.parse(props.location.search);
-    }
+    let queryParam = queryString.parse(history.location.search);
     let queryTag = "";
     if (queryParam["tag"]) {
       queryTag = queryParam["tag"];
@@ -164,7 +159,7 @@ class App extends React.Component {
       const queryParam = this.state.players.filter((p) => p.checked).map((p, i) => `id${i}=${p.id}`).join("&");
       if (typeof window !== 'undefined') {
         history.push({
-          pathname: "/",
+          pathname: pathname,
           search: queryParam,
         });
       }
@@ -195,7 +190,7 @@ class App extends React.Component {
 
     if (typeof window !== 'undefined') {
       history.push({
-        pathname: "/",
+        pathname: pathname,
         search: "tag=" + encodeURI(tag),
       });
     }
