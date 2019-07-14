@@ -2,8 +2,13 @@ import React from 'react';
 import './css/App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import PCRadar from './components/PCRadar';
 
-const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
+const rootUrl = "https://jiro4989.github.io/coc-radar"
+const apiRootUrl = `${rootUrl}/data`
+const indexDataUrl = `${apiRootUrl}/index.json`
 const radarPlayerUrl = "players/"
 const radarTagUrl = "tags/"
 
@@ -22,6 +27,7 @@ class App extends React.Component {
       filteredPlayers: [],
       tags: [],
       searchWord: "",
+      radarPlayers: [],
     };
   }
 
@@ -79,6 +85,10 @@ class App extends React.Component {
     for (let pc of copyPlyaers) {
       if (pc.id === id) {
         pc.checked = checked;
+        fetch(`${apiRootUrl}/${pc.id}.json`)
+          .then((resp) => resp.json())
+          .then((player) => this.setState({radarPlayers: this.state.radarPlayers.concat(player)}))
+          .catch((err) => console.error(err));
         break;
       }
     }
@@ -120,10 +130,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="left"></div>
-        <div className="center">
-          <Header />
-          <div className="main">
+        <Header />
+        <div className="main">
+          <div className="top">
             <div className="row-area">
               <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
               <div>
@@ -132,14 +141,18 @@ class App extends React.Component {
               </div>
             </div>
             <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
+          </div>
+          <div className="left">
             <PlayerTable
               players={this.state.filteredPlayers}
               switchSelected={this.switchSelected}
               />
           </div>
-          <Footer />
+          <div className="right">
+            <PCRadar players={this.state.radarPlayers} />
+          </div>
         </div>
-        <div className="right"></div>
+        <Footer />
       </div>
     );
   }

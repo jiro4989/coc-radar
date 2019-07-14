@@ -1,5 +1,5 @@
 import React from 'react';
-import 'css/RadarPage.css';
+import 'css/PCRadar.css';
 import Header from './Header';
 import Footer from './Footer';
 import { Radar, Bar } from 'react-chartjs-2';
@@ -65,47 +65,43 @@ function includeId(queryParams, playerId) {
   return false;
 }
 
-class RadarPage extends React.Component {
+class PCRadar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      playerId: props.match.params.id,
-      params: props.location,
-      tag: props.match.params.tag,
-      players: [],
-      playersLoaded: false,
-    };
   }
 
-  componentDidMount() {
-    return fetch(indexDataUrl)
-      .then((resp) => resp.json())
-      .then((json) => {
-        json.filter((player) => {
-          return 0 <= player.tags.indexOf(this.state.tag) 
-            || player.id === this.state.playerId
-            || includeId(this.state.params, player.id)
-        })
-        .forEach((player) => {
-          const url = `${rootUrl}/${player.id}.json`;
-          fetch(url)
-            .then((resp) => resp.json())
-            .then((player) => {
-              this.setState({
-                playersLoaded: true,
-                players: this.state.players.concat([player]),
-              });
-            })
-            .catch((err) => console.error(err));
-        });
-      })
-      .catch((err) => console.error(err));
-  }
+  // componentDidMount() {
+  //   return fetch(indexDataUrl)
+  //     .then((resp) => resp.json())
+  //     .then((json) => {
+  //       json.filter((player) => {
+  //         return 0 <= player.tags.indexOf(this.state.tag) 
+  //           || player.id === this.state.playerId
+  //           // || includeId(this.state.params, player.id)
+  //       })
+  //       .forEach((player) => {
+  //         const url = `${rootUrl}/${player.id}.json`;
+  //         fetch(url)
+  //           .then((resp) => resp.json())
+  //           .then((player) => {
+  //             this.setState({
+  //               playersLoaded: true,
+  //               players: this.state.players.concat([player]),
+  //             });
+  //           })
+  //           .catch((err) => console.error(err));
+  //       });
+  //     })
+  //     .catch((err) => console.error(err));
+  // }
 
-  createChartData = (genres, fields) => {
+  createChartData = (json, genres, fields) => {
+    if (json.length <= 0) {
+      return {labels: [], datasets: []};
+    }
+
     // 凡例を追加
     const labels = [];
-    const json = this.state.players;
     const pc = json[0];
     for (let genre of genres) {
       for (let field of fields) {
@@ -149,45 +145,20 @@ class RadarPage extends React.Component {
   }
 
   render() {
-    let abilityData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      abilityData = this.createChartData(["ability"], abilityFields);
-    }
+    const json = this.props.players;
+    const abilityData = this.createChartData(json, ["ability"], abilityFields);
 
-    let artsData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      artsData = this.createChartData([
-        "battleArts",
-        "findArts",
-        "actionArts",
-        "negotiationArts",
-        "knowledgeArts"], artsFields);
-    }
-
-    let battleData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      battleData = this.createChartData(["battleArts"], battleFields);
-    }
-
-    let findData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      findData = this.createChartData(["findArts"], findFields);
-    }
-
-    let actionData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      actionData = this.createChartData(["actionArts"], actionFields);
-    }
-
-    let negotiationData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      negotiationData = this.createChartData(["negotiationArts"], negotiationFields);
-    }
-
-    let knowledgeData = {data: {labels: [], datasets: []}}
-    if (this.state.playersLoaded) {
-      knowledgeData = this.createChartData(["knowledgeArts"], knowledgeFields);
-    }
+    const artsData = this.createChartData(json, [
+      "battleArts",
+      "findArts",
+      "actionArts",
+      "negotiationArts",
+      "knowledgeArts"], artsFields);
+    const battleData = this.createChartData(json, ["battleArts"], battleFields);
+    const findData = this.createChartData(json, ["findArts"], findFields);
+    const actionData = this.createChartData(json, ["actionArts"], actionFields);
+    const negotiationData = this.createChartData(json, ["negotiationArts"], negotiationFields);
+    const knowledgeData = this.createChartData(json, ["knowledgeArts"], knowledgeFields);
 
     const circleOptions = {
       scale: {
@@ -222,15 +193,7 @@ class RadarPage extends React.Component {
 
     return (
       <div className="Radar">
-        <div className="left"></div>
-        <div className="center">
-          <Header />
-          <div className="main">
-            {graphs}
-          </div>
-          <Footer />
-        </div>
-        <div className="right"></div>
+        {graphs}
       </div>
     );
   }
@@ -258,4 +221,4 @@ class BarGraph extends React.Component {
   }
 }
 
-export default RadarPage;
+export default PCRadar;
