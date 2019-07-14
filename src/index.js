@@ -1,30 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/index.css';
-import App from './App';
-import RadarPage from './RadarPage';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
 
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+// Your top level component
+import App from './App'
 
-class Index extends React.Component {
-  render() {
-    return <BrowserRouter>
-      <div>
-        <Route exact path='/' component={App} />
-        <Route path='/players/' component={RadarPage} />
-        <Route path='/players/:id' component={RadarPage} />
-        <Route path='/tags/:tag' component={RadarPage} />
-      </div>
-    </BrowserRouter>
+// Export your top level component as JSX (for static rendering)
+export default App
+
+// Render your app
+if (typeof document !== 'undefined') {
+  const target = document.getElementById('root')
+
+  const renderMethod = target.hasChildNodes()
+    ? ReactDOM.hydrate
+    : ReactDOM.render
+
+  const render = Comp => {
+    renderMethod(
+      <AppContainer>
+        <Comp />
+      </AppContainer>,
+      target
+    )
+  }
+
+  // Render!
+  render(App)
+
+  // Hot Module Replacement
+  if (module && module.hot) {
+    module.hot.accept('./App', () => {
+      render(App)
+    })
   }
 }
-
-export default Index
-
-ReactDOM.render(<Index />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
