@@ -27,11 +27,10 @@
 }
 
 .tag-button {
-  background-color: #efefef;
+  background-color: #58ACFA;
   border-radius: 2px;
-  border-style: none;
-  border-color: #58ACFA;
-  color: #58ACFA;
+  border: solid 1px #eee;
+  color: #eee;
 }
 
 input[type="checkbox"] {

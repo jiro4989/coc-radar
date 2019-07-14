@@ -79,15 +79,7 @@ class App extends React.Component {
         // データ一覧が揃ったらtagの情報を取得
         const tag = this.state.queryTag;
         if (tag !== "") {
-          const players = this.state.players
-            .map((p) => {
-              if (0 <= p.tags.indexOf(tag)) {
-                p.checked = true;
-              }
-              return p;
-            });
-          this.setState({players: players});
-          this.switchSelected(-1, false, true);
+          this.selectByTag(tag);
           return;
         }
 
@@ -190,6 +182,25 @@ class App extends React.Component {
     this.filterPlayers({target: {value: val}})
   }
 
+  selectByTag = (tag) => {
+    const players = this.state.players
+      .map((p) => {
+        if (0 <= p.tags.indexOf(tag)) {
+          p.checked = true;
+        }
+        return p;
+      });
+    this.setState({players: players});
+    this.switchSelected(-1, false, true);
+
+    if (typeof window !== 'undefined') {
+      history.push({
+        pathname: "/",
+        search: "tag=" + encodeURI(tag),
+      });
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -211,11 +222,16 @@ class App extends React.Component {
                     <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
                   </div>
                 </div>
-                <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
+                <Tags
+                  tags={this.state.tags}
+                  updateSearchWord={this.updateSearchWord}
+                  selectByTag={this.selectByTag}
+                  />
                 <PlayerTable
                   players={this.state.filteredPlayers}
                   switchSelected={this.switchSelected}
                   updateSearchWord={this.updateSearchWord}
+                  selectByTag={this.selectByTag}
                   />
               </div>
             </div>
@@ -236,7 +252,14 @@ class App extends React.Component {
 class Tags extends React.Component {
   render() {
     const tags = this.props.tags.map((tag) => {
-      return (<Tag key={tag} tag={tag} updateSearchWord={this.props.updateSearchWord} />)
+      return (
+        <Tag
+          key={tag}
+          tag={tag}
+          updateSearchWord={this.props.updateSearchWord}
+          selectByTag={this.props.selectByTag}
+          />
+      )
     });
     return (
       <div className="row-area">
@@ -252,6 +275,7 @@ class Tag extends React.Component {
     return (
       <span className="tag">
         <a href="javascript:void(0)" onClick={() => { this.props.updateSearchWord(tag); return false; }}>{tag}</a>
+        <input type="button" className="tag-button" value="選択" onClick={() => { this.props.selectByTag(tag) }} />
       </span>
     );
   }
@@ -272,7 +296,14 @@ class PlayerTable extends React.Component {
       // タグを生成
       const tags = p.tags.map((tag) => {
         const key = p.id + "_" + tag;
-        return <Tag key={key} tag={tag} updateSearchWord={this.props.updateSearchWord} />
+        return (
+          <Tag
+            key={key}
+            tag={tag}
+            updateSearchWord={this.props.updateSearchWord}
+            selectByTag={this.props.selectByTag}
+            />
+        )
       });
 
       // 探索者を生成
