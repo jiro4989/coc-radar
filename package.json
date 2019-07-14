@@ -11,18 +11,13 @@
     "chart.js": "^2.8.0",
     "gh-pages": "^2.0.1",
     "history": "^4.9.0",
-    "parcel-bundler": "^1.12.3",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "react-static": "^7.1.0",
-    "react-static-plugin-reach-router": "^7.0.0",
-    "react-static-plugin-sitemap": "^7.0.0",
-    "react-static-plugin-source-filesystem": "^7.0.0"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "deploy": "npm run build && gh-pages -d build",
@@ -50,7 +45,6 @@
     "@babel/core": "^7.5.4",
     "babel-preset-react-app": "^9.0.0",
     "css-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "webpack-cli": "^3.3.5"
+    "style-loader": "^0.23.1"
   }
 }
