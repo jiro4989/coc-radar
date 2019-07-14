@@ -139,6 +139,7 @@ class App extends React.Component {
                 <PlayerTable
                   players={this.state.filteredPlayers}
                   switchSelected={this.switchSelected}
+                  updateSearchWord={this.updateSearchWord}
                   />
               </div>
             </div>
@@ -172,16 +173,9 @@ class Tags extends React.Component {
 class Tag extends React.Component {
   render() {
     const tag = this.props.tag;
-    const url = radarTagUrl + encodeURI(tag);
     return (
       <span className="tag">
-        <a href={url}>{tag}</a>
-        <input type="button"
-               value="検索"
-               className="tag-button"
-               onClick={() => this.props.updateSearchWord(tag)}
-          >
-        </input>
+        <a href="javascript:void(0)" onClick={() => { this.props.updateSearchWord(tag); return false; }}>{tag}</a>
       </span>
     );
   }
@@ -202,15 +196,11 @@ class PlayerTable extends React.Component {
       // タグを生成
       const tags = p.tags.map((tag) => {
         const key = p.id + "_" + tag;
-        return <Tag key={key} tag={tag} />
+        return <Tag key={key} tag={tag} updateSearchWord={this.props.updateSearchWord} />
       });
 
       // 探索者を生成
-      const pcRadarUrl = radarPlayerUrl + p.id;
       const name = <a href={p.url}>{p.name}</a>
-
-      // キャラクター保管所のURLを生成
-      const url = <a href={p.url}>保管所</a>
 
       return (
         <tr key={p.id}>
