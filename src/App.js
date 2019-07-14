@@ -62,19 +62,24 @@ class App extends React.Component {
       .then((resp) => resp.json())
       .then((json) => {
         const players = this.addChecked(json);
+
         this.setState({
           playersLoaded: true,
           players: players,
           filteredPlayers: players,
           tags: this.filterTags(players),
-        })
+        });
 
         // データ一覧が揃ったらtagの情報を取得
         const tag = this.state.queryTag;
         if (tag !== "") {
           const players = this.state.players
-            .filter((p) => p.tags.includes(tag))
-            .map((p) => {p.checked = true; return p})
+            .map((p) => {
+              if (0 <= p.tags.indexOf(tag)) {
+                p.checked = true;
+              }
+              return p;
+            });
           this.setState({players: players});
           this.switchSelected(-1, false, true);
           return;
@@ -84,8 +89,12 @@ class App extends React.Component {
         const ids = this.state.queryIds;
         if (0 < ids.length) {
           const players = this.state.players
-            .filter((p) => 0 <= ids.indexOf(p.id))
-            .map((p) => {p.checked = true; return p})
+            .map((p) => {
+              if (0 <= ids.indexOf(p.id)) {
+                p.checked = true
+              }
+              return p
+            })
           this.setState({players: players});
           this.switchSelected(-1, false);
           return;
@@ -152,6 +161,7 @@ class App extends React.Component {
         .catch((err) => console.error(err));
     });
 
+    // ブックマーク用にクエリパラメータを更新
     if (!noUpdateHistory) {
       const queryParam = this.state.players.filter((p) => p.checked).map((p, i) => `id${i}=${p.id}`).join("&");
       history.push({
@@ -162,10 +172,7 @@ class App extends React.Component {
   }
 
   clearSelected = (__) => {
-    const players = this.state.players.map((player) => {
-      player.checked = false;
-      return player;
-    });
+    const players = this.state.players.map((p) => {p.checked = false; return p});
     this.setState({players: players});
     this.switchSelected(-1, false);
   }
