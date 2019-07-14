@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PCRadar from './components/PCRadar';
 import queryString from 'query-string';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 const rootUrl = "https://jiro4989.github.io/coc-radar"
 const apiRootUrl = `${rootUrl}/data`
@@ -74,16 +76,18 @@ class App extends React.Component {
             .filter((p) => p.tags.includes(tag))
             .map((p) => {p.checked = true; return p})
           this.setState({players: players});
-          this.switchSelected(-1, false);
+          this.switchSelected(-1, false, true);
           return;
         }
 
         // IDが載っていたら追加
         const ids = this.state.queryIds;
         if (0 < ids.length) {
-          // this.state.players
-          //   .filter((p) => 0 <= ids.indexOf(p.id))
-          //   .forEach((p) => this.switchSelected(p.id, true));
+          const players = this.state.players
+            .filter((p) => 0 <= ids.indexOf(p.id))
+            .map((p) => {p.checked = true; return p})
+          this.setState({players: players});
+          this.switchSelected(-1, false);
           return;
         }
       })
@@ -123,7 +127,7 @@ class App extends React.Component {
     this.setState({filteredPlayers: filtered});
   }
 
-  switchSelected = (id, checked) => {
+  switchSelected = (id, checked, noUpdateHistory) => {
     const copyPlyaers = this.state.players.slice();
     for (let pc of copyPlyaers) {
       if (pc.id === id) {
@@ -147,6 +151,14 @@ class App extends React.Component {
         .then((player) => this.setState({radarPlayers: this.state.radarPlayers.concat(player)}))
         .catch((err) => console.error(err));
     });
+
+    if (!noUpdateHistory) {
+      const queryParam = this.state.players.filter((p) => p.checked).map((p, i) => `id${i}=${p.id}`).join("&");
+      history.push({
+        pathname: "/",
+        search: queryParam,
+      });
+    }
   }
 
   clearSelected = (__) => {
