@@ -21,6 +21,8 @@ const artsFields = abilityFields
   .concat(negotiationFields)
   .concat(knowledgeFields);
 
+const templatePlayerData = { "id": "", "name": "", "tags": [], "url": "", "param": { "ability": { "str": { "name": "STR", "num":0 }, "con": { "name": "CON", "num":0 }, "pow": { "name": "POW", "num":0 }, "dex": { "name": "DEX", "num":0 }, "app": { "name": "APP", "num":0 }, "siz": { "name": "SIZ", "num":0 }, "int2": { "name": "INT", "num":0 }, "edu": { "name": "EDU", "num":0 }, "hp": { "name": "HP", "num":0 }, "mp": { "name": "MP", "num":0 }, "initSan": { "name": "初期SAN", "num":0 }, "idea": { "name": "アイデア", "num":0 }, "luk": { "name": "幸運", "num":0 }, "knowledge": { "name": "知識", "num":0 } }, "battleArts": { "avoidance": { "name": "回避", "num":0 }, "kick": { "name": "キック", "num":0 }, "hold": { "name": "組み付き", "num":0 }, "punch": { "name": "こぶし（パンチ）", "num":0 }, "headThrust": { "name": "頭突き", "num":0 }, "throwing": { "name": "投擲", "num":0 }, "martialArts": { "name": "マーシャルアーツ", "num":0 }, "handGun": { "name": "拳銃", "num":0 }, "submachineGun": { "name": "サブマシンガン", "num":0 }, "shotGun": { "name": "ショットガン", "num":0 }, "machineGun": { "name": "マシンガン", "num":0 }, "rifle": { "name": "ライフル", "num":0 } }, "findArts": { "firstAid": { "name": "応急手当", "num":0 }, "lockPicking": { "name": "鍵開け", "num":0 }, "hide": { "name": "隠す", "num":0 }, "disappear": { "name": "隠れる", "num":0 }, "ear": { "name": "聞き耳", "num":0 }, "quietStep": { "name": "忍び歩き", "num":0 }, "photography": { "name": "写真術", "num":0 }, "psychoAnalysis": { "name": "精神分析", "num":0 }, "tracking": { "name": "追跡", "num":0 }, "climbing": { "name": "登攀", "num":0 }, "library": { "name": "図書館", "num":0 }, "aim": { "name": "目星", "num":0 } }, "actionArts": { "driving": { "name": "運転", "num":0 }, "repairingMachine": { "name": "機械修理", "num":0 }, "operatingHeavyMachine": { "name": "重機械操作", "num":0 }, "ridingHorse": { "name": "乗馬", "num":0 }, "swimming": { "name": "水泳", "num":0 }, "creating": { "name": "製作", "num":0 }, "control": { "name": "操縦", "num":0 }, "jumping": { "name": "跳躍", "num":0 }, "repairingElectric": { "name": "電気修理", "num":0 }, "navigate": { "name": "ナビゲート", "num":0 }, "disguise": { "name": "変装", "num":0 } }, "negotiationArts": { "winOver": { "name": "言いくるめ", "num":0 }, "credit": { "name": "信用", "num":0 }, "haggle": { "name": "値切り", "num":0 }, "argue": { "name": "説得", "num":0 }, "nativeLanguage": { "name": "母国語", "num":0 } }, "knowledgeArts": { "medicine": { "name": "医学", "num":0 }, "occult": { "name": "オカルト", "num":0 }, "chemistry": { "name": "化学", "num":0 }, "cthulhuMythology": { "name": "クトゥルフ神話", "num":0 }, "art": { "name": "芸術", "num":0 }, "accounting": { "name": "経理", "num":0 }, "archeology": { "name": "考古学", "num":0 }, "computer": { "name": "コンピューター", "num":0 }, "psychology": { "name": "心理学", "num":0 }, "anthropology": { "name": "人類学", "num":0 }, "biology": { "name": "生物学", "num":0 }, "geology": { "name": "地質学", "num":0 }, "electronicEngineering": { "name": "電子工学", "num":0 }, "astronomy": { "name": "天文学", "num":0 }, "naturalHistory": { "name": "博物学", "num":0 }, "physics": { "name": "物理学", "num":0 }, "law": { "name": "法律", "num":0 }, "pharmacy": { "name": "薬学", "num":0 }, "history": { "name": "歴史", "num":0 } } } }
+
 function createColors(span) {
     const gradation = (span, r1, g1, b1, r2, g2, b2) => {
         const rd = (r2 - r1) / span;
@@ -96,13 +98,9 @@ class PCRadar extends React.Component {
   // }
 
   createChartData = (json, genres, fields) => {
-    if (json.length <= 0) {
-      return {labels: [], datasets: []};
-    }
-
     // 凡例を追加
     const labels = [];
-    const pc = json[0];
+    const pc = templatePlayerData;
     for (let genre of genres) {
       for (let field of fields) {
         if ((genre in pc.param) && (field in pc.param[genre])) {
@@ -110,6 +108,10 @@ class PCRadar extends React.Component {
           labels.push(label);
         }
       }
+    }
+
+    if (json.length <= 0) {
+      return {labels: labels, datasets: []};
     }
 
     const colorInterval = Math.floor(colors.length / json.length);
