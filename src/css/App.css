@@ -1,0 +1,189 @@
+/* .App {
+  width: 100vw;
+  display: flex;
+  font-family: arial, sans-serif;
+} */
+
+/* .App-header {
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+.user-text-input,
+.user-input {
+  padding: 0.8em;
+  outline: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 150px;
+}
+
+.user-text-input {
+  width: 50%;
+}
+
+.tag-button {
+  background-color: #58ACFA;
+  border-radius: 2px;
+  border: solid 1px #eee;
+  color: #eee;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.6);
+}
+
+input:hover,
+input:focus {
+  background-color: #fff;
+  border-color: #59b1eb;
+  color: #59b1eb;
+  transition: all 300ms 0s ease;
+}
+
+thead,
+tbody {
+  display: block;
+}
+
+tbody {
+  overflow-y: scroll;
+  height: 60vh;
+}
+
+table {
+  border-bottom: 5px solid #1dc1d6;
+}
+
+table th {
+  border-bottom: 5px solid #1dc1d6;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+}
+
+table td {
+  border-bottom: 2px dotted #ccc;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+th,
+td {
+  padding: 0.5em;
+}
+
+tr th:nth-child(1),
+tr td:nth-child(1) {
+  width: 3vw;
+  text-align: center;
+}
+
+tr th:nth-child(2),
+tr td:nth-child(2) {
+  width: 18vw;
+  text-align: center;
+}
+
+tr th:nth-child(3),
+tr td:nth-child(3) {
+  width: 45vw;
+}
+
+h1 {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #ccc;
+  color: #888;
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .center {
+    display: flex;
+  }
+
+  .parent {
+    flex: 1;
+  }
+  .parent {
+    flex: 1;
+  }
+}
+
+header, footer {
+  height: 60px;
+}
+
+.left, .right {
+  height: calc(100vh - 216px);
+  margin: 4px 5px;
+}
+
+.right {
+  overflow-y: scroll;
+}
+
+.row-area {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0em 0.8em;
+}
+
+.row-area * {
+  margin: 2px 2px;
+}
+
+.tag {
+  padding: 3px 6px;
+  margin-right: 8px;
+  margin-left: 1px;
+  font-size: 75%;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 0 3px #ddd;
+  background-color: #58ACFA;
+}
+
+.tag a {
+  padding: 0px 10px 0px 0px;
+}
+
+.tag:before {
+  content: '# '
+}
+
+.tag a:link,
+.tag a:visited {
+  color: #eee;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+}
+
+.parent {
+  border: solid 1px #333;
+  border-radius: 10px;
+  margin: 0px 3px;
+}
+
+.parent h2 {
+  color: #555;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+h1 a {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #ccc;
+  color: #888;
+  text-align: center;
+  text-decoration: none;
+}

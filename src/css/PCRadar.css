@@ -1,0 +1,53 @@
+#progress,
+#back {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    pointer-events: none;
+}
+
+#progress {
+    width: 128px;
+    height: 64px;
+}
+
+#back {
+    opacity: 0.4;
+    background-color: #000;
+}
+
+@media screen and (max-width: 1024px) {
+    .board {
+        width: 95vw;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+    .center {
+        flex: 4;
+    }
+}
+
+.right h2 {
+    color: #0da1c6;
+    padding: 0.5em 0;
+    border-top: solid 3px #0da1c6;
+    border-bottom: solid 3px #0da1c6;
+}
+
+.board {
+    padding: 0.5em 1em;
+    margin: 0 0 8px 0;
+    background: #ffffff;
+    border-top: solid 6px #1dc1d6;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
