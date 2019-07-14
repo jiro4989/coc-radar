@@ -144,22 +144,28 @@ class App extends React.Component {
         <Header />
         <div className="main">
           <div className="center">
-            <div className="left">
-              <div className="row-area">
-                <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
-                <div>
-                  <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
-                  <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+            <div className="parent">
+              <h2>検索</h2>
+              <div className="left">
+                <div className="row-area">
+                  <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
+                  <div>
+                    <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
+                    <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+                  </div>
                 </div>
+                <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
+                <PlayerTable
+                  players={this.state.filteredPlayers}
+                  switchSelected={this.switchSelected}
+                  />
               </div>
-              <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
-              <PlayerTable
-                players={this.state.filteredPlayers}
-                switchSelected={this.switchSelected}
-                />
             </div>
-            <div className="right">
-              <PCRadar players={this.state.radarPlayers} />
+            <div className="parent">
+              <h2>グラフ</h2>
+              <div className="right">
+                <PCRadar players={this.state.radarPlayers} />
+              </div>
             </div>
           </div>
         </div>
@@ -220,7 +226,10 @@ class PlayerTable extends React.Component {
 
       // 探索者を生成
       const pcRadarUrl = radarPlayerUrl + p.id;
-      const name = <a href={pcRadarUrl}>{p.name}</a>
+      const name = <span className="pc-link">
+        <a href={p.url} className="vault-link">[ 保 ]</a>
+        <a href={pcRadarUrl} className="pc">{p.name}</a>
+      </span>
 
       // キャラクター保管所のURLを生成
       const url = <a href={p.url}>保管所</a>
@@ -230,7 +239,6 @@ class PlayerTable extends React.Component {
           <td>{checkBox}</td>
           <td>{tags}</td>
           <td>{name}</td>
-          <td>{url}</td>
         </tr>
       )
     });
@@ -242,7 +250,6 @@ class PlayerTable extends React.Component {
             <th>選択</th>
             <th>タグ</th>
             <th>探索者名</th>
-            <th>キャラクター保管所</th>
           </tr>
         </thead>
         <tbody>
