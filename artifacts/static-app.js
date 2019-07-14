@@ -110,7 +110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -308,7 +308,7 @@ var _createClass = function () {
   };
 }();
 
-var _requireUniversalModule = __webpack_require__(39);
+var _requireUniversalModule = __webpack_require__(40);
 
 Object.defineProperty(exports, 'CHUNK_NAMES', {
   enumerable: true,
@@ -323,7 +323,7 @@ Object.defineProperty(exports, 'MODULE_IDS', {
   }
 });
 
-var _reportChunks = __webpack_require__(41);
+var _reportChunks = __webpack_require__(42);
 
 Object.defineProperty(exports, 'ReportChunks', {
   enumerable: true,
@@ -337,21 +337,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(26);
+var _propTypes = __webpack_require__(27);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _hoistNonReactStatics = __webpack_require__(27);
+var _hoistNonReactStatics = __webpack_require__(28);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-var _vm = __webpack_require__(42);
+var _vm = __webpack_require__(43);
 
 var _requireUniversalModule2 = _interopRequireDefault(_requireUniversalModule);
 
 var _utils = __webpack_require__(18);
 
-var _helpers = __webpack_require__(43);
+var _helpers = __webpack_require__(44);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -784,11 +784,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(51);
+/* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52);
 /* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_css_App_css__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(13);
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(14);
 /* harmony import */ var _components_PCRadar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(15);
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(20);
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(34);
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(history__WEBPACK_IMPORTED_MODULE_13__);
 
 
 
@@ -800,10 +804,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+var history = null;
+
+if (typeof window !== 'undefined') {
+  history = Object(history__WEBPACK_IMPORTED_MODULE_13__["createBrowserHistory"])();
+}
 
 var rootUrl = "https://jiro4989.github.io/coc-radar";
 var apiRootUrl = "".concat(rootUrl, "/data");
 var indexDataUrl = "".concat(apiRootUrl, "/index.json");
+
+function parseQueryIds(params) {
+  // idは0から始まり、URLの数だけ数値が増加する
+  var ids = [];
+
+  for (var j = 0; j < 100000; j++) {
+    var key = "id" + j;
+
+    if (key in params) {
+      var v = params[key];
+      ids.push(v);
+      continue;
+    } // ここに到達するということはidNの数値を超過したということ
+    // よって後続のインデックスのidをチェックする必要はない
+
+
+    return ids;
+  }
+
+  return ids;
+}
 
 var App =
 /*#__PURE__*/
@@ -878,7 +911,7 @@ function (_React$Component) {
       });
     });
 
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "switchSelected", function (id, checked) {
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "switchSelected", function (id, checked, noUpdateHistory) {
       var copyPlyaers = _this.state.players.slice();
 
       var _iteratorNormalCompletion2 = true;
@@ -945,13 +978,28 @@ function (_React$Component) {
         }).catch(function (err) {
           return console.error(err);
         });
-      });
+      }); // ブックマーク用にクエリパラメータを更新
+
+      if (!noUpdateHistory) {
+        var queryParam = _this.state.players.filter(function (p) {
+          return p.checked;
+        }).map(function (p, i) {
+          return "id".concat(i, "=").concat(p.id);
+        }).join("&");
+
+        if (typeof window !== 'undefined') {
+          history.push({
+            pathname: "/",
+            search: queryParam
+          });
+        }
+      }
     });
 
     Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "clearSelected", function (__) {
-      var players = _this.state.players.map(function (player) {
-        player.checked = false;
-        return player;
+      var players = _this.state.players.map(function (p) {
+        p.checked = false;
+        return p;
       });
 
       _this.setState({
@@ -973,7 +1021,22 @@ function (_React$Component) {
       });
     });
 
+    var _queryParam = {};
+
+    if (typeof window !== 'undefined') {
+      _queryParam = query_string__WEBPACK_IMPORTED_MODULE_12___default.a.parse(props.location.search);
+    }
+
+    var queryTag = "";
+
+    if (_queryParam["tag"]) {
+      queryTag = _queryParam["tag"];
+    }
+
+    var queryIds = parseQueryIds(_queryParam);
     _this.state = {
+      queryTag: queryTag,
+      queryIds: queryIds,
       playersLoaded: false,
       players: [{
         checked: false,
@@ -996,7 +1059,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      return fetch(indexDataUrl).then(function (resp) {
+      fetch(indexDataUrl).then(function (resp) {
         return resp.json();
       }).then(function (json) {
         var players = _this2.addChecked(json);
@@ -1006,7 +1069,49 @@ function (_React$Component) {
           players: players,
           filteredPlayers: players,
           tags: _this2.filterTags(players)
-        });
+        }); // データ一覧が揃ったらtagの情報を取得
+
+
+        var tag = _this2.state.queryTag;
+
+        if (tag !== "") {
+          var _players = _this2.state.players.map(function (p) {
+            if (0 <= p.tags.indexOf(tag)) {
+              p.checked = true;
+            }
+
+            return p;
+          });
+
+          _this2.setState({
+            players: _players
+          });
+
+          _this2.switchSelected(-1, false, true);
+
+          return;
+        } // IDが載っていたら追加
+
+
+        var ids = _this2.state.queryIds;
+
+        if (0 < ids.length) {
+          var _players2 = _this2.state.players.map(function (p) {
+            if (0 <= ids.indexOf(p.id)) {
+              p.checked = true;
+            }
+
+            return p;
+          });
+
+          _this2.setState({
+            players: _players2
+          });
+
+          _this2.switchSelected(-1, false);
+
+          return;
+        }
       }).catch(function (err) {
         return console.error(err);
       });
@@ -1189,7 +1294,7 @@ var _utils = __webpack_require__(18);
 
 var requireById = function requireById(id) {
   if (!(0, _utils.isWebpack)() && typeof id === 'string') {
-    return __webpack_require__(40)("" + id);
+    return __webpack_require__(41)("" + id);
   }
 
   return __webpack_require__('' + id);
@@ -1310,11 +1415,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52);
+/* harmony import */ var css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(53);
 /* harmony import */ var css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(22);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(23);
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(33);
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(20);
 /* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_10__);
 
 
@@ -1690,26 +1795,6 @@ function createColors(span) {
 }
 
 var colors = createColors(10);
-
-function includeId(queryParams, playerId) {
-  var params = query_string__WEBPACK_IMPORTED_MODULE_10___default.a.parse(queryParams.search); // idは0から始まり、URLの数だけ数値が増加する
-
-  for (var j = 0; j < 100000; j++) {
-    var key = "id" + j;
-
-    if (key in params) {
-      var v = params[key];
-      if (playerId === v) return true;
-      continue;
-    } // ここに到達するということはidNの数値を超過したということ
-    // よって後続のインデックスのidをチェックする必要はない
-
-
-    return false;
-  }
-
-  return false;
-}
 
 var PCRadar =
 /*#__PURE__*/
@@ -2252,11 +2337,11 @@ var cacheProm = exports.cacheProm = function cacheProm(pr, chunkName, props, pro
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
+/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(21);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(22);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
 
@@ -2289,33 +2374,39 @@ if (typeof document !== 'undefined') {
     });
   }
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(50)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(51)(module)))
 
 /***/ }),
 /* 20 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom");
+module.exports = require("query-string");
 
 /***/ }),
 /* 21 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-dom");
 
 /***/ }),
 /* 22 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-chartjs-2");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 23 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-chartjs-2");
+
+/***/ }),
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(31);
+/* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(32);
 /* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
  // Plugins
@@ -2341,13 +2432,13 @@ var plugins = [{
 /* harmony default export */ __webpack_exports__["default"] = (plugins);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser");
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2391,7 +2482,7 @@ var universalOptions = {
 var t_0 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../node_modules/react-static/lib/browser/components/Default404",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.t.bind(null, 29, 7))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.t.bind(null, 30, 7))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -2399,7 +2490,7 @@ var t_0 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../node_modules/react-static/lib/browser/components/Default404');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(29);
+    return /*require.resolve*/(30);
   },
   chunkName: function chunkName() {
     return "node_modules/react-static/lib/browser/components/Default404";
@@ -2499,7 +2590,7 @@ t_5.template = '../src/index.js';
 var t_6 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/serviceWorker.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() | src/serviceWorker */).then(__webpack_require__.bind(null, 30))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() | src/serviceWorker */).then(__webpack_require__.bind(null, 31))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -2507,7 +2598,7 @@ var t_6 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/serviceWorker.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(30);
+    return /*require.resolve*/(31);
   },
   chunkName: function chunkName() {
     return "src/serviceWorker";
@@ -2529,19 +2620,19 @@ var notFoundTemplate = "../node_modules/react-static/lib/browser/components/Defa
 /* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("hoist-non-react-statics");
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2632,13 +2723,13 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser/components/Default404");
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2757,7 +2848,7 @@ function unregister() {
 }
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2770,9 +2861,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _reactStatic = __webpack_require__(36);
+var _reactStatic = __webpack_require__(37);
 
-var _router = __webpack_require__(37);
+var _router = __webpack_require__(38);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -2883,72 +2974,72 @@ var _default = function _default(_ref) {
 exports["default"] = _default;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-hot-loader");
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
-module.exports = require("query-string");
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(35);
-__webpack_require__(38);
-module.exports = __webpack_require__(44);
-
+module.exports = require("history");
 
 /***/ }),
 /* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(36);
+__webpack_require__(39);
+module.exports = __webpack_require__(45);
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {
 /* eslint-disable import/no-dynamic-require */
 
-var plugins = __webpack_require__(23)["default"];
+var plugins = __webpack_require__(24)["default"];
 
-var _require = __webpack_require__(24),
+var _require = __webpack_require__(25),
     registerPlugins = _require.registerPlugins;
 
 registerPlugins(plugins);
 
 if (typeof document !== 'undefined' && module && module.hot) {
   module.hot.accept("/home/jiro4989/src/github.com/jiro4989/coc-radar/artifacts/react-static-browser-plugins.js", function () {
-    registerPlugins(__webpack_require__(23)["default"]);
+    registerPlugins(__webpack_require__(24)["default"]);
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)(module)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-static");
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = require("@reach/router");
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {
 /* eslint-disable import/no-dynamic-require */
 
-var _require = __webpack_require__(24),
+var _require = __webpack_require__(25),
     registerTemplates = _require.registerTemplates;
 
-var _require2 = __webpack_require__(25),
+var _require2 = __webpack_require__(26),
     templates = _require2["default"],
     notFoundTemplate = _require2.notFoundTemplate;
 
@@ -2956,7 +3047,7 @@ registerTemplates(templates, notFoundTemplate);
 
 if (typeof document !== 'undefined' && module && module.hot) {
   module.hot.accept("/home/jiro4989/src/github.com/jiro4989/coc-radar/artifacts/react-static-templates.js", function () {
-    var _require3 = __webpack_require__(25),
+    var _require3 = __webpack_require__(26),
         templates = _require3["default"],
         notFoundTemplate = _require3.notFoundTemplate;
 
@@ -2966,7 +3057,7 @@ if (typeof document !== 'undefined' && module && module.hot) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)(module)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3177,7 +3268,7 @@ var getConfig = function getConfig(isDynamic, universalConfig, options, props) {
 };
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -3205,10 +3296,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 40;
+webpackContext.id = 41;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3242,7 +3333,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(26);
+var _propTypes = __webpack_require__(27);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -3317,13 +3408,13 @@ ReportChunks.childContextTypes = {
 exports.default = ReportChunks;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 module.exports = require("vm");
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3334,7 +3425,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.__handleAfter = exports.__update = undefined;
 
-var _hoistNonReactStatics = __webpack_require__(27);
+var _hoistNonReactStatics = __webpack_require__(28);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -3390,28 +3481,28 @@ var __handleAfter = exports.__handleAfter = function __handleAfter(props, state,
 };
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__(45);
+var _interopRequireWildcard = __webpack_require__(46);
 
-var _interopRequireDefault = __webpack_require__(46);
+var _interopRequireDefault = __webpack_require__(47);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(__webpack_require__(47));
+var _extends2 = _interopRequireDefault(__webpack_require__(48));
 
-var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(48));
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(49));
 
 var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _useStaticInfo = __webpack_require__(49);
+var _useStaticInfo = __webpack_require__(50);
 /* eslint-disable import/no-dynamic-require */
 
 
@@ -3445,37 +3536,37 @@ var _default = function _default(staticInfo) {
 exports["default"] = _default;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/interopRequireWildcard");
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/interopRequireDefault");
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/extends");
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/objectWithoutProperties");
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser/hooks/useStaticInfo");
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = function (originalModule) {
@@ -3505,20 +3596,20 @@ module.exports = function (originalModule) {
 };
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(28)(false);
+exports = module.exports = __webpack_require__(29)(false);
 // Module
 exports.push([module.i, "/* .App {\n  width: 100vw;\n  display: flex;\n  font-family: arial, sans-serif;\n} */\n\n/* .App-header {\n  background-color: #282c34;\n  font-size: calc(10px + 2vmin);\n  color: white;\n} */\n\n.user-text-input,\n.user-input {\n  padding: 0.8em;\n  outline: none;\n  border: 1px solid #DDD;\n  border-radius: 3px;\n  font-size: 16px;\n  width: 150px;\n}\n\n.user-text-input {\n  width: 50%;\n}\n\n.tag-button {\n  background-color: #efefef;\n  border-radius: 2px;\n  border-style: none;\n  border-color: #58ACFA;\n  color: #58ACFA;\n}\n\ninput[type=\"checkbox\"] {\n  -webkit-transform: scale(1.6);\n      -ms-transform: scale(1.6);\n          transform: scale(1.6);\n}\n\ninput:hover,\ninput:focus {\n  background-color: #fff;\n  border-color: #59b1eb;\n  color: #59b1eb;\n  -webkit-transition: all 300ms 0s ease;\n  -o-transition: all 300ms 0s ease;\n  transition: all 300ms 0s ease;\n}\n\nthead,\ntbody {\n  display: block;\n}\n\ntbody {\n  overflow-y: scroll;\n  height: 60vh;\n}\n\ntable {\n  border-bottom: 5px solid #1dc1d6;\n}\n\ntable th {\n  border-bottom: 5px solid #1dc1d6;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  text-align: center;\n}\n\ntable td {\n  border-bottom: 2px dotted #ccc;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n}\n\nth,\ntd {\n  padding: 0.5em;\n}\n\ntr th:nth-child(1),\ntr td:nth-child(1) {\n  width: 3vw;\n  text-align: center;\n}\n\ntr th:nth-child(2),\ntr td:nth-child(2) {\n  width: 18vw;\n  text-align: center;\n}\n\ntr th:nth-child(3),\ntr td:nth-child(3) {\n  width: 45vw;\n}\n\nh1 {\n  padding-bottom: .5em;\n  border-bottom: 1px solid #ccc;\n  color: #888;\n  text-align: center;\n}\n\n@media screen and (min-width: 1024px) {\n  .center {\n    display: -ms-flexbox;\n    display: flex;\n  }\n\n  .parent {\n    -ms-flex: 1 1;\n        flex: 1 1;\n  }\n  .parent {\n    -ms-flex: 1 1;\n        flex: 1 1;\n  }\n}\n\nheader, footer {\n  height: 60px;\n}\n\n.left, .right {\n  height: calc(100vh - 216px);\n  margin: 4px 5px;\n}\n\n.right {\n  overflow-y: scroll;\n}\n\n.row-area {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0em 0.8em;\n}\n\n.row-area * {\n  margin: 2px 2px;\n}\n\n.tag {\n  padding: 3px 6px;\n  margin-right: 8px;\n  margin-left: 1px;\n  font-size: 75%;\n  color: white;\n  border-radius: 6px;\n  -webkit-box-shadow: 0 0 3px #ddd;\n          box-shadow: 0 0 3px #ddd;\n  background-color: #58ACFA;\n}\n\n.tag a {\n  padding: 0px 10px 0px 0px;\n}\n\n.tag:before {\n  content: '# '\n}\n\n.tag a:link,\n.tag a:visited {\n  color: #eee;\n  text-decoration: none;\n}\n\nfooter {\n  text-align: center;\n}\n\n.parent {\n  border: solid 1px #333;\n  border-radius: 10px;\n  margin: 0px 3px;\n}\n\n.parent h2 {\n  color: #555;\n  padding-left: 20px;\n  margin: 10px 0;\n}\n\nh1 a {\n  padding-bottom: .5em;\n  border-bottom: 1px solid #ccc;\n  color: #888;\n  text-align: center;\n  text-decoration: none;\n}", ""]);
 
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(28)(false);
+exports = module.exports = __webpack_require__(29)(false);
 // Module
 exports.push([module.i, "#progress,\n#back {\n    position: fixed;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    margin: auto;\n    pointer-events: none;\n}\n\n#progress {\n    width: 128px;\n    height: 64px;\n}\n\n#back {\n    opacity: 0.4;\n    background-color: #000;\n}\n\n@media screen and (max-width: 1024px) {\n    .board {\n        width: 95vw;\n    }\n}\n\n@media screen and (min-width: 1024px) {\n\n    .left,\n    .right {\n        -ms-flex: 1 1;\n            flex: 1 1;\n    }\n\n    .center {\n        -ms-flex: 4 1;\n            flex: 4 1;\n    }\n}\n\n.right h2 {\n    color: #0da1c6;\n    padding: 0.5em 0;\n    border-top: solid 3px #0da1c6;\n    border-bottom: solid 3px #0da1c6;\n}\n\n.board {\n    padding: 0.5em 1em;\n    margin: 0 0 8px 0;\n    background: #ffffff;\n    border-top: solid 6px #1dc1d6;\n    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n}", ""]);
 
