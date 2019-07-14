@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/App.css';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json"
 const radarPlayerUrl = "players/"

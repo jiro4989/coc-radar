@@ -14,30 +14,38 @@ const universalOptions = {
   ignoreBabelRename: true
 }
 
-const t_0 = universal(import('../src/pages/404.js'), universalOptions)
-      t_0.template = '../src/pages/404.js'
+const t_0 = universal(import('../node_modules/react-static/lib/browser/components/Default404'), universalOptions)
+      t_0.template = '../node_modules/react-static/lib/browser/components/Default404'
       
-const t_1 = universal(import('../src/pages/about.js'), universalOptions)
-      t_1.template = '../src/pages/about.js'
+const t_1 = universal(import('../src/App.js'), universalOptions)
+      t_1.template = '../src/App.js'
       
-const t_2 = universal(import('../src/pages/blog.js'), universalOptions)
-      t_2.template = '../src/pages/blog.js'
+const t_2 = universal(import('../src/components/Footer.js'), universalOptions)
+      t_2.template = '../src/components/Footer.js'
       
-const t_3 = universal(import('../src/pages/index.js'), universalOptions)
-      t_3.template = '../src/pages/index.js'
+const t_3 = universal(import('../src/components/Header.js'), universalOptions)
+      t_3.template = '../src/components/Header.js'
       
-const t_4 = universal(import('../src/containers/Post'), universalOptions)
-      t_4.template = '../src/containers/Post'
+const t_4 = universal(import('../src/components/RadarPage.js'), universalOptions)
+      t_4.template = '../src/components/RadarPage.js'
+      
+const t_5 = universal(import('../src/index.js'), universalOptions)
+      t_5.template = '../src/index.js'
+      
+const t_6 = universal(import('../src/serviceWorker.js'), universalOptions)
+      t_6.template = '../src/serviceWorker.js'
       
 
 // Template Map
 export default {
-  '../src/pages/404.js': t_0,
-'../src/pages/about.js': t_1,
-'../src/pages/blog.js': t_2,
-'../src/pages/index.js': t_3,
-'../src/containers/Post': t_4
+  '../node_modules/react-static/lib/browser/components/Default404': t_0,
+'../src/App.js': t_1,
+'../src/components/Footer.js': t_2,
+'../src/components/Header.js': t_3,
+'../src/components/RadarPage.js': t_4,
+'../src/index.js': t_5,
+'../src/serviceWorker.js': t_6
 }
 // Not Found Template
-export const notFoundTemplate = "../src/pages/404.js"
+export const notFoundTemplate = "../node_modules/react-static/lib/browser/components/Default404"
 
