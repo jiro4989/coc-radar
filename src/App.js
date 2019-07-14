@@ -85,14 +85,25 @@ class App extends React.Component {
     for (let pc of copyPlyaers) {
       if (pc.id === id) {
         pc.checked = checked;
-        fetch(`${apiRootUrl}/${pc.id}.json`)
-          .then((resp) => resp.json())
-          .then((player) => this.setState({radarPlayers: this.state.radarPlayers.concat(player)}))
-          .catch((err) => console.error(err));
         break;
       }
     }
     this.setState({players: copyPlyaers});
+
+    // マッチしたIDのみ、すでに登録されている探索者一覧から絞り込む
+    // すでに画面に描画されているデータなので再度リクエストする必要はない
+    const currentSelectedIds = this.state.players.filter((p) => p.checked).map((p) => p.id);
+    const players = this.state.radarPlayers.filter((p) => 0 <= currentSelectedIds.indexOf(p.id));
+    this.setState({radarPlayers: players});
+
+    // 逆に、存在しなかったものだけAPIリクエストする
+    const newIds = currentSelectedIds.filter((id) => players.map((p) => p.id).indexOf(id) < 0);
+    newIds.forEach((id) => {
+      fetch(`${apiRootUrl}/${id}.json`)
+        .then((resp) => resp.json())
+        .then((player) => this.setState({radarPlayers: this.state.radarPlayers.concat(player)}))
+        .catch((err) => console.error(err));
+    });
   }
 
   clearSelected = (__) => {
