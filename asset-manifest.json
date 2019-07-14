@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/coc-radar/static/css/main.6f775aad.chunk.css",
-    "main.js": "/coc-radar/static/js/main.06a61283.chunk.js",
-    "main.js.map": "/coc-radar/static/js/main.06a61283.chunk.js.map",
+    "main.js": "/coc-radar/static/js/main.fba4bfff.chunk.js",
+    "main.js.map": "/coc-radar/static/js/main.fba4bfff.chunk.js.map",
     "runtime~main.js": "/coc-radar/static/js/runtime~main.1109413f.js",
     "runtime~main.js.map": "/coc-radar/static/js/runtime~main.1109413f.js.map",
-    "static/js/2.7ee13a98.chunk.js": "/coc-radar/static/js/2.7ee13a98.chunk.js",
-    "static/js/2.7ee13a98.chunk.js.map": "/coc-radar/static/js/2.7ee13a98.chunk.js.map",
+    "static/js/2.67443de9.chunk.js": "/coc-radar/static/js/2.67443de9.chunk.js",
+    "static/js/2.67443de9.chunk.js.map": "/coc-radar/static/js/2.67443de9.chunk.js.map",
     "index.html": "/coc-radar/index.html",
-    "precache-manifest.dbbd1819c3677f35c80a3cf53fa012fc.js": "/coc-radar/precache-manifest.dbbd1819c3677f35c80a3cf53fa012fc.js",
+    "precache-manifest.b66fd697d994da51156247fde62e5dd2.js": "/coc-radar/precache-manifest.b66fd697d994da51156247fde62e5dd2.js",
     "service-worker.js": "/coc-radar/service-worker.js",
     "static/css/main.6f775aad.chunk.css.map": "/coc-radar/static/css/main.6f775aad.chunk.css.map"
   }
