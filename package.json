@@ -21,7 +21,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "deploy": "npm run build && gh-pages -d docs",
+    "deploy": "npm run build && gh-pages -d build",
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
