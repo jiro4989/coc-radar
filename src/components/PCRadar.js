@@ -45,10 +45,6 @@ function createColors(span) {
 const colors = createColors(10);
 
 class PCRadar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   createChartData = (json, genres, fields) => {
     // 凡例を追加
     const labels = [];
