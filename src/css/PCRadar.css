@@ -37,13 +37,6 @@
     }
 }
 
-h1 {
-    padding-bottom: .5em;
-    border-bottom: 1px solid #ccc;
-    color: #888;
-    text-align: center;
-}
-
 h2 {
     color: #0da1c6;
     padding: 0.5em 0;
@@ -53,20 +46,8 @@ h2 {
 
 .board {
     padding: 0.5em 1em;
-    margin: 2em 0;
+    margin: 0 0 8px 0;
     background: #ffffff;
     border-top: solid 6px #1dc1d6;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
-}
-
-body {
-    width: 100vw;
-    display: flex;
-    font-family: arial, sans-serif;
-}
-
-h1 a:link,
-h1 a:visited {
-    color: #888;
-    text-decoration: none;
 }

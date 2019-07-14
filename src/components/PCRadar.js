@@ -1,12 +1,7 @@
 import React from 'react';
 import 'css/PCRadar.css';
-import Header from './Header';
-import Footer from './Footer';
 import { Radar, Bar } from 'react-chartjs-2';
 import queryString from 'query-string';
-
-const rootUrl = "https://jiro4989.github.io/coc-radar/data"
-const indexDataUrl = `${rootUrl}/index.json`
 
 const abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
 const battleFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle" ];

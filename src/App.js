@@ -143,24 +143,24 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <div className="main">
-          <div className="top">
-            <div className="row-area">
-              <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
-              <div>
-                <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
-                <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+          <div className="center">
+            <div className="left">
+              <div className="row-area">
+                <input type="text" className="user-text-input user-input" value={this.state.searchWord} onChange={this.filterPlayers}></input>
+                <div>
+                  <input type="button" className="user-input" value="表示" onMouseDown={this.gotoRadarPage}></input>
+                  <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
+                </div>
               </div>
+              <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
+              <PlayerTable
+                players={this.state.filteredPlayers}
+                switchSelected={this.switchSelected}
+                />
             </div>
-            <Tags tags={this.state.tags} updateSearchWord={this.updateSearchWord} />
-          </div>
-          <div className="left">
-            <PlayerTable
-              players={this.state.filteredPlayers}
-              switchSelected={this.switchSelected}
-              />
-          </div>
-          <div className="right">
-            <PCRadar players={this.state.radarPlayers} />
+            <div className="right">
+              <PCRadar players={this.state.radarPlayers} />
+            </div>
           </div>
         </div>
         <Footer />
