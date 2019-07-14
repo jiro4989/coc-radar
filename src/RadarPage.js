@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/App.css';
+import './css/RadarPage.css';
 import Header from './Header';
 import Footer from './Footer';
 import { Radar, Bar } from 'react-chartjs-2';
