@@ -45,23 +45,6 @@ function createColors(span) {
 
 const colors = createColors(10);
 
-function includeId(queryParams, playerId) {
-  const params = queryString.parse(queryParams.search);
-  // idは0から始まり、URLの数だけ数値が増加する
-  for (let j = 0; j < 100000; j++) {
-    const key = "id" + j;
-    if (key in params) {
-      const v = params[key];
-      if (playerId === v) return true;
-      continue;
-    }
-    // ここに到達するということはidNの数値を超過したということ
-    // よって後続のインデックスのidをチェックする必要はない
-    return false;
-  }
-  return false;
-}
-
 class PCRadar extends React.Component {
   constructor(props) {
     super(props);

@@ -110,7 +110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -269,7 +269,7 @@ function _assertThisInitialized(self) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {
 
-var _typeof = __webpack_require__(16);
+var _typeof = __webpack_require__(17);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -308,7 +308,7 @@ var _createClass = function () {
   };
 }();
 
-var _requireUniversalModule = __webpack_require__(38);
+var _requireUniversalModule = __webpack_require__(39);
 
 Object.defineProperty(exports, 'CHUNK_NAMES', {
   enumerable: true,
@@ -323,7 +323,7 @@ Object.defineProperty(exports, 'MODULE_IDS', {
   }
 });
 
-var _reportChunks = __webpack_require__(40);
+var _reportChunks = __webpack_require__(41);
 
 Object.defineProperty(exports, 'ReportChunks', {
   enumerable: true,
@@ -337,21 +337,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(24);
+var _propTypes = __webpack_require__(26);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _hoistNonReactStatics = __webpack_require__(25);
+var _hoistNonReactStatics = __webpack_require__(27);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-var _vm = __webpack_require__(41);
+var _vm = __webpack_require__(42);
 
 var _requireUniversalModule2 = _interopRequireDefault(_requireUniversalModule);
 
-var _utils = __webpack_require__(17);
+var _utils = __webpack_require__(18);
 
-var _helpers = __webpack_require__(42);
+var _helpers = __webpack_require__(43);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -746,7 +746,7 @@ function universal(asyncModule) {
     report: _propTypes2.default.func
   }, _temp;
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)(module)))
 
 /***/ }),
 /* 10 */
@@ -779,111 +779,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-
-var Header =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Header, _React$Component);
-
-  function Header() {
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Header);
-
-    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Header).apply(this, arguments));
-  }
-
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Header, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        href: "/"
-      }, "coc-radar")));
-    }
-  }]);
-
-  return Header;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Header);
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-
-var Footer =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Footer, _React$Component);
-
-  function Footer() {
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Footer);
-
-    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Footer).apply(this, arguments));
-  }
-
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Footer, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "\u300C\u30AF\u30C8\u30A5\u30EB\u30D5\u795E\u8A71TRPG\u300D\u306F", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        href: "http://www.chaosium.com/"
-      }, "\u30B1\u30A4\u30AA\u30B7\u30A2\u30E0\u793E"), "\u306E\u8457\u4F5C\u7269\u3067\u3059\u3002"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "\xA9 \u6B21\u90CE (2019) ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        href: "https://twitter.com/jiro_saburomaru"
-      }, "@jiro_saburomaru"), "\u30BD\u30FC\u30B9\u30B3\u30FC\u30C9 ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        href: "https://github.com/jiro4989/coc-radar"
-      }, "GitHub - jiro4989/coc-radar"), "\u30EC\u30FC\u30C0\u30FC\u51FA\u529B\u5BFE\u8C61\u306E\u8FFD\u52A0\u306E\u8981\u671B\u306F", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        href: "https://github.com/jiro4989/coc-radar/issues"
-      }, "\u3053\u3061\u3089"), "\u3002"));
-    }
-  }]);
-
-  return Footer;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
 /* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50);
+/* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(51);
 /* harmony import */ var _css_App_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_css_App_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(11);
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(12);
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(13);
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(14);
+/* harmony import */ var _components_PCRadar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(15);
 
 
 
@@ -895,9 +800,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var indexDataUrl = "https://jiro4989.github.io/coc-radar/data/index.json";
-var radarPlayerUrl = "players/";
-var radarTagUrl = "tags/";
+
+var rootUrl = "https://jiro4989.github.io/coc-radar";
+var apiRootUrl = "".concat(rootUrl, "/data");
+var indexDataUrl = "".concat(apiRootUrl, "/index.json");
 
 var App =
 /*#__PURE__*/
@@ -1005,6 +911,40 @@ function (_React$Component) {
 
       _this.setState({
         players: copyPlyaers
+      }); // マッチしたIDのみ、すでに登録されている探索者一覧から絞り込む
+      // すでに画面に描画されているデータなので再度リクエストする必要はない
+
+
+      var currentSelectedIds = _this.state.players.filter(function (p) {
+        return p.checked;
+      }).map(function (p) {
+        return p.id;
+      });
+
+      var players = _this.state.radarPlayers.filter(function (p) {
+        return 0 <= currentSelectedIds.indexOf(p.id);
+      });
+
+      _this.setState({
+        radarPlayers: players
+      }); // 逆に、存在しなかったものだけAPIリクエストする
+
+
+      var newIds = currentSelectedIds.filter(function (id) {
+        return players.map(function (p) {
+          return p.id;
+        }).indexOf(id) < 0;
+      });
+      newIds.forEach(function (id) {
+        fetch("".concat(apiRootUrl, "/").concat(id, ".json")).then(function (resp) {
+          return resp.json();
+        }).then(function (player) {
+          return _this.setState({
+            radarPlayers: _this.state.radarPlayers.concat(player)
+          });
+        }).catch(function (err) {
+          return console.error(err);
+        });
       });
     });
 
@@ -1017,34 +957,8 @@ function (_React$Component) {
       _this.setState({
         players: players
       });
-    });
 
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "gotoRadarPage", function (event) {
-      var ids = _this.state.players.filter(function (player) {
-        return player.checked;
-      }).map(function (player, i) {
-        return "id".concat(i, "=").concat(encodeURI(player.id));
-      });
-
-      if (ids.length <= 0) {
-        alert("表示したい探索者を選択していません。\n探索者のチェックボックスを選択してからクリックしてください。");
-        return;
-      }
-
-      var url = radarPlayerUrl + "?" + ids.join("&");
-
-      switch (event.button) {
-        case 0:
-          // 左クリック
-          window.location.href = url;
-          break;
-
-        case 1:
-          // 中クリック
-          // 別タブで画面を表示する
-          window.open(url, '_blank');
-          break;
-      }
+      _this.switchSelected(-1, false);
     });
 
     Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "updateSearchWord", function (val) {
@@ -1070,7 +984,8 @@ function (_React$Component) {
       }],
       filteredPlayers: [],
       tags: [],
-      searchWord: ""
+      searchWord: "",
+      radarPlayers: []
     };
     return _this;
   } // 一覧ファイルのリクエスト
@@ -1101,25 +1016,23 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "App"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "left"
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "center"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "main"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "center"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "parent"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "\u691C\u7D22"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "left"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "row-area"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         type: "text",
         className: "user-text-input user-input",
         value: this.state.searchWord,
-        onChange: this.filterPlayers
+        onChange: this.filterPlayers,
+        placeholder: "\u30BF\u30B0\u3001\u3042\u308B\u3044\u306F\u63A2\u7D22\u8005\u540D\u3067\u691C\u7D22"
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        type: "button",
-        className: "user-input",
-        value: "\u8868\u793A",
-        onMouseDown: this.gotoRadarPage
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         type: "button",
         className: "user-input",
         value: "\u9078\u629E\u5168\u89E3\u9664",
@@ -1129,10 +1042,15 @@ function (_React$Component) {
         updateSearchWord: this.updateSearchWord
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(PlayerTable, {
         players: this.state.filteredPlayers,
-        switchSelected: this.switchSelected
-      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], null)), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        switchSelected: this.switchSelected,
+        updateSearchWord: this.updateSearchWord
+      }))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "parent"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, "\u30B0\u30E9\u30D5"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "right"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_PCRadar__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        players: this.state.radarPlayers
+      }))))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], null));
     }
   }]);
 
@@ -1188,19 +1106,16 @@ function (_React$Component3) {
       var _this4 = this;
 
       var tag = this.props.tag;
-      var url = radarTagUrl + encodeURI(tag);
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
         className: "tag"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-        href: url
-      }, tag), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
-        type: "button",
-        value: "\u691C\u7D22",
-        className: "tag-button",
+        href: "javascript:void(0)",
         onClick: function onClick() {
-          return _this4.props.updateSearchWord(tag);
+          _this4.props.updateSearchWord(tag);
+
+          return false;
         }
-      }));
+      }, tag));
     }
   }]);
 
@@ -1238,23 +1153,19 @@ function (_React$Component4) {
           var key = p.id + "_" + tag;
           return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(Tag, {
             key: key,
-            tag: tag
+            tag: tag,
+            updateSearchWord: _this5.props.updateSearchWord
           });
         }); // 探索者を生成
 
-        var pcRadarUrl = radarPlayerUrl + p.id;
         var name = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-          href: pcRadarUrl
-        }, p.name); // キャラクター保管所のURLを生成
-
-        var url = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
           href: p.url
-        }, "\u4FDD\u7BA1\u6240");
+        }, p.name);
         return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", {
           key: p.id
-        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, checkBox), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, tags), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, name), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, url));
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, checkBox), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, tags), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("td", null, name));
       });
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u9078\u629E"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u30BF\u30B0"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u63A2\u7D22\u8005\u540D"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u4FDD\u7BA1\u6240"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tbody", null, rows));
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u9078\u629E"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u30BF\u30B0"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("th", null, "\u63A2\u7D22\u8005\u540D"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("tbody", null, rows));
     }
   }]);
 
@@ -1264,7 +1175,7 @@ function (_React$Component4) {
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1274,11 +1185,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _utils = __webpack_require__(17);
+var _utils = __webpack_require__(18);
 
 var requireById = function requireById(id) {
   if (!(0, _utils.isWebpack)() && typeof id === 'string') {
-    return __webpack_require__(39)("" + id);
+    return __webpack_require__(40)("" + id);
   }
 
   return __webpack_require__('' + id);
@@ -1287,7 +1198,853 @@ var requireById = function requireById(id) {
 exports.default = requireById;
 
 /***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var Header =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Header, _React$Component);
+
+  function Header() {
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Header);
+
+    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Header).apply(this, arguments));
+  }
+
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Header, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("header", {
+        className: "App-header"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "/"
+      }, "coc-radar"))));
+    }
+  }]);
+
+  return Header;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var Footer =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Footer, _React$Component);
+
+  function Footer() {
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Footer);
+
+    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Footer).apply(this, arguments));
+  }
+
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(Footer, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "\u300C\u30AF\u30C8\u30A5\u30EB\u30D5\u795E\u8A71TRPG\u300D\u306F", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "http://www.chaosium.com/"
+      }, "\u30B1\u30A4\u30AA\u30B7\u30A2\u30E0\u793E"), "\u306E\u8457\u4F5C\u7269\u3067\u3059\u3002"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, "\xA9 \u6B21\u90CE (2019) ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "https://twitter.com/jiro_saburomaru"
+      }, "@jiro_saburomaru"), "\u30BD\u30FC\u30B9\u30B3\u30FC\u30C9 ", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "https://github.com/jiro4989/coc-radar"
+      }, "GitHub - jiro4989/coc-radar"), "\u30EC\u30FC\u30C0\u30FC\u51FA\u529B\u5BFE\u8C61\u306E\u8FFD\u52A0\u306E\u8981\u671B\u306F", react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        href: "https://github.com/jiro4989/coc-radar/issues"
+      }, "\u3053\u3061\u3089"), "\u3002"));
+    }
+  }]);
+
+  return Footer;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
+
+/***/ }),
 /* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
+/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52);
+/* harmony import */ var css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(css_PCRadar_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(22);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(33);
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_10__);
+
+
+
+
+
+
+
+
+
+
+
+var abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
+var battleFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle"];
+var findFields = ["firstAid", "lockPicking", "hide", "disappear", "ear", "quietStep", "photography", "psychoAnalysis", "tracking", "climbing", "library", "aim"];
+var actionFields = ["driving", "repairingMachine", "operatingHeavyMachine", "ridingHorse", "swimming", "creating", "control", "jumping", "repairingElectric", "navigate", "disguise"];
+var negotiationFields = ["winOver", "credit", "haggle", "argue", "nativeLanguage"];
+var knowledgeFields = ["medicine", "occult", "chemistry", "cthulhuMythology", "art", "accounting", "archeology", "computer", "psychology", "anthropology", "biology", "geology", "electronicEngineering", "astronomy", "naturalHistory", "physics", "law", "pharmacy", "history"];
+var artsFields = abilityFields.concat(battleFields).concat(findFields).concat(actionFields).concat(negotiationFields).concat(knowledgeFields);
+var templatePlayerData = {
+  "id": "",
+  "name": "",
+  "tags": [],
+  "url": "",
+  "param": {
+    "ability": {
+      "str": {
+        "name": "STR",
+        "num": 0
+      },
+      "con": {
+        "name": "CON",
+        "num": 0
+      },
+      "pow": {
+        "name": "POW",
+        "num": 0
+      },
+      "dex": {
+        "name": "DEX",
+        "num": 0
+      },
+      "app": {
+        "name": "APP",
+        "num": 0
+      },
+      "siz": {
+        "name": "SIZ",
+        "num": 0
+      },
+      "int2": {
+        "name": "INT",
+        "num": 0
+      },
+      "edu": {
+        "name": "EDU",
+        "num": 0
+      },
+      "hp": {
+        "name": "HP",
+        "num": 0
+      },
+      "mp": {
+        "name": "MP",
+        "num": 0
+      },
+      "initSan": {
+        "name": "初期SAN",
+        "num": 0
+      },
+      "idea": {
+        "name": "アイデア",
+        "num": 0
+      },
+      "luk": {
+        "name": "幸運",
+        "num": 0
+      },
+      "knowledge": {
+        "name": "知識",
+        "num": 0
+      }
+    },
+    "battleArts": {
+      "avoidance": {
+        "name": "回避",
+        "num": 0
+      },
+      "kick": {
+        "name": "キック",
+        "num": 0
+      },
+      "hold": {
+        "name": "組み付き",
+        "num": 0
+      },
+      "punch": {
+        "name": "こぶし（パンチ）",
+        "num": 0
+      },
+      "headThrust": {
+        "name": "頭突き",
+        "num": 0
+      },
+      "throwing": {
+        "name": "投擲",
+        "num": 0
+      },
+      "martialArts": {
+        "name": "マーシャルアーツ",
+        "num": 0
+      },
+      "handGun": {
+        "name": "拳銃",
+        "num": 0
+      },
+      "submachineGun": {
+        "name": "サブマシンガン",
+        "num": 0
+      },
+      "shotGun": {
+        "name": "ショットガン",
+        "num": 0
+      },
+      "machineGun": {
+        "name": "マシンガン",
+        "num": 0
+      },
+      "rifle": {
+        "name": "ライフル",
+        "num": 0
+      }
+    },
+    "findArts": {
+      "firstAid": {
+        "name": "応急手当",
+        "num": 0
+      },
+      "lockPicking": {
+        "name": "鍵開け",
+        "num": 0
+      },
+      "hide": {
+        "name": "隠す",
+        "num": 0
+      },
+      "disappear": {
+        "name": "隠れる",
+        "num": 0
+      },
+      "ear": {
+        "name": "聞き耳",
+        "num": 0
+      },
+      "quietStep": {
+        "name": "忍び歩き",
+        "num": 0
+      },
+      "photography": {
+        "name": "写真術",
+        "num": 0
+      },
+      "psychoAnalysis": {
+        "name": "精神分析",
+        "num": 0
+      },
+      "tracking": {
+        "name": "追跡",
+        "num": 0
+      },
+      "climbing": {
+        "name": "登攀",
+        "num": 0
+      },
+      "library": {
+        "name": "図書館",
+        "num": 0
+      },
+      "aim": {
+        "name": "目星",
+        "num": 0
+      }
+    },
+    "actionArts": {
+      "driving": {
+        "name": "運転",
+        "num": 0
+      },
+      "repairingMachine": {
+        "name": "機械修理",
+        "num": 0
+      },
+      "operatingHeavyMachine": {
+        "name": "重機械操作",
+        "num": 0
+      },
+      "ridingHorse": {
+        "name": "乗馬",
+        "num": 0
+      },
+      "swimming": {
+        "name": "水泳",
+        "num": 0
+      },
+      "creating": {
+        "name": "製作",
+        "num": 0
+      },
+      "control": {
+        "name": "操縦",
+        "num": 0
+      },
+      "jumping": {
+        "name": "跳躍",
+        "num": 0
+      },
+      "repairingElectric": {
+        "name": "電気修理",
+        "num": 0
+      },
+      "navigate": {
+        "name": "ナビゲート",
+        "num": 0
+      },
+      "disguise": {
+        "name": "変装",
+        "num": 0
+      }
+    },
+    "negotiationArts": {
+      "winOver": {
+        "name": "言いくるめ",
+        "num": 0
+      },
+      "credit": {
+        "name": "信用",
+        "num": 0
+      },
+      "haggle": {
+        "name": "値切り",
+        "num": 0
+      },
+      "argue": {
+        "name": "説得",
+        "num": 0
+      },
+      "nativeLanguage": {
+        "name": "母国語",
+        "num": 0
+      }
+    },
+    "knowledgeArts": {
+      "medicine": {
+        "name": "医学",
+        "num": 0
+      },
+      "occult": {
+        "name": "オカルト",
+        "num": 0
+      },
+      "chemistry": {
+        "name": "化学",
+        "num": 0
+      },
+      "cthulhuMythology": {
+        "name": "クトゥルフ神話",
+        "num": 0
+      },
+      "art": {
+        "name": "芸術",
+        "num": 0
+      },
+      "accounting": {
+        "name": "経理",
+        "num": 0
+      },
+      "archeology": {
+        "name": "考古学",
+        "num": 0
+      },
+      "computer": {
+        "name": "コンピューター",
+        "num": 0
+      },
+      "psychology": {
+        "name": "心理学",
+        "num": 0
+      },
+      "anthropology": {
+        "name": "人類学",
+        "num": 0
+      },
+      "biology": {
+        "name": "生物学",
+        "num": 0
+      },
+      "geology": {
+        "name": "地質学",
+        "num": 0
+      },
+      "electronicEngineering": {
+        "name": "電子工学",
+        "num": 0
+      },
+      "astronomy": {
+        "name": "天文学",
+        "num": 0
+      },
+      "naturalHistory": {
+        "name": "博物学",
+        "num": 0
+      },
+      "physics": {
+        "name": "物理学",
+        "num": 0
+      },
+      "law": {
+        "name": "法律",
+        "num": 0
+      },
+      "pharmacy": {
+        "name": "薬学",
+        "num": 0
+      },
+      "history": {
+        "name": "歴史",
+        "num": 0
+      }
+    }
+  }
+};
+
+function createColors(span) {
+  var gradation = function gradation(span, r1, g1, b1, r2, g2, b2) {
+    var rd = (r2 - r1) / span;
+    var gd = (g2 - g1) / span;
+    var bd = (b2 - b1) / span;
+    var cs = [];
+
+    for (var i = 0; i < span; i++) {
+      var r = r1 + i * rd;
+      var g = g1 + i * gd;
+      var b = b1 + i * bd;
+      cs.push('rgba(' + r + ', ' + g + ', ' + b + ', 0.2)');
+    }
+
+    return cs;
+  };
+
+  var colors = [];
+  gradation(span, 255, 0, 0, 255, 69, 0).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 255, 69, 0, 255, 255, 0).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 255, 255, 0, 0, 128, 0).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 0, 128, 0, 0, 0, 255).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 0, 0, 255, 75, 0, 130).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 75, 0, 130, 238, 130, 238).forEach(function (item) {
+    return colors.push(item);
+  });
+  gradation(span, 238, 130, 238, 255, 0, 0).forEach(function (item) {
+    return colors.push(item);
+  });
+  return colors;
+}
+
+var colors = createColors(10);
+
+function includeId(queryParams, playerId) {
+  var params = query_string__WEBPACK_IMPORTED_MODULE_10___default.a.parse(queryParams.search); // idは0から始まり、URLの数だけ数値が増加する
+
+  for (var j = 0; j < 100000; j++) {
+    var key = "id" + j;
+
+    if (key in params) {
+      var v = params[key];
+      if (playerId === v) return true;
+      continue;
+    } // ここに到達するということはidNの数値を超過したということ
+    // よって後続のインデックスのidをチェックする必要はない
+
+
+    return false;
+  }
+
+  return false;
+}
+
+var PCRadar =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(PCRadar, _React$Component);
+
+  function PCRadar(props) {
+    var _this;
+
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, PCRadar);
+
+    _this = Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(PCRadar).call(this, props));
+
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "createChartData", function (json, genres, fields) {
+      // 凡例を追加
+      var labels = [];
+      var pc = templatePlayerData;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = genres[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var genre = _step.value;
+          var _iteratorNormalCompletion3 = true;
+          var _didIteratorError3 = false;
+          var _iteratorError3 = undefined;
+
+          try {
+            for (var _iterator3 = fields[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              var field = _step3.value;
+
+              if (genre in pc.param && field in pc.param[genre]) {
+                var label = pc.param[genre][field].name;
+                labels.push(label);
+              }
+            }
+          } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                _iterator3.return();
+              }
+            } finally {
+              if (_didIteratorError3) {
+                throw _iteratorError3;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      if (json.length <= 0) {
+        return {
+          labels: labels,
+          datasets: []
+        };
+      }
+
+      var colorInterval = Math.floor(colors.length / json.length);
+      var datasets = [];
+      var i = 0;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = json[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var _pc = _step2.value;
+          // 能力値、戦闘技能〜とかのをループ
+          var data = [];
+          var _iteratorNormalCompletion4 = true;
+          var _didIteratorError4 = false;
+          var _iteratorError4 = undefined;
+
+          try {
+            for (var _iterator4 = genres[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              var _genre = _step4.value;
+              var _iteratorNormalCompletion5 = true;
+              var _didIteratorError5 = false;
+              var _iteratorError5 = undefined;
+
+              try {
+                for (var _iterator5 = fields[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                  var _field = _step5.value;
+
+                  if (_genre in _pc.param && _field in _pc.param[_genre]) {
+                    var num = _pc.param[_genre][_field].num;
+                    data.push(num);
+                  }
+                }
+              } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+                    _iterator5.return();
+                  }
+                } finally {
+                  if (_didIteratorError5) {
+                    throw _iteratorError5;
+                  }
+                }
+              }
+            }
+          } catch (err) {
+            _didIteratorError4 = true;
+            _iteratorError4 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+                _iterator4.return();
+              }
+            } finally {
+              if (_didIteratorError4) {
+                throw _iteratorError4;
+              }
+            }
+          }
+
+          var n = i * colorInterval;
+          var d = {
+            label: _pc.name,
+            data: data,
+            backgroundColor: colors[n],
+            borderColor: colors[n].replace("0.2", "0.3"),
+            // FIXME 力技すぎる
+            borderWidth: 2
+          };
+          i++;
+
+          if (colors.length <= i) {
+            i = 0;
+          }
+
+          datasets.push(d);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      return {
+        labels: labels,
+        datasets: datasets
+      };
+    });
+
+    return _this;
+  } // componentDidMount() {
+  //   return fetch(indexDataUrl)
+  //     .then((resp) => resp.json())
+  //     .then((json) => {
+  //       json.filter((player) => {
+  //         return 0 <= player.tags.indexOf(this.state.tag) 
+  //           || player.id === this.state.playerId
+  //           // || includeId(this.state.params, player.id)
+  //       })
+  //       .forEach((player) => {
+  //         const url = `${rootUrl}/${player.id}.json`;
+  //         fetch(url)
+  //           .then((resp) => resp.json())
+  //           .then((player) => {
+  //             this.setState({
+  //               playersLoaded: true,
+  //               players: this.state.players.concat([player]),
+  //             });
+  //           })
+  //           .catch((err) => console.error(err));
+  //       });
+  //     })
+  //     .catch((err) => console.error(err));
+  // }
+
+
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(PCRadar, [{
+    key: "render",
+    value: function render() {
+      var json = this.props.players;
+      var abilityData = this.createChartData(json, ["ability"], abilityFields);
+      var artsData = this.createChartData(json, ["battleArts", "findArts", "actionArts", "negotiationArts", "knowledgeArts"], artsFields);
+      var battleData = this.createChartData(json, ["battleArts"], battleFields);
+      var findData = this.createChartData(json, ["findArts"], findFields);
+      var actionData = this.createChartData(json, ["actionArts"], actionFields);
+      var negotiationData = this.createChartData(json, ["negotiationArts"], negotiationFields);
+      var knowledgeData = this.createChartData(json, ["knowledgeArts"], knowledgeFields);
+      var circleOptions = {
+        scale: {
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            max: 20
+          }
+        }
+      };
+      var barOptions = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              min: 0,
+              max: 100
+            }
+          }]
+        }
+      };
+      var graphs = [react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(RadarGraph, {
+        key: "1",
+        title: "\u80FD\u529B\u5024",
+        data: abilityData,
+        options: circleOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "2",
+        title: "\u5168\u6280\u80FD",
+        data: artsData,
+        options: barOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "3",
+        title: "\u6226\u95D8\u6280\u80FD",
+        data: battleData,
+        options: barOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "4",
+        title: "\u63A2\u7D22\u6280\u80FD",
+        data: findData,
+        options: barOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "5",
+        title: "\u884C\u52D5\u6280\u80FD",
+        data: actionData,
+        options: barOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "6",
+        title: "\u4EA4\u6E09\u6280\u80FD",
+        data: negotiationData,
+        options: barOptions
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
+        key: "7",
+        title: "\u77E5\u8B58\u6280\u80FD",
+        data: knowledgeData,
+        options: barOptions
+      })];
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "Radar"
+      }, graphs);
+    }
+  }]);
+
+  return PCRadar;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+var RadarGraph =
+/*#__PURE__*/
+function (_React$Component2) {
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(RadarGraph, _React$Component2);
+
+  function RadarGraph() {
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, RadarGraph);
+
+    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(RadarGraph).apply(this, arguments));
+  }
+
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(RadarGraph, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "board"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", {
+        name: this.props.title
+      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__["Radar"], {
+        data: this.props.data,
+        options: this.props.options
+      }));
+    }
+  }]);
+
+  return RadarGraph;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+var BarGraph =
+/*#__PURE__*/
+function (_React$Component3) {
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(BarGraph, _React$Component3);
+
+  function BarGraph() {
+    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, BarGraph);
+
+    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(BarGraph).apply(this, arguments));
+  }
+
+  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(BarGraph, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "board"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, this.props.title), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_9__["Bar"], {
+        data: this.props.data,
+        options: this.props.options
+      }));
+    }
+  }]);
+
+  return BarGraph;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PCRadar);
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = function (module) {
@@ -1316,19 +2073,19 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/typeof");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _typeof2 = __webpack_require__(16);
+var _typeof2 = __webpack_require__(17);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1359,7 +2116,7 @@ var _react = __webpack_require__(0);
 
 var React = _interopRequireWildcard(_react);
 
-var _requireById = __webpack_require__(14);
+var _requireById = __webpack_require__(12);
 
 var _requireById2 = _interopRequireDefault(_requireById);
 
@@ -1488,64 +2245,77 @@ var cacheProm = exports.cacheProm = function cacheProm(pr, chunkName, props, pro
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(31);
+/* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(21);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(11);
+
 
 
  // Your top level component
 
  // Export your top level component as JSX (for static rendering)
 
-/* harmony default export */ __webpack_exports__["default"] = (_App__WEBPACK_IMPORTED_MODULE_3__["default"]); // Render your app
+/* harmony default export */ __webpack_exports__["default"] = (_App__WEBPACK_IMPORTED_MODULE_4__["default"]); // Render your app
 
 if (typeof document !== 'undefined') {
   var target = document.getElementById('root');
   var renderMethod = target.hasChildNodes() ? react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.hydrate : react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render;
 
   var render = function render(Comp) {
-    renderMethod(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_hot_loader__WEBPACK_IMPORTED_MODULE_2__["AppContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Comp, null)), target);
+    renderMethod(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_hot_loader__WEBPACK_IMPORTED_MODULE_2__["AppContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      exact: true,
+      path: "/",
+      component: Comp
+    }))), target);
   }; // Render!
 
 
-  render(_App__WEBPACK_IMPORTED_MODULE_3__["default"]); // Hot Module Replacement
+  render(_App__WEBPACK_IMPORTED_MODULE_4__["default"]); // Hot Module Replacement
 
   if (module && module.hot) {
     module.hot.accept('./App', function () {
-      render(_App__WEBPACK_IMPORTED_MODULE_3__["default"]);
+      render(_App__WEBPACK_IMPORTED_MODULE_4__["default"]);
     });
   }
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49)(module)))
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(50)(module)))
 
 /***/ }),
 /* 20 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-chartjs-2");
+module.exports = require("react-dom");
 
 /***/ }),
 /* 21 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-chartjs-2");
+
+/***/ }),
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(31);
 /* harmony import */ var _node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_react_static_plugin_reach_router_browser_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
  // Plugins
@@ -1571,13 +2341,13 @@ var plugins = [{
 /* harmony default export */ __webpack_exports__["default"] = (plugins);
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser");
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1621,7 +2391,7 @@ var universalOptions = {
 var t_0 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../node_modules/react-static/lib/browser/components/Default404",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.t.bind(null, 27, 7))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.t.bind(null, 29, 7))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1629,7 +2399,7 @@ var t_0 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../node_modules/react-static/lib/browser/components/Default404');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(27);
+    return /*require.resolve*/(29);
   },
   chunkName: function chunkName() {
     return "node_modules/react-static/lib/browser/components/Default404";
@@ -1639,7 +2409,7 @@ t_0.template = '../node_modules/react-static/lib/browser/components/Default404';
 var t_1 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/App.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 13))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 11))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1647,7 +2417,7 @@ var t_1 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/App.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(13);
+    return /*require.resolve*/(11);
   },
   chunkName: function chunkName() {
     return "src/App";
@@ -1657,7 +2427,7 @@ t_1.template = '../src/App.js';
 var t_2 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/components/Footer.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 12))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 14))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1665,7 +2435,7 @@ var t_2 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/components/Footer.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(12);
+    return /*require.resolve*/(14);
   },
   chunkName: function chunkName() {
     return "src/components/Footer";
@@ -1675,7 +2445,7 @@ t_2.template = '../src/components/Footer.js';
 var t_3 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/components/Header.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 11))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 13))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1683,7 +2453,7 @@ var t_3 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/components/Header.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(11);
+    return /*require.resolve*/(13);
   },
   chunkName: function chunkName() {
     return "src/components/Header";
@@ -1691,27 +2461,27 @@ var t_3 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
 }), universalOptions);
 t_3.template = '../src/components/Header.js';
 var t_4 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
-  id: "../src/components/RadarPage.js",
+  id: "../src/components/PCRadar.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() | src/components/RadarPage */).then(__webpack_require__.bind(null, 28))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 15))]).then(function (proms) {
       return proms[0];
     });
   },
   path: function path() {
-    return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/components/RadarPage.js');
+    return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/components/PCRadar.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(28);
+    return /*require.resolve*/(15);
   },
   chunkName: function chunkName() {
-    return "src/components/RadarPage";
+    return "src/components/PCRadar";
   }
 }), universalOptions);
-t_4.template = '../src/components/RadarPage.js';
+t_4.template = '../src/components/PCRadar.js';
 var t_5 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/index.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 18))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() */).then(__webpack_require__.bind(null, 19))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1719,7 +2489,7 @@ var t_5 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/index.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(18);
+    return /*require.resolve*/(19);
   },
   chunkName: function chunkName() {
     return "src/index";
@@ -1729,7 +2499,7 @@ t_5.template = '../src/index.js';
 var t_6 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_universal_component_dist_index_js__WEBPACK_IMPORTED_MODULE_3___default()(babel_plugin_universal_import_universalImport__WEBPACK_IMPORTED_MODULE_1___default()({
   id: "../src/serviceWorker.js",
   load: function load() {
-    return Promise.all([Promise.resolve(/* import() | src/serviceWorker */).then(__webpack_require__.bind(null, 29))]).then(function (proms) {
+    return Promise.all([Promise.resolve(/* import() | src/serviceWorker */).then(__webpack_require__.bind(null, 30))]).then(function (proms) {
       return proms[0];
     });
   },
@@ -1737,7 +2507,7 @@ var t_6 = _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_react_un
     return path__WEBPACK_IMPORTED_MODULE_0___default.a.join(__dirname, '../src/serviceWorker.js');
   },
   resolve: function resolve() {
-    return /*require.resolve*/(29);
+    return /*require.resolve*/(30);
   },
   chunkName: function chunkName() {
     return "src/serviceWorker";
@@ -1750,7 +2520,7 @@ t_6.template = '../src/serviceWorker.js'; // Template Map
   '../src/App.js': t_1,
   '../src/components/Footer.js': t_2,
   '../src/components/Header.js': t_3,
-  '../src/components/RadarPage.js': t_4,
+  '../src/components/PCRadar.js': t_4,
   '../src/index.js': t_5,
   '../src/serviceWorker.js': t_6 // Not Found Template
 
@@ -1759,19 +2529,19 @@ var notFoundTemplate = "../node_modules/react-static/lib/browser/components/Defa
 /* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types");
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("hoist-non-react-statics");
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1862,534 +2632,13 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser/components/Default404");
 
 /***/ }),
-/* 28 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
-/* harmony import */ var _home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var css_RadarPage_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(51);
-/* harmony import */ var css_RadarPage_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(css_RadarPage_css__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(11);
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(12);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(20);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(32);
-/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_12__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-var rootUrl = "https://jiro4989.github.io/coc-radar/data";
-var indexDataUrl = "".concat(rootUrl, "/index.json");
-var abilityFields = ["str", "con", "pow", "dex", "app", "siz", "int2", "edu", "hp", "mp"];
-var battleFields = ["avoidance", "kick", "hold", "punch", "headThrust", "throwing", "martialArts", "handGun", "submachineGun", "shotGun", "machineGun", "rifle"];
-var findFields = ["firstAid", "lockPicking", "hide", "disappear", "ear", "quietStep", "photography", "psychoAnalysis", "tracking", "climbing", "library", "aim"];
-var actionFields = ["driving", "repairingMachine", "operatingHeavyMachine", "ridingHorse", "swimming", "creating", "control", "jumping", "repairingElectric", "navigate", "disguise"];
-var negotiationFields = ["winOver", "credit", "haggle", "argue", "nativeLanguage"];
-var knowledgeFields = ["medicine", "occult", "chemistry", "cthulhuMythology", "art", "accounting", "archeology", "computer", "psychology", "anthropology", "biology", "geology", "electronicEngineering", "astronomy", "naturalHistory", "physics", "law", "pharmacy", "history"];
-var artsFields = abilityFields.concat(battleFields).concat(findFields).concat(actionFields).concat(negotiationFields).concat(knowledgeFields);
-
-function createColors(span) {
-  var gradation = function gradation(span, r1, g1, b1, r2, g2, b2) {
-    var rd = (r2 - r1) / span;
-    var gd = (g2 - g1) / span;
-    var bd = (b2 - b1) / span;
-    var cs = [];
-
-    for (var i = 0; i < span; i++) {
-      var r = r1 + i * rd;
-      var g = g1 + i * gd;
-      var b = b1 + i * bd;
-      cs.push('rgba(' + r + ', ' + g + ', ' + b + ', 0.2)');
-    }
-
-    return cs;
-  };
-
-  var colors = [];
-  gradation(span, 255, 0, 0, 255, 69, 0).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 255, 69, 0, 255, 255, 0).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 255, 255, 0, 0, 128, 0).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 0, 128, 0, 0, 0, 255).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 0, 0, 255, 75, 0, 130).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 75, 0, 130, 238, 130, 238).forEach(function (item) {
-    return colors.push(item);
-  });
-  gradation(span, 238, 130, 238, 255, 0, 0).forEach(function (item) {
-    return colors.push(item);
-  });
-  return colors;
-}
-
-var colors = createColors(10);
-
-function includeId(queryParams, playerId) {
-  var params = query_string__WEBPACK_IMPORTED_MODULE_12___default.a.parse(queryParams.search); // idは0から始まり、URLの数だけ数値が増加する
-
-  for (var j = 0; j < 100000; j++) {
-    var key = "id" + j;
-
-    if (key in params) {
-      var v = params[key];
-      if (playerId === v) return true;
-      continue;
-    } // ここに到達するということはidNの数値を超過したということ
-    // よって後続のインデックスのidをチェックする必要はない
-
-
-    return false;
-  }
-
-  return false;
-}
-
-var RadarPage =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(RadarPage, _React$Component);
-
-  function RadarPage(props) {
-    var _this;
-
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, RadarPage);
-
-    _this = Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(RadarPage).call(this, props));
-
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this), "createChartData", function (genres, fields) {
-      // 凡例を追加
-      var labels = [];
-      var json = _this.state.players;
-      var pc = json[0];
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = genres[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var genre = _step.value;
-          var _iteratorNormalCompletion3 = true;
-          var _didIteratorError3 = false;
-          var _iteratorError3 = undefined;
-
-          try {
-            for (var _iterator3 = fields[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-              var field = _step3.value;
-
-              if (genre in pc.param && field in pc.param[genre]) {
-                var label = pc.param[genre][field].name;
-                labels.push(label);
-              }
-            }
-          } catch (err) {
-            _didIteratorError3 = true;
-            _iteratorError3 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                _iterator3.return();
-              }
-            } finally {
-              if (_didIteratorError3) {
-                throw _iteratorError3;
-              }
-            }
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      var colorInterval = Math.floor(colors.length / json.length);
-      var datasets = [];
-      var i = 0;
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = json[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var _pc = _step2.value;
-          // 能力値、戦闘技能〜とかのをループ
-          var data = [];
-          var _iteratorNormalCompletion4 = true;
-          var _didIteratorError4 = false;
-          var _iteratorError4 = undefined;
-
-          try {
-            for (var _iterator4 = genres[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-              var _genre = _step4.value;
-              var _iteratorNormalCompletion5 = true;
-              var _didIteratorError5 = false;
-              var _iteratorError5 = undefined;
-
-              try {
-                for (var _iterator5 = fields[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                  var _field = _step5.value;
-
-                  if (_genre in _pc.param && _field in _pc.param[_genre]) {
-                    var num = _pc.param[_genre][_field].num;
-                    data.push(num);
-                  }
-                }
-              } catch (err) {
-                _didIteratorError5 = true;
-                _iteratorError5 = err;
-              } finally {
-                try {
-                  if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-                    _iterator5.return();
-                  }
-                } finally {
-                  if (_didIteratorError5) {
-                    throw _iteratorError5;
-                  }
-                }
-              }
-            }
-          } catch (err) {
-            _didIteratorError4 = true;
-            _iteratorError4 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-                _iterator4.return();
-              }
-            } finally {
-              if (_didIteratorError4) {
-                throw _iteratorError4;
-              }
-            }
-          }
-
-          var n = i * colorInterval;
-          var d = {
-            label: _pc.name,
-            data: data,
-            backgroundColor: colors[n],
-            borderColor: colors[n].replace("0.2", "0.3"),
-            // FIXME 力技すぎる
-            borderWidth: 2
-          };
-          i++;
-
-          if (colors.length <= i) {
-            i = 0;
-          }
-
-          datasets.push(d);
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-
-      return {
-        labels: labels,
-        datasets: datasets
-      };
-    });
-
-    _this.state = {
-      playerId: props.match.params.id,
-      params: props.location,
-      tag: props.match.params.tag,
-      players: [],
-      playersLoaded: false
-    };
-    return _this;
-  }
-
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(RadarPage, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      return fetch(indexDataUrl).then(function (resp) {
-        return resp.json();
-      }).then(function (json) {
-        json.filter(function (player) {
-          return 0 <= player.tags.indexOf(_this2.state.tag) || player.id === _this2.state.playerId || includeId(_this2.state.params, player.id);
-        }).forEach(function (player) {
-          var url = "".concat(rootUrl, "/").concat(player.id, ".json");
-          fetch(url).then(function (resp) {
-            return resp.json();
-          }).then(function (player) {
-            _this2.setState({
-              playersLoaded: true,
-              players: _this2.state.players.concat([player])
-            });
-          }).catch(function (err) {
-            return console.error(err);
-          });
-        });
-      }).catch(function (err) {
-        return console.error(err);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var abilityData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        abilityData = this.createChartData(["ability"], abilityFields);
-      }
-
-      var artsData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        artsData = this.createChartData(["battleArts", "findArts", "actionArts", "negotiationArts", "knowledgeArts"], artsFields);
-      }
-
-      var battleData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        battleData = this.createChartData(["battleArts"], battleFields);
-      }
-
-      var findData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        findData = this.createChartData(["findArts"], findFields);
-      }
-
-      var actionData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        actionData = this.createChartData(["actionArts"], actionFields);
-      }
-
-      var negotiationData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        negotiationData = this.createChartData(["negotiationArts"], negotiationFields);
-      }
-
-      var knowledgeData = {
-        data: {
-          labels: [],
-          datasets: []
-        }
-      };
-
-      if (this.state.playersLoaded) {
-        knowledgeData = this.createChartData(["knowledgeArts"], knowledgeFields);
-      }
-
-      var circleOptions = {
-        scale: {
-          ticks: {
-            beginAtZero: true,
-            min: 0,
-            max: 20
-          }
-        }
-      };
-      var barOptions = {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              min: 0,
-              max: 100
-            }
-          }]
-        }
-      };
-      var graphs = [react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(RadarGraph, {
-        key: "1",
-        title: "\u80FD\u529B\u5024",
-        data: abilityData,
-        options: circleOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "2",
-        title: "\u5168\u6280\u80FD",
-        data: artsData,
-        options: barOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "3",
-        title: "\u6226\u95D8\u6280\u80FD",
-        data: battleData,
-        options: barOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "4",
-        title: "\u63A2\u7D22\u6280\u80FD",
-        data: findData,
-        options: barOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "5",
-        title: "\u884C\u52D5\u6280\u80FD",
-        data: actionData,
-        options: barOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "6",
-        title: "\u4EA4\u6E09\u6280\u80FD",
-        data: negotiationData,
-        options: barOptions
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(BarGraph, {
-        key: "7",
-        title: "\u77E5\u8B58\u6280\u80FD",
-        data: knowledgeData,
-        options: barOptions
-      })];
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "Radar"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "left"
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "main"
-      }, graphs), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], null)), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "right"
-      }));
-    }
-  }]);
-
-  return RadarPage;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
-
-var RadarGraph =
-/*#__PURE__*/
-function (_React$Component2) {
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(RadarGraph, _React$Component2);
-
-  function RadarGraph() {
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, RadarGraph);
-
-    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(RadarGraph).apply(this, arguments));
-  }
-
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(RadarGraph, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "board"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, this.props.title), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__["Radar"], {
-        data: this.props.data,
-        options: this.props.options
-      }));
-    }
-  }]);
-
-  return RadarGraph;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
-
-var BarGraph =
-/*#__PURE__*/
-function (_React$Component3) {
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(BarGraph, _React$Component3);
-
-  function BarGraph() {
-    Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, BarGraph);
-
-    return Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(BarGraph).apply(this, arguments));
-  }
-
-  Object(_home_jiro4989_src_github_com_jiro4989_coc_radar_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(BarGraph, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "board"
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", null, this.props.title), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__["Bar"], {
-        data: this.props.data,
-        options: this.props.options
-      }));
-    }
-  }]);
-
-  return BarGraph;
-}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (RadarPage);
-
-/***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2508,7 +2757,7 @@ function unregister() {
 }
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2521,9 +2770,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(0));
 
-var _reactStatic = __webpack_require__(35);
+var _reactStatic = __webpack_require__(36);
 
-var _router = __webpack_require__(36);
+var _router = __webpack_require__(37);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -2634,72 +2883,72 @@ var _default = function _default(_ref) {
 exports["default"] = _default;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-hot-loader");
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("query-string");
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(34);
-__webpack_require__(37);
-module.exports = __webpack_require__(43);
+__webpack_require__(35);
+__webpack_require__(38);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {
 /* eslint-disable import/no-dynamic-require */
 
-var plugins = __webpack_require__(21)["default"];
+var plugins = __webpack_require__(23)["default"];
 
-var _require = __webpack_require__(22),
+var _require = __webpack_require__(24),
     registerPlugins = _require.registerPlugins;
 
 registerPlugins(plugins);
 
 if (typeof document !== 'undefined' && module && module.hot) {
   module.hot.accept("/home/jiro4989/src/github.com/jiro4989/coc-radar/artifacts/react-static-browser-plugins.js", function () {
-    registerPlugins(__webpack_require__(21)["default"]);
+    registerPlugins(__webpack_require__(23)["default"]);
   });
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15)(module)))
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-static");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)(module)))
 
 /***/ }),
 /* 36 */
 /***/ (function(module, exports) {
 
-module.exports = require("@reach/router");
+module.exports = require("react-static");
 
 /***/ }),
 /* 37 */
+/***/ (function(module, exports) {
+
+module.exports = require("@reach/router");
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {
 /* eslint-disable import/no-dynamic-require */
 
-var _require = __webpack_require__(22),
+var _require = __webpack_require__(24),
     registerTemplates = _require.registerTemplates;
 
-var _require2 = __webpack_require__(23),
+var _require2 = __webpack_require__(25),
     templates = _require2["default"],
     notFoundTemplate = _require2.notFoundTemplate;
 
@@ -2707,17 +2956,17 @@ registerTemplates(templates, notFoundTemplate);
 
 if (typeof document !== 'undefined' && module && module.hot) {
   module.hot.accept("/home/jiro4989/src/github.com/jiro4989/coc-radar/artifacts/react-static-templates.js", function () {
-    var _require3 = __webpack_require__(23),
+    var _require3 = __webpack_require__(25),
         templates = _require3["default"],
         notFoundTemplate = _require3.notFoundTemplate;
 
     registerTemplates(templates, notFoundTemplate);
   });
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)(module)))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2744,7 +2993,7 @@ var _extends = Object.assign || function (target) {
 
 exports.default = requireUniversalModule;
 
-var _utils = __webpack_require__(17);
+var _utils = __webpack_require__(18);
 
 var CHUNK_NAMES = exports.CHUNK_NAMES = new Set();
 var MODULE_IDS = exports.MODULE_IDS = new Set();
@@ -2928,14 +3177,14 @@ var getConfig = function getConfig(isDynamic, universalConfig, options, props) {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	".": 14,
-	"./": 14,
-	"./index": 14,
-	"./index.js": 14
+	".": 12,
+	"./": 12,
+	"./index": 12,
+	"./index.js": 12
 };
 
 
@@ -2956,16 +3205,16 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 39;
+webpackContext.id = 40;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _typeof = __webpack_require__(16);
+var _typeof = __webpack_require__(17);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2993,7 +3242,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(24);
+var _propTypes = __webpack_require__(26);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -3068,13 +3317,13 @@ ReportChunks.childContextTypes = {
 exports.default = ReportChunks;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("vm");
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3085,7 +3334,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.__handleAfter = exports.__update = undefined;
 
-var _hoistNonReactStatics = __webpack_require__(25);
+var _hoistNonReactStatics = __webpack_require__(27);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -3141,28 +3390,28 @@ var __handleAfter = exports.__handleAfter = function __handleAfter(props, state,
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__(44);
+var _interopRequireWildcard = __webpack_require__(45);
 
-var _interopRequireDefault = __webpack_require__(45);
+var _interopRequireDefault = __webpack_require__(46);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(__webpack_require__(46));
+var _extends2 = _interopRequireDefault(__webpack_require__(47));
 
-var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(47));
+var _objectWithoutProperties2 = _interopRequireDefault(__webpack_require__(48));
 
 var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _useStaticInfo = __webpack_require__(48);
+var _useStaticInfo = __webpack_require__(49);
 /* eslint-disable import/no-dynamic-require */
 
 
@@ -3183,7 +3432,7 @@ function Suspense(_ref) {
 React.Suspense = Suspense;
 React["default"].Suspense = Suspense;
 
-var App = __webpack_require__(18)["default"];
+var App = __webpack_require__(19)["default"];
 
 var _default = function _default(staticInfo) {
   return function (props) {
@@ -3196,37 +3445,37 @@ var _default = function _default(staticInfo) {
 exports["default"] = _default;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/interopRequireWildcard");
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/interopRequireDefault");
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/extends");
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = require("@babel/runtime/helpers/objectWithoutProperties");
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = require("/home/jiro4989/src/github.com/jiro4989/coc-radar/node_modules/react-static/lib/browser/hooks/useStaticInfo");
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = function (originalModule) {
@@ -3256,22 +3505,22 @@ module.exports = function (originalModule) {
 };
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(26)(false);
+exports = module.exports = __webpack_require__(28)(false);
 // Module
-exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  -webkit-animation: App-logo-spin infinite 20s linear;\n          animation: App-logo-spin infinite 20s linear;\n  height: 40vmin;\n  pointer-events: none;\n}\n\n.App-header {\n  background-color: #282c34;\n  min-height: 100vh;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  font-size: calc(10px + 2vmin);\n  color: white;\n}\n\n.App-link {\n  color: #61dafb;\n}\n\n@-webkit-keyframes App-logo-spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n@keyframes App-logo-spin {\n  from {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n  }\n\n  to {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n  }\n}\n\n.user-text-input,\n.user-input {\n  padding: 0.8em;\n  outline: none;\n  border: 1px solid #DDD;\n  border-radius: 3px;\n  font-size: 16px;\n  width: 150px;\n}\n\n.user-text-input {\n  width: 50vw;\n}\n\n.tag-button {\n  background-color: #efefef;\n  border-radius: 2px;\n  border-style: none;\n  border-color: #58ACFA;\n  color: #58ACFA;\n}\n\ninput[type=\"checkbox\"] {\n  -webkit-transform: scale(1.6);\n      -ms-transform: scale(1.6);\n          transform: scale(1.6);\n}\n\ninput:hover,\ninput:focus {\n  background-color: #fff;\n  border-color: #59b1eb;\n  color: #59b1eb;\n  -webkit-transition: all 300ms 0s ease;\n  -o-transition: all 300ms 0s ease;\n  transition: all 300ms 0s ease;\n}\n\nthead,\ntbody {\n  display: block;\n}\n\ntbody {\n  overflow-y: scroll;\n  height: 70vh;\n}\n\ntable {\n  border-bottom: 5px solid #1dc1d6;\n}\n\ntable th {\n  border-bottom: 5px solid #1dc1d6;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  text-align: center;\n}\n\ntable td {\n  border-bottom: 2px dotted #ccc;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n}\n\nth,\ntd {\n  padding: 0.5em;\n}\n\ntr th:nth-child(1),\ntr td:nth-child(1) {\n  width: 3vw;\n  text-align: center;\n}\n\ntr th:nth-child(2),\ntr td:nth-child(2) {\n  width: 18vw;\n  text-align: center;\n}\n\ntr th:nth-child(3),\ntr td:nth-child(3) {\n  width: 45vw;\n}\n\ntr th:nth-child(4),\ntr td:nth-child(4) {\n  width: 15vw;\n  text-align: center;\n}\n\nh1 {\n  padding-bottom: .5em;\n  border-bottom: 1px solid #ccc;\n  color: #888;\n  text-align: center;\n}\n\n.App {\n  width: 100vw;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: arial, sans-serif;\n}\n\n@media screen and (min-width: 1024px) {\n\n  .left,\n  .right {\n    -ms-flex: 1 1;\n        flex: 1 1;\n  }\n\n  .center {\n    -ms-flex: 4 1;\n        flex: 4 1;\n  }\n}\n\n.row-area {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0em 0.8em;\n  width: 80vw;\n}\n\n.row-area * {\n  margin: 2px 2px;\n}\n\n.tag {\n  padding: 3px 6px;\n  margin-right: 8px;\n  margin-left: 1px;\n  font-size: 75%;\n  color: white;\n  border-radius: 6px;\n  -webkit-box-shadow: 0 0 3px #ddd;\n          box-shadow: 0 0 3px #ddd;\n  background-color: #58ACFA;\n}\n\n.tag a {\n  padding: 0px 10px 0px 0px;\n}\n\n.tag:before {\n  content: '# '\n}\n\n.tag a:link,\n.tag a:visited {\n  color: #eee;\n  text-decoration: none;\n}\n\nfooter {\n  text-align: center;\n}", ""]);
+exports.push([module.i, "/* .App {\n  width: 100vw;\n  display: flex;\n  font-family: arial, sans-serif;\n} */\n\n/* .App-header {\n  background-color: #282c34;\n  font-size: calc(10px + 2vmin);\n  color: white;\n} */\n\n.user-text-input,\n.user-input {\n  padding: 0.8em;\n  outline: none;\n  border: 1px solid #DDD;\n  border-radius: 3px;\n  font-size: 16px;\n  width: 150px;\n}\n\n.user-text-input {\n  width: 50%;\n}\n\n.tag-button {\n  background-color: #efefef;\n  border-radius: 2px;\n  border-style: none;\n  border-color: #58ACFA;\n  color: #58ACFA;\n}\n\ninput[type=\"checkbox\"] {\n  -webkit-transform: scale(1.6);\n      -ms-transform: scale(1.6);\n          transform: scale(1.6);\n}\n\ninput:hover,\ninput:focus {\n  background-color: #fff;\n  border-color: #59b1eb;\n  color: #59b1eb;\n  -webkit-transition: all 300ms 0s ease;\n  -o-transition: all 300ms 0s ease;\n  transition: all 300ms 0s ease;\n}\n\nthead,\ntbody {\n  display: block;\n}\n\ntbody {\n  overflow-y: scroll;\n  height: 60vh;\n}\n\ntable {\n  border-bottom: 5px solid #1dc1d6;\n}\n\ntable th {\n  border-bottom: 5px solid #1dc1d6;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  text-align: center;\n}\n\ntable td {\n  border-bottom: 2px dotted #ccc;\n  border-top: none;\n  border-left: none;\n  border-right: none;\n}\n\nth,\ntd {\n  padding: 0.5em;\n}\n\ntr th:nth-child(1),\ntr td:nth-child(1) {\n  width: 3vw;\n  text-align: center;\n}\n\ntr th:nth-child(2),\ntr td:nth-child(2) {\n  width: 18vw;\n  text-align: center;\n}\n\ntr th:nth-child(3),\ntr td:nth-child(3) {\n  width: 45vw;\n}\n\nh1 {\n  padding-bottom: .5em;\n  border-bottom: 1px solid #ccc;\n  color: #888;\n  text-align: center;\n}\n\n@media screen and (min-width: 1024px) {\n  .center {\n    display: -ms-flexbox;\n    display: flex;\n  }\n\n  .parent {\n    -ms-flex: 1 1;\n        flex: 1 1;\n  }\n  .parent {\n    -ms-flex: 1 1;\n        flex: 1 1;\n  }\n}\n\nheader, footer {\n  height: 60px;\n}\n\n.left, .right {\n  height: calc(100vh - 216px);\n  margin: 4px 5px;\n}\n\n.right {\n  overflow-y: scroll;\n}\n\n.row-area {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  padding: 0em 0.8em;\n}\n\n.row-area * {\n  margin: 2px 2px;\n}\n\n.tag {\n  padding: 3px 6px;\n  margin-right: 8px;\n  margin-left: 1px;\n  font-size: 75%;\n  color: white;\n  border-radius: 6px;\n  -webkit-box-shadow: 0 0 3px #ddd;\n          box-shadow: 0 0 3px #ddd;\n  background-color: #58ACFA;\n}\n\n.tag a {\n  padding: 0px 10px 0px 0px;\n}\n\n.tag:before {\n  content: '# '\n}\n\n.tag a:link,\n.tag a:visited {\n  color: #eee;\n  text-decoration: none;\n}\n\nfooter {\n  text-align: center;\n}\n\n.parent {\n  border: solid 1px #333;\n  border-radius: 10px;\n  margin: 0px 3px;\n}\n\n.parent h2 {\n  color: #555;\n  padding-left: 20px;\n  margin: 10px 0;\n}\n\nh1 a {\n  padding-bottom: .5em;\n  border-bottom: 1px solid #ccc;\n  color: #888;\n  text-align: center;\n  text-decoration: none;\n}", ""]);
 
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(26)(false);
+exports = module.exports = __webpack_require__(28)(false);
 // Module
-exports.push([module.i, "#progress,\n#back {\n    position: fixed;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    margin: auto;\n    pointer-events: none;\n}\n\n#progress {\n    width: 128px;\n    height: 64px;\n}\n\n#back {\n    opacity: 0.4;\n    background-color: #000;\n}\n\n@media screen and (max-width: 1024px) {\n    .board {\n        width: 95vw;\n    }\n}\n\n@media screen and (min-width: 1024px) {\n\n    .left,\n    .right {\n        -ms-flex: 1 1;\n            flex: 1 1;\n    }\n\n    .center {\n        -ms-flex: 4 1;\n            flex: 4 1;\n    }\n}\n\nh1 {\n    padding-bottom: .5em;\n    border-bottom: 1px solid #ccc;\n    color: #888;\n    text-align: center;\n}\n\nh2 {\n    color: #0da1c6;\n    padding: 0.5em 0;\n    border-top: solid 3px #0da1c6;\n    border-bottom: solid 3px #0da1c6;\n}\n\n.board {\n    padding: 0.5em 1em;\n    margin: 2em 0;\n    background: #ffffff;\n    border-top: solid 6px #1dc1d6;\n    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n}\n\nbody {\n    width: 100vw;\n    display: -ms-flexbox;\n    display: flex;\n    font-family: arial, sans-serif;\n}\n\nh1 a:link,\nh1 a:visited {\n    color: #888;\n    text-decoration: none;\n}", ""]);
+exports.push([module.i, "#progress,\n#back {\n    position: fixed;\n    top: 0px;\n    right: 0px;\n    bottom: 0px;\n    left: 0px;\n    margin: auto;\n    pointer-events: none;\n}\n\n#progress {\n    width: 128px;\n    height: 64px;\n}\n\n#back {\n    opacity: 0.4;\n    background-color: #000;\n}\n\n@media screen and (max-width: 1024px) {\n    .board {\n        width: 95vw;\n    }\n}\n\n@media screen and (min-width: 1024px) {\n\n    .left,\n    .right {\n        -ms-flex: 1 1;\n            flex: 1 1;\n    }\n\n    .center {\n        -ms-flex: 4 1;\n            flex: 4 1;\n    }\n}\n\n.right h2 {\n    color: #0da1c6;\n    padding: 0.5em 0;\n    border-top: solid 3px #0da1c6;\n    border-bottom: solid 3px #0da1c6;\n}\n\n.board {\n    padding: 0.5em 1em;\n    margin: 0 0 8px 0;\n    background: #ffffff;\n    border-top: solid 6px #1dc1d6;\n    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);\n}", ""]);
 
 
 

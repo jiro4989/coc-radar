@@ -3,19 +3,42 @@ import './css/App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PCRadar from './components/PCRadar';
-
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import queryString from 'query-string';
 
 const rootUrl = "https://jiro4989.github.io/coc-radar"
 const apiRootUrl = `${rootUrl}/data`
 const indexDataUrl = `${apiRootUrl}/index.json`
-const radarPlayerUrl = "players/"
-const radarTagUrl = "tags/"
+
+function parseQueryIds(params) {
+  // idは0から始まり、URLの数だけ数値が増加する
+  let ids = [];
+  for (let j = 0; j < 100000; j++) {
+    const key = "id" + j;
+    if (key in params) {
+      const v = params[key];
+      ids.push(v);
+      continue;
+    }
+    // ここに到達するということはidNの数値を超過したということ
+    // よって後続のインデックスのidをチェックする必要はない
+    return ids;
+  }
+  return ids;
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const queryParam = queryString.parse(props.location.search);
+    let queryTag = "";
+    if (queryParam["tag"]) {
+      queryTag = queryParam["tag"];
+    }
+    const queryIds = parseQueryIds(queryParam);
+
     this.state = {
+      queryTag: queryTag,
+      queryIds: queryIds,
       playersLoaded: false,
       players: [{
         checked: false,
@@ -33,7 +56,7 @@ class App extends React.Component {
 
   // 一覧ファイルのリクエスト
   componentDidMount() {
-    return fetch(indexDataUrl)
+    fetch(indexDataUrl)
       .then((resp) => resp.json())
       .then((json) => {
         const players = this.addChecked(json);
@@ -43,6 +66,26 @@ class App extends React.Component {
           filteredPlayers: players,
           tags: this.filterTags(players),
         })
+
+        // データ一覧が揃ったらtagの情報を取得
+        const tag = this.state.queryTag;
+        if (tag !== "") {
+          const players = this.state.players
+            .filter((p) => p.tags.includes(tag))
+            .map((p) => {p.checked = true; return p})
+          this.setState({players: players});
+          this.switchSelected(-1, false);
+          return;
+        }
+
+        // IDが載っていたら追加
+        const ids = this.state.queryIds;
+        if (0 < ids.length) {
+          // this.state.players
+          //   .filter((p) => 0 <= ids.indexOf(p.id))
+          //   .forEach((p) => this.switchSelected(p.id, true));
+          return;
+        }
       })
       .catch((err) => console.error(err));
   }
