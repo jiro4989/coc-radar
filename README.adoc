@@ -76,12 +76,12 @@ https://github.com/jiro4989/coc[coc]というキャラクター保管所のク�
 ールのデータからJSONを生成するツールをバッチ処理に使用している。
 
 masterブランチが更新されたタイミングでTravisCIで前述のツールを使用してデータを取
-得する。取得したデータはdocs/data/index.jsonとその他のJSONを更新し、gh-pagesブラ
-ンチにPUSHする。
+得する。取得したデータはdocs/data/*.jsonに配置される。
 
-データPUSHと同時に、 `npm run build` が走り、dataと一緒にGitHubPagesにPUSHされる。
+データ取得と同時に、 `npm run build` が走り、Reactアプリをビルドし、各種JSONと一
+緒にgh-pagesブランチにPUSHされる。
 
-また、TravisCIのCron Jobにより、毎日1回はバッチ処理が走る。
+また、TravisCIのCron Jobにより、毎日1回はこのバッチ処理が走る。
 
 == グラフ化したい探索者を追加する方法
 
