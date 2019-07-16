@@ -323,6 +323,12 @@ addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 proc toIndexPc*(this: SrcTag, tags: seq[string]): IndexPc = 
   result = IndexPc(id: $this.id, name: this.name, tags: tags, url: this.idurl)
 
+proc toIndexPc*(this: SrcPc, url: string): IndexPc = 
+  let tags = if this.pc_tags == "": @[]
+             else: this.pc_tags.split(" ")
+  result = IndexPc(id: $this.data_id, name: this.pc_name, tags: tags,
+                   url: url)
+
 proc toPc*(this: SrcPc, url: string): Pc =
   var pc = Pc(id: $this.data_id,
               name: this.pc_name,
@@ -345,6 +351,81 @@ proc toPc*(this: SrcPc, url: string): Pc =
     data.luk = CValue(name: "幸運", num: this.NA13.parseInt)
     data.knowledge = CValue(name: "知識", num: this.NA14.parseInt)
     pc.param.ability = data
+  block:
+    var data: BattleArts # TBAP
+    data.avoidance = CValue(name: "回避", num: this.TBAP[0].parseInt)
+    data.kick = CValue(name: "キック", num: this.TBAP[1].parseInt)
+    data.hold = CValue(name: "組み付き", num: this.TBAP[2].parseInt)
+    data.punch = CValue(name: "こぶし（パンチ）", num: this.TBAP[3].parseInt)
+    data.headThrust = CValue(name: "頭突き", num: this.TBAP[4].parseInt)
+    data.throwing = CValue(name: "投擲", num: this.TBAP[5].parseInt)
+    data.martialArts = CValue(name: "マーシャルアーツ", num: this.TBAP[6].parseInt)
+    data.handGun = CValue(name: "拳銃", num: this.TBAP[7].parseInt)
+    data.submachineGun = CValue(name: "サブマシンガン", num: this.TBAP[8].parseInt)
+    data.shotGun = CValue(name: "ショットガン", num: this.TBAP[9].parseInt)
+    data.machineGun = CValue(name: "マシンガン", num: this.TBAP[10].parseInt)
+    data.rifle = CValue(name: "ライフル", num: this.TBAP[11].parseInt)
+    pc.param.battleArts = data
+  block:
+    var data: FindArts # TFAP
+    data.firstAid = CValue(name: "応急手当", num: this.TFAP[0].parseInt)
+    data.lockPicking = CValue(name: "鍵開け", num: this.TFAP[1].parseInt)
+    data.hide = CValue(name: "隠す", num: this.TFAP[2].parseInt)
+    data.disappear = CValue(name: "隠れる", num: this.TFAP[3].parseInt)
+    data.ear = CValue(name: "聞き耳", num: this.TFAP[4].parseInt)
+    data.quietStep = CValue(name: "忍び歩き", num: this.TFAP[5].parseInt)
+    data.photography = CValue(name: "写真術", num: this.TFAP[6].parseInt)
+    data.psychoAnalysis = CValue(name: "精神分析", num: this.TFAP[7].parseInt)
+    data.tracking = CValue(name: "追跡", num: this.TFAP[8].parseInt)
+    data.climbing = CValue(name: "登攀", num: this.TFAP[9].parseInt)
+    data.library = CValue(name: "図書館", num: this.TFAP[10].parseInt)
+    data.aim = CValue(name: "目星", num: this.TFAP[11].parseInt)
+    pc.param.findArts = data
+  block:
+    var data: ActionArts # TAAP
+    data.driving = CValue(name: "運転", num: this.TAAP[0].parseInt)
+    data.repairingMachine = CValue(name: "機械修理", num: this.TAAP[1].parseInt)
+    data.operatingHeavyMachine = CValue(name: "重機械操作", num: this.TAAP[2].parseInt)
+    data.ridingHorse = CValue(name: "乗馬", num: this.TAAP[3].parseInt)
+    data.swimming = CValue(name: "水泳", num: this.TAAP[4].parseInt)
+    data.creating = CValue(name: "制作", num: this.TAAP[5].parseInt)
+    data.control = CValue(name: "操縦", num: this.TAAP[6].parseInt)
+    data.jumping = CValue(name: "跳躍", num: this.TAAP[7].parseInt)
+    data.repairingElectric = CValue(name: "電気修理", num: this.TAAP[8].parseInt)
+    data.navigate = CValue(name: "ナビゲート", num: this.TAAP[9].parseInt)
+    data.disguise = CValue(name: "変装", num: this.TAAP[10].parseInt)
+    pc.param.actionArts = data
+  block:
+    var data: NegotiationArts # TCAP
+    data.winOver = CValue(name: "言いくるめ", num: this.TCAP[0].parseInt)
+    data.credit = CValue(name: "信用", num: this.TCAP[1].parseInt)
+    data.haggle = CValue(name: "説得", num: this.TCAP[2].parseInt)
+    data.argue = CValue(name: "値切り", num: this.TCAP[3].parseInt)
+    data.nativeLanguage = CValue(name: "母国語", num: this.TCAP[4].parseInt)
+    pc.param.negotiationArts = data
+  block:
+    var data: KnowledgeArts # TKAP
+    data.medicine = CValue(name: "医学", num: this.TKAP[0].parseInt)
+    data.occult = CValue(name: "オカルト", num: this.TKAP[1].parseInt)
+    data.chemistry = CValue(name: "科学", num: this.TKAP[2].parseInt)
+    data.cthulhuMythology = CValue(name: "クトゥルフ神話", num: this.TKAP[3].parseInt)
+    data.art = CValue(name: "芸術", num: this.TKAP[4].parseInt)
+    data.accounting = CValue(name: "経理", num: this.TKAP[5].parseInt)
+    data.archeology = CValue(name: "考古学", num: this.TKAP[6].parseInt)
+    data.computer = CValue(name: "コンピュータ", num: this.TKAP[7].parseInt)
+    data.psychology = CValue(name: "心理学", num: this.TKAP[8].parseInt)
+    data.anthropology = CValue(name: "人類学", num: this.TKAP[9].parseInt)
+    data.biology = CValue(name: "生物学", num: this.TKAP[10].parseInt)
+    data.geology = CValue(name: "地質学", num: this.TKAP[11].parseInt)
+    data.electronicEngineering = CValue(name: "電子工学", num: this.TKAP[12].parseInt)
+    data.astronomy = CValue(name: "天文学", num: this.TKAP[13].parseInt)
+    data.naturalHistory = CValue(name: "博物学", num: this.TKAP[14].parseInt)
+    data.physics = CValue(name: "物理学", num: this.TKAP[15].parseInt)
+    data.law = CValue(name: "法律", num: this.TKAP[16].parseInt)
+    data.pharmacy = CValue(name: "薬学", num: this.TKAP[17].parseInt)
+    data.history = CValue(name: "歴史", num: this.TKAP[18].parseInt)
+    pc.param.knowledgeArts = data
+  return pc
 
 proc retryGet(client: HttpClient, url: string): string =
   for i in 1..retryCount:
@@ -358,17 +439,15 @@ proc retryGet(client: HttpClient, url: string): string =
       sleep(retrySleepMS)
       continue
 
-proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
-  let client = newHttpClient()
-  for tagObj in client.retryGet(url).parseJson.to(SrcTags):
-    let pc = tagObj.toIndexPc(@[])
-    result.add(pc)
-
 proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
   let tag = url.parseUri.query.split("=")[1]
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
     let pc = tagObj.toIndexPc(@[tag])
     result.add(pc)
+
+proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
+  let pc = client.retryGet(url).parseJson.to(SrcPc).toIndexPc(url)
+  result.add(pc)
 
 when isMainModule:
   # 引数から取得データの一覧ファイルを取得
