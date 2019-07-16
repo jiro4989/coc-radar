@@ -1,4 +1,4 @@
-import os, parsecsv, strutils, sequtils, json, marshal, strformat, logging, httpclient
+import os, parsecsv, strutils, sequtils, json, marshal, strformat, logging, httpclient, uri
 
 type
   IndexPc* = object
@@ -222,7 +222,7 @@ const
 
 addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 
-proc toIndexPc*(this: SrcTag, tag: string): IndexPc = 
+proc toIndexPc*(this: SrcTag, tags: seq[string]): IndexPc = 
   result = IndexPc(id: $this.id, name: this.name, tags: @[tag], url: this.idurl)
 
 proc retryGet(client: HttpClient, url: string): string =
@@ -237,19 +237,31 @@ proc retryGet(client: HttpClient, url: string): string =
       sleep(retrySleepMS)
       continue
 
-proc getTag(urls: seq[string]): int =
-  info "Start main:"
+proc fetchPcs(url: string): seq[IndexPc] =
   let client = newHttpClient()
-  var pcs: seq[IndexPc]
-  for url in urls:
-    let tag = url.split("?")[^1].split("=")[1]
-    for tagObj in client.retryGet(url).parseJson.to(SrcTags):
-      let pc = tagObj.toIndexPc(tag)
-      pcs.add(pc)
-  echo $$pcs
-  info "Success main:"
+  for tagObj in client.retryGet(url).parseJson.to(SrcTags):
+    let pc = tagObj.toIndexPc(@[])
+    result.add(pc)
+
+proc fetchPcsWithTag(url: string): seq[IndexPc] =
+  let client = newHttpClient()
+  let tag = url.parseUri.query.split("=")[1]
+  for tagObj in client.retryGet(url).parseJson.to(SrcTags):
+    let pc = tagObj.toIndexPc(@[tag])
+    result.add(pc)
 
 when isMainModule:
   let gettingPagesFile = commandLineParams()[0]
+  var indexPcs: seq[IndexPc]
   for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
     echo pageInfo
+    let path = pageInfo.url.parseUri.path
+    if ".html" in path:
+      let url = path.replace(".html", ".js")
+      if "?tag=" in url:
+        let pcs = fetchPcsWithTag(url)
+        indexPcs.add(pcs)
+      else:
+        let pcs = fetchPcs(url)
+        indexPcs.add(pcs)
+  echo $$indexPcs
