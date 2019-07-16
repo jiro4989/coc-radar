@@ -32,27 +32,27 @@ type
   SrcPc = object
     is_disp_status: string
     V_NA1: string
-    NA1: string
+    NA1: string ## STR
     V_NA2: string
-    NA2: string
+    NA2: string ## CON
     V_NA3: string
-    NA3: string
+    NA3: string ## POW
     V_NA4: string
-    NA4: string
+    NA4: string ## DEX
     V_NA5: string
-    NA5: string
+    NA5: string ## APP
     V_NA6: string
-    NA6: string
+    NA6: string ## SIZ
     V_NA7: string
-    NA7: string
+    NA7: string ## INT
     V_NA8: string
-    NA8: string
-    NA9: string
-    NA10: string
-    NA11: string
-    NA12: string
-    NA13: string
-    NA14: string
+    NA8: string ## EDU
+    NA9: string ## HP
+    NA10: string ## MP
+    NA11: string ## 初期SAN
+    NA12: string ## アイデア
+    NA13: string ## 幸運
+    NA14: string ## 知識
     NS1: string
     NS2: string
     NS3: string
@@ -323,8 +323,28 @@ addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 proc toIndexPc*(this: SrcTag, tags: seq[string]): IndexPc = 
   result = IndexPc(id: $this.id, name: this.name, tags: tags, url: this.idurl)
 
-proc toPc*(this: SrcPc): Pc =
-  discard
+proc toPc*(this: SrcPc, url: string): Pc =
+  var pc = Pc(id: $this.data_id,
+              name: this.pc_name,
+              tags: this.pc_tags.split(" "),
+              url: url)
+  block:
+    var data: Ability
+    data.str = CValue(name: "STR", num: this.NA1.parseInt)
+    data.con = CValue(name: "CON", num: this.NA2.parseInt)
+    data.pow = CValue(name: "POW", num: this.NA3.parseInt)
+    data.dex = CValue(name: "DEX", num: this.NA4.parseInt)
+    data.app = CValue(name: "APP", num: this.NA5.parseInt)
+    data.siz = CValue(name: "SIZ", num: this.NA6.parseInt)
+    data.int2 = CValue(name: "INT", num: this.NA7.parseInt)
+    data.edu = CValue(name: "EDU", num: this.NA8.parseInt)
+    data.hp = CValue(name: "HP", num: this.NA9.parseInt)
+    data.mp = CValue(name: "MP", num: this.NA10.parseInt)
+    data.initSan = CValue(name: "初期SAN", num: this.NA11.parseInt)
+    data.idea = CValue(name: "アイデア", num: this.NA12.parseInt)
+    data.luk = CValue(name: "幸運", num: this.NA13.parseInt)
+    data.knowledge = CValue(name: "知識", num: this.NA14.parseInt)
+    pc.param.ability = data
 
 proc retryGet(client: HttpClient, url: string): string =
   for i in 1..retryCount:
@@ -376,5 +396,5 @@ when isMainModule:
   for indexPc in indexPcs:
     let url = indexPc.url & ".js"
     let srcPc = client.retryGet(url).parseJson.to(SrcPc)
-    let pc = srcPc.toPc
+    let pc = srcPc.toPc(url)
     writeFile(&"{outDir}/{indexPc.id}.json", $$pc)
