@@ -1,4 +1,4 @@
-import os, parsecsv, strutils, sequtils, json, marshal, strformat, logging, httpclient, uri
+import os, strutils, json, marshal, strformat, logging, httpclient, uri
 
 type
   IndexPc* = object
@@ -8,7 +8,7 @@ type
     url*: string
   NilType = ref object
   SrcTags = seq[SrcTag]
-  SrcTag = ref object
+  SrcTag = object
     id: int64
     idurl: string
     md: string
@@ -29,7 +29,7 @@ type
     SortC: string
     str_sort: string
     system: string
-  SrcPc = ref object
+  SrcPc = object
     is_disp_status: string
     V_NA1: string
     NA1: string
@@ -214,16 +214,117 @@ type
   GettingPage = object
     name*: string
     url*: string
+    genre*: string
     comment*: string
+  Pc* = ref object
+    id*: string
+    name*: string
+    tags*: seq[string]
+    url*: string
+    param*: Param
+  Param* = object
+    ability*: Ability
+    battleArts*: BattleArts
+    findArts*: FindArts
+    actionArts*: ActionArts
+    negotiationArts*: NegotiationArts
+    knowledgeArts*: KnowledgeArts
+  CValue* = object
+    name*: string
+    num*: int
+  Ability* = object
+    str*: CValue    ## STR
+    con*: CValue    ## CON
+    pow*: CValue    ## POW
+    dex*: CValue    ## DEX
+    app*: CValue    ## APP
+    siz*: CValue    ## SIZ
+    int2*: CValue    ## INT
+    edu*: CValue    ## EDU
+    hp*: CValue    ## HP
+    mp*: CValue    ## MP
+    initSan*: CValue    ## 初期SAN
+    idea*: CValue    ## アイデア
+    luk*: CValue    ## 幸運
+    knowledge*: CValue    ## 知識
+  BattleArts* = object
+    avoidance*: CValue    ## 回避
+    kick*: CValue    ## キック
+    hold*: CValue    ## 組み付き
+    punch*: CValue    ## こぶし（パンチ）
+    headThrust*: CValue    ## 頭突き
+    throwing*: CValue    ## 投擲
+    martialArts*: CValue    ## マーシャルアーツ
+    handGun*: CValue    ## 拳銃
+    submachineGun*: CValue    ## サブマシンガン
+    shotGun*: CValue    ## ショットガン
+    machineGun*: CValue    ## マシンガン
+    rifle*: CValue    ## ライフル
+  FindArts* = object
+    firstAid*: CValue    ## 応急手当
+    lockPicking*: CValue    ## 鍵開け
+    hide*: CValue    ## 隠す
+    disappear*: CValue    ## 隠れる
+    ear*: CValue    ## 聞き耳
+    quietStep*: CValue    ## 忍び歩き
+    photography*: CValue    ## 写真術
+    psychoAnalysis*: CValue    ## 精神分析
+    tracking*: CValue    ## 追跡
+    climbing*: CValue    ## 登攀
+    library*: CValue    ## 図書館
+    aim*: CValue    ## 目星
+  ActionArts* = object
+    driving*: CValue    ## 運転
+    repairingMachine*: CValue    ## 機械修理
+    operatingHeavyMachine*: CValue    ## 重機械操作
+    ridingHorse*: CValue    ## 乗馬
+    swimming*: CValue    ## 水泳
+    creating*: CValue    ## 製作
+    control*: CValue    ## 操縦
+    jumping*: CValue    ## 跳躍
+    repairingElectric*: CValue    ## 電気修理
+    navigate*: CValue    ## ナビゲート
+    disguise*: CValue    ## 変装
+  NegotiationArts* = object
+    winOver*: CValue    ## 言いくるめ
+    credit*: CValue    ## 信用
+    haggle*: CValue    ## 値切り
+    argue*: CValue    ## 説得
+    nativeLanguage*: CValue    ## 母国語
+  KnowledgeArts* = object
+    medicine*: CValue    ## 医学
+    occult*: CValue    ## オカルト
+    chemistry*: CValue    ## 化学
+    cthulhuMythology*: CValue    ## クトゥルフ神話
+    art*: CValue    ## 芸術
+    accounting*: CValue    ## 経理
+    archeology*: CValue    ## 考古学
+    computer*: CValue    ## コンピューター
+    psychology*: CValue    ## 心理学
+    anthropology*: CValue    ## 人類学
+    biology*: CValue    ## 生物学
+    geology*: CValue    ## 地質学
+    electronicEngineering*: CValue    ## 電子工学
+    astronomy*: CValue    ## 天文学
+    naturalHistory*: CValue    ## 博物学
+    physics*: CValue    ## 物理学
+    law*: CValue    ## 法律
+    pharmacy*: CValue    ## 薬学
+    history*: CValue    ## 歴史
+  IllegalGettingPageGenreError = Defect
 
 const
   retryCount = 3
   retrySleepMS = 1000
+  outDir = "docs/data"
 
 addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 
 proc toIndexPc*(this: SrcTag, tags: seq[string]): IndexPc = 
-  result = IndexPc(id: $this.id, name: this.name, tags: @[tag], url: this.idurl)
+  result = IndexPc(id: $this.id, name: this.name, tags: tags, url: this.idurl)
+
+proc toPc*(this: SrcPc): Pc =
+  discard
 
 proc retryGet(client: HttpClient, url: string): string =
   for i in 1..retryCount:
@@ -237,31 +338,43 @@ proc retryGet(client: HttpClient, url: string): string =
       sleep(retrySleepMS)
       continue
 
-proc fetchPcs(url: string): seq[IndexPc] =
+proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
   let client = newHttpClient()
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
     let pc = tagObj.toIndexPc(@[])
     result.add(pc)
 
-proc fetchPcsWithTag(url: string): seq[IndexPc] =
-  let client = newHttpClient()
+proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
   let tag = url.parseUri.query.split("=")[1]
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
     let pc = tagObj.toIndexPc(@[tag])
     result.add(pc)
 
 when isMainModule:
+  # 引数から取得データの一覧ファイルを取得
   let gettingPagesFile = commandLineParams()[0]
+
+  let client = newHttpClient()
   var indexPcs: seq[IndexPc]
+  # 一覧ファイルのJSONからURLを取得し、データを取得
+  # 取得したデータをindex.jsonとして出力する
   for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
-    echo pageInfo
-    let path = pageInfo.url.parseUri.path
-    if ".html" in path:
-      let url = path.replace(".html", ".js")
-      if "?tag=" in url:
-        let pcs = fetchPcsWithTag(url)
-        indexPcs.add(pcs)
-      else:
-        let pcs = fetchPcs(url)
-        indexPcs.add(pcs)
-  echo $$indexPcs
+    let url = pageInfo.url
+    let genre = pageInfo.genre
+    case genre
+    of "tag":
+      indexPcs.add(client.fetchPcsWithTag(url))
+    of "player":
+      indexPcs.add(client.fetchPcs(url))
+    else:
+      raise newException(IllegalGettingPageGenreError,
+                         &"genre is illegal. genre = {genre}")
+  writeFile(&"{outDir}/index.json", $$indexPcs)
+
+  # 各探索者のJSONを取得し、1探索者1JSONとしてファイル出力する
+  # 出力するファイル名は探索者のIDを使用する。
+  for indexPc in indexPcs:
+    let url = indexPc.url & ".js"
+    let srcPc = client.retryGet(url).parseJson.to(SrcPc)
+    let pc = srcPc.toPc
+    writeFile(&"{outDir}/{indexPc.id}.json", $$pc)

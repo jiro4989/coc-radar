@@ -1,9 +1,11 @@
 [{
     "name": "jiro",
-    "url": "https://charasheet.vampire-blood.net/list_coc.html?tag=jiro",
+    "url": "https://charasheet.vampire-blood.net/list_coc.js?tag=jiro",
+    "genre":"tag",
     "comment": ""
 }, {
     "name": "jiro",
-    "url": "https://charasheet.vampire-blood.net/2550043",
+    "url": "https://charasheet.vampire-blood.net/2550043.js",
+    "genre":"player",
     "comment": ""
 }]
