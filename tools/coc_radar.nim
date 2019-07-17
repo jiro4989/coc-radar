@@ -515,6 +515,7 @@ proc addPage(): int =
   if not readLineFromStdin("? ", author):
     echo "入力を中断しました"
     return 1
+  echo ""
 
   var url: string
   echo "探索者、あるいはタグのページのURLを入力してください。"
@@ -525,6 +526,7 @@ proc addPage(): int =
   if not url.parseUri.path.endsWith(".js"):
     echo &"入力したURLが不正です。 url = {url}"
     return 3
+  echo ""
 
   var genreId: string
   echo("""URLの分類を選択してください。
@@ -540,20 +542,21 @@ proc addPage(): int =
   else:
     echo &"入力が不正でした。 genre = {genre}"
     return 4
+  echo ""
   
   var comment: string
   echo "自由なコメントを入力してください。(空欄も可）"
   if not readLineFromStdin("? ", comment):
     echo "入力を中断しました"
     return 2
+  echo ""
 
   var yn: string
-  echo(&"""以上の入力で、探索者を追加しますか？
-
-    author: {author}
-    url: {url}
-    tag: {genre}
-    comment: {comment}""")
+  echo(&"""以上の入力で、探索者を追加しますか？ [y/n]
+    author ..... {author}
+    url ........ {url}
+    tag ........ {genre}
+    comment .... {comment}""")
   if not readLineFromStdin("? ", yn):
     echo "入力を中断しました"
     return 5
