@@ -1,4 +1,4 @@
-import os, strutils, json, marshal, strformat, logging, httpclient, uri
+import os, strutils, json, marshal, strformat, logging, httpclient, uri, times
 from sequtils import mapIt
 from algorithm import sort
 
@@ -442,6 +442,7 @@ proc retryGet(client: HttpClient, url: string): string =
       continue
 
 proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
+  info &"Fetch players with tag: url = {url}"
   let tag = url.parseUri.query.split("=")[1]
   # キーがからの箇所が存在してるので削除してから変換
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
@@ -450,43 +451,58 @@ proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
 
 proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
   # キーがからの箇所が存在してるので削除してから変換
+  info &"Fetch players: url = {url}"
   let pc = client.retryGet(url).parseJson.to(SrcPc).toIndexPc(url)
   result.add(pc)
 
+template benchmark(msg: string, code: untyped) =
+  block:
+    let t0 = epochTime()
+    code
+    let elapsed = epochTime() - t0
+    let elapsedStr = elapsed.formatFloat(format = ffDecimal, precision = 3)
+    info msg & " (" & elapsedStr & " s)"
+
 when isMainModule:
-  # 引数から取得データの一覧ファイルを取得
-  let gettingPagesFile = commandLineParams()[0]
+  info "START"
+  benchmark "END SUCCESS":
+    let indexFile = &"{outDir}/index.json"
+    let client = newHttpClient()
+    var indexPcs: seq[IndexPc]
+    benchmark &"Created index file: file = {indexFile}":
+      # 引数から取得データの一覧ファイルを取得
+      let gettingPagesFile = commandLineParams()[0]
+      # 一覧ファイルのJSONからURLを取得し、データを取得
+      # 取得したデータをindex.jsonとして出力する
+      for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
+        let url = pageInfo.url
+        let genre = pageInfo.genre
+        case genre
+        of "tag":
+          indexPcs.add(client.fetchPcsWithTag(url))
+        of "player":
+          indexPcs.add(client.fetchPcs(url))
+        else:
+          raise newException(IllegalGettingPageGenreError,
+                            &"genre is illegal. genre = {genre}")
+        sleep(retrySleepMS)
 
-  let client = newHttpClient()
-  var indexPcs: seq[IndexPc]
-  # 一覧ファイルのJSONからURLを取得し、データを取得
-  # 取得したデータをindex.jsonとして出力する
-  for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
-    let url = pageInfo.url
-    let genre = pageInfo.genre
-    case genre
-    of "tag":
-      indexPcs.add(client.fetchPcsWithTag(url))
-    of "player":
-      indexPcs.add(client.fetchPcs(url))
-    else:
-      raise newException(IllegalGettingPageGenreError,
-                         &"genre is illegal. genre = {genre}")
-    sleep(retrySleepMS)
-  indexPcs.sort do (x, y: IndexPc) -> int:
-    result = cmp(x.id.parseInt, y.id.parseInt)
-  writeFile(&"{outDir}/index.json",
-            "[\n" & indexPcs.mapIt($$it).join(",\n") & "\n]")
+      # index.jsonの生成。生成前にidでソート
+      indexPcs.sort do (x, y: IndexPc) -> int:
+        result = cmp(x.id.parseInt, y.id.parseInt)
+      writeFile(indexFile, "[\n" & indexPcs.mapIt($$it).join(",\n") & "\n]")
 
-  # 各探索者のJSONを取得し、1探索者1JSONとしてファイル出力する
-  # 出力するファイル名は探索者のIDを使用する。
-  for indexPc in indexPcs:
-    var url = indexPc.url
-    # 手動で登録するデータにはjsという拡張子を含めているので、
-    # 含めていないURLについてのみ追加する
-    if not url.endsWith(".js"):
-      url.add(".js")
-    let srcPc = client.retryGet(url).parseJson.to(SrcPc)
-    let pc = srcPc.toPc(url)
-    writeFile(&"{outDir}/{indexPc.id}.json", $$pc[])
-    sleep(retrySleepMS)
+    # 各探索者のJSONを取得し、1探索者1JSONとしてファイル出力する
+    # 出力するファイル名は探索者のIDを使用する。
+    for indexPc in indexPcs:
+      let pcFile = &"{outDir}/{indexPc.id}.json"
+      benchmark &"Created pc file: file = {pcFile}":
+        var url = indexPc.url
+        # 手動で登録するデータにはjsという拡張子を含めているので、
+        # 含めていないURLについてのみ追加する
+        if not url.endsWith(".js"):
+          url.add(".js")
+        let srcPc = client.retryGet(url).parseJson.to(SrcPc)
+        let pc = srcPc.toPc(url)
+        writeFile(pcFile, $$pc[])
+      sleep(retrySleepMS)
