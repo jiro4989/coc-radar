@@ -1,4 +1,6 @@
 import os, strutils, json, marshal, strformat, logging, httpclient, uri
+from sequtils import mapIt
+from algorithm import sort
 
 type
   IndexPc* = object
@@ -106,7 +108,7 @@ type
     TK_Total: string
     TK_Maximum: string
     TK_Add: string
-    TS_Skill_HideMind: string
+    #TS_Skill_HideMind: string # TODO
     is_disp_battlearts: string
     TBAU: seq[string]
     TBAD: seq[string]
@@ -209,7 +211,7 @@ type
     dodontof_sc_colors: string
     elysion: string
     nechro: string
-    select2: string
+    # select2: string ## TODO
   GettingPages = seq[GettingPage]
   GettingPage = object
     name*: string
@@ -441,11 +443,13 @@ proc retryGet(client: HttpClient, url: string): string =
 
 proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
   let tag = url.parseUri.query.split("=")[1]
+  # キーがからの箇所が存在してるので削除してから変換
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
     let pc = tagObj.toIndexPc(@[tag])
     result.add(pc)
 
 proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
+  # キーがからの箇所が存在してるので削除してから変換
   let pc = client.retryGet(url).parseJson.to(SrcPc).toIndexPc(url)
   result.add(pc)
 
@@ -468,12 +472,21 @@ when isMainModule:
     else:
       raise newException(IllegalGettingPageGenreError,
                          &"genre is illegal. genre = {genre}")
-  writeFile(&"{outDir}/index.json", $$indexPcs)
+    sleep(retrySleepMS)
+  indexPcs.sort do (x, y: IndexPc) -> int:
+    result = cmp(x.id.parseInt, y.id.parseInt)
+  writeFile(&"{outDir}/index.json",
+            "[\n" & indexPcs.mapIt($$it).join(",\n") & "\n]")
 
   # 各探索者のJSONを取得し、1探索者1JSONとしてファイル出力する
   # 出力するファイル名は探索者のIDを使用する。
   for indexPc in indexPcs:
-    let url = indexPc.url & ".js"
+    var url = indexPc.url
+    # 手動で登録するデータにはjsという拡張子を含めているので、
+    # 含めていないURLについてのみ追加する
+    if not url.endsWith(".js"):
+      url.add(".js")
     let srcPc = client.retryGet(url).parseJson.to(SrcPc)
     let pc = srcPc.toPc(url)
-    writeFile(&"{outDir}/{indexPc.id}.json", $$pc)
+    writeFile(&"{outDir}/{indexPc.id}.json", $$pc[])
+    sleep(retrySleepMS)
