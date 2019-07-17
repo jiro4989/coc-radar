@@ -472,7 +472,7 @@ proc scrape(pageFiles: seq[string]): int =
     var indexPcs: seq[IndexPc]
     benchmark &"Created index file: file = {indexFile}":
       # 引数から取得データの一覧ファイルを取得
-      let gettingPagesFile = commandLineParams()[0]
+      let gettingPagesFile = pageFiles[0]
       # 一覧ファイルのJSONからURLを取得し、データを取得
       # 取得したデータをindex.jsonとして出力する
       for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
@@ -508,11 +508,11 @@ proc scrape(pageFiles: seq[string]): int =
         writeFile(pcFile, $$pc[])
       sleep(retrySleepMS)
 
-proc addPage(): int =
+proc addPage(configFiles: seq[string]): int =
   ## 対話型インタフェースにより、探索者のデータのURLを追加する
-  var author: string
+  var name: string
   echo "誰の探索者か入力してください"
-  if not readLineFromStdin("? ", author):
+  if not readLineFromStdin("? ", name):
     echo "入力を中断しました"
     return 1
   echo ""
@@ -553,20 +553,25 @@ proc addPage(): int =
 
   var yn: string
   echo(&"""以上の入力で、探索者を追加しますか？ [y/n]
-    author ..... {author}
+    name ....... {name}
     url ........ {url}
-    tag ........ {genre}
+    genre ...... {genre}
     comment .... {comment}""")
   if not readLineFromStdin("? ", yn):
     echo "入力を中断しました"
     return 5
   case yn.toLowerAscii
   of "y":
-    discard
+    let configFile = configFiles[0]
+    var pages = parseFile(configFile).to(GettingPages)
+    pages.add(GettingPage(name: name, url: url, genre: genre, comment: comment))
+    writeFile(configFile, pages.`$$`.parseJson.pretty)
+    echo &"設定ファイルを更新しました。 configFile = {configFile}"
   of "n":
-    discard
+    echo "追加をキャンセルしました。"
   else:
-    discard
+    echo &"入力が不正でした。 genre = {genre}"
+    return 7
 
 
 proc validatePageFile(pageFiles: seq[string]): int =
