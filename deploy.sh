@@ -9,5 +9,6 @@ if [ "$TRAVIS_BRANCH" = master ] && [ "$TRAVIS_PULL_REQUEST" = false ]; then
   # APIからのデータ取得
   coc_radar scrape
 
-  cp -r docs/data build/
+  mkdir -p build/data
+  cp -r docs/data/*.json build/data
 fi
