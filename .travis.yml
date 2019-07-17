@@ -32,11 +32,6 @@ before_script:
   - set +e
 
 script:
-  - git clone https://github.com/jiro4989/coc.git
-  - cd coc
-  - nimble install -Y
-  - coc -h
-  - cd ..
   - nimble install -Y
   - coc_radar -h
   - npm i

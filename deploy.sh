@@ -3,12 +3,11 @@
 set -eu
 
 if [ "$TRAVIS_BRANCH" = master ] && [ "$TRAVIS_PULL_REQUEST" = false ]; then
-  coc_radar scrape conf/page.csv | coc_radar generateJson
-  for status in ${PIPESTATUS[@]}; do
-    if [ "$status" -ne 0 ]; then
-      echo "Command failed." >&2
-      exit 1
-    fi
-  done
+  # JSON設定ファイルの書式チェック
+  coc_radar validate
+
+  # APIからのデータ取得
+  coc_radar scrape
+
   cp -r docs/data build/
 fi
