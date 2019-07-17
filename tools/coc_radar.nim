@@ -463,9 +463,10 @@ template benchmark(msg: string, code: untyped) =
     let elapsedStr = elapsed.formatFloat(format = ffDecimal, precision = 3)
     info msg & " (" & elapsedStr & " s)"
 
-when isMainModule:
-  info "START"
-  benchmark "END SUCCESS":
+proc scrape(pageFiles: seq[string]): int =
+  ## 設定ファイルからURLを取得し、JSONAPIからデータを取得する。
+  info "START scrape"
+  benchmark "END SUCCESS scrape":
     let indexFile = &"{outDir}/index.json"
     let client = newHttpClient()
     var indexPcs: seq[IndexPc]
@@ -506,3 +507,15 @@ when isMainModule:
         let pc = srcPc.toPc(url)
         writeFile(pcFile, $$pc[])
       sleep(retrySleepMS)
+
+proc addPage(): int =
+  ## 対話型インタフェースにより、探索者のデータのURLを追加する
+  discard
+
+proc validatePageFile(pageFiles: seq[string]): int =
+  ## データ取得先指定のJSONファイルの書式をチェックする。
+  discard
+
+when isMainModule:
+  import cligen
+  dispatchMulti([scrape], [addPage], [validatePageFile])
