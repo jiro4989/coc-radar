@@ -574,10 +574,26 @@ proc addPage(configFiles: seq[string]): int =
     return 7
 
 
-proc validatePageFile(pageFiles: seq[string]): int =
+proc validate(pageFiles: seq[string]): int =
   ## データ取得先指定のJSONファイルの書式をチェックする。
-  discard
+  ## チェック項目は以下の通り。
+  ##
+  ## 1. オブジェクトにバインドできるか？
+  ## 2. URLはjsか？
+  ## 3. genreはtagまたはplayerか？
+  info "Start validation."
+  let pageFile = pageFiles[0]
+  # オブジェクトマッピング
+  for page in parseFile(pageFile).to(GettingPages):
+    # chekc URL
+    if not page.url.parseUri.path.endsWith(".js"):
+      error &"URLが不正でした。 url = {page.url}"
+      return 1
+    if page.genre notin ["tag", "player"]:
+      error &"genreが不正でした。 genre = {page.genre}"
+      return 1
+  info "Validation OK."
 
 when isMainModule:
   import cligen
-  dispatchMulti([scrape], [addPage], [validatePageFile])
+  dispatchMulti([scrape], [addPage], [validate])
