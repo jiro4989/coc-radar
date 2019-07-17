@@ -1,4 +1,4 @@
-import os, strutils, json, marshal, strformat, logging, httpclient, uri, times
+import os, strutils, json, marshal, strformat, logging, httpclient, uri, times, rdstdin
 from sequtils import mapIt
 from algorithm import sort
 
@@ -510,7 +510,61 @@ proc scrape(pageFiles: seq[string]): int =
 
 proc addPage(): int =
   ## 対話型インタフェースにより、探索者のデータのURLを追加する
-  discard
+  var author: string
+  echo "誰の探索者か入力してください"
+  if not readLineFromStdin("? ", author):
+    echo "入力を中断しました"
+    return 1
+
+  var url: string
+  echo "探索者、あるいはタグのページのURLを入力してください。"
+  echo "ただし、URLの拡張子はjsです。"
+  if not readLineFromStdin("? ", url):
+    echo "入力を中断しました"
+    return 2
+  if not url.parseUri.path.endsWith(".js"):
+    echo &"入力したURLが不正です。 url = {url}"
+    return 3
+
+  var genreId: string
+  echo("""URLの分類を選択してください。
+    1 )  tag
+    2 )  player""")
+  if not readLineFromStdin("? ", genreId):
+    echo "入力を中断しました"
+    return 2
+  var genre: string
+  case genreId:
+  of "1": genre = "tag"
+  of "2": genre = "player"
+  else:
+    echo &"入力が不正でした。 genre = {genre}"
+    return 4
+  
+  var comment: string
+  echo "自由なコメントを入力してください。(空欄も可）"
+  if not readLineFromStdin("? ", comment):
+    echo "入力を中断しました"
+    return 2
+
+  var yn: string
+  echo(&"""以上の入力で、探索者を追加しますか？
+
+    author: {author}
+    url: {url}
+    tag: {genre}
+    comment: {comment}""")
+  if not readLineFromStdin("? ", yn):
+    echo "入力を中断しました"
+    return 5
+  case yn.toLowerAscii
+  of "y":
+    discard
+  of "n":
+    discard
+  else:
+    discard
+
 
 proc validatePageFile(pageFiles: seq[string]): int =
   ## データ取得先指定のJSONファイルの書式をチェックする。
