@@ -319,6 +319,7 @@ const
   retryCount = 3
   retrySleepMS = 1000
   outDir = "docs/data"
+  targetFile = "conf/getting_pages.json" ## データ取得先情報を書いたファイル
 
 addHandler(newConsoleLogger(lvlAll, verboseFmtStr, useStderr=true))
 
@@ -463,7 +464,7 @@ template benchmark(msg: string, code: untyped) =
     let elapsedStr = elapsed.formatFloat(format = ffDecimal, precision = 3)
     info msg & " (" & elapsedStr & " s)"
 
-proc scrape(pageFiles: seq[string]): int =
+proc scrape(): int =
   ## 設定ファイルからURLを取得し、JSONAPIからデータを取得する。
   info "START scrape"
   benchmark "END SUCCESS scrape":
@@ -472,7 +473,7 @@ proc scrape(pageFiles: seq[string]): int =
     var indexPcs: seq[IndexPc]
     benchmark &"Created index file: file = {indexFile}":
       # 引数から取得データの一覧ファイルを取得
-      let gettingPagesFile = pageFiles[0]
+      let gettingPagesFile = targetFile
       # 一覧ファイルのJSONからURLを取得し、データを取得
       # 取得したデータをindex.jsonとして出力する
       for pageInfo in gettingPagesFile.parseFile.to(GettingPages):
@@ -508,73 +509,84 @@ proc scrape(pageFiles: seq[string]): int =
         writeFile(pcFile, $$pc[])
       sleep(retrySleepMS)
 
-proc addPage(configFiles: seq[string]): int =
+proc addPage(name = "", url = "", genre = "", comment = ""): int =
   ## 対話型インタフェースにより、探索者のデータのURLを追加する
-  var name: string
-  echo "誰の探索者か入力してください"
-  if not readLineFromStdin("? ", name):
-    echo "入力を中断しました"
-    return 1
-  echo ""
+  if not (name == "" and url == "" and genre == "" and comment == ""):
+    if not url.parseUri.path.endsWith(".js"):
+      echo &"入力したURLが不正です。 url = {url}"
+      return 1
+    if genre != "tag" and genre != "player":
+      echo &"入力が不正でした。 genre = {genre}"
+      return 1
 
-  var url: string
-  echo "探索者、あるいはタグのページのURLを入力してください。"
-  echo "ただし、URLの拡張子はjsです。"
-  if not readLineFromStdin("? ", url):
-    echo "入力を中断しました"
-    return 2
-  if not url.parseUri.path.endsWith(".js"):
-    echo &"入力したURLが不正です。 url = {url}"
-    return 3
-  echo ""
-
-  var genreId: string
-  echo("""URLの分類を選択してください。
-    1 )  tag
-    2 )  player""")
-  if not readLineFromStdin("? ", genreId):
-    echo "入力を中断しました"
-    return 2
-  var genre: string
-  case genreId:
-  of "1": genre = "tag"
-  of "2": genre = "player"
-  else:
-    echo &"入力が不正でした。 genre = {genre}"
-    return 4
-  echo ""
-  
-  var comment: string
-  echo "自由なコメントを入力してください。(空欄も可）"
-  if not readLineFromStdin("? ", comment):
-    echo "入力を中断しました"
-    return 2
-  echo ""
-
-  var yn: string
-  echo(&"""以上の入力で、探索者を追加しますか？ [y/n]
-    name ....... {name}
-    url ........ {url}
-    genre ...... {genre}
-    comment .... {comment}""")
-  if not readLineFromStdin("? ", yn):
-    echo "入力を中断しました"
-    return 5
-  case yn.toLowerAscii
-  of "y":
-    let configFile = configFiles[0]
-    var pages = parseFile(configFile).to(GettingPages)
+    var pages = parseFile(targetFile).to(GettingPages)
     pages.add(GettingPage(name: name, url: url, genre: genre, comment: comment))
-    writeFile(configFile, pages.`$$`.parseJson.pretty)
-    echo &"設定ファイルを更新しました。 configFile = {configFile}"
-  of "n":
-    echo "追加をキャンセルしました。"
+    writeFile(targetFile, pages.`$$`.parseJson.pretty)
+    echo &"設定ファイルを更新しました。 targetFile = {targetFile}"
   else:
-    echo &"入力が不正でした。 genre = {genre}"
-    return 7
+    var name: string
+    echo "誰の探索者か入力してください"
+    if not readLineFromStdin("? ", name):
+      echo "入力を中断しました"
+      return 1
+    echo ""
 
+    var url: string
+    echo "探索者、あるいはタグのページのURLを入力してください。"
+    echo "ただし、URLの拡張子はjsです。"
+    if not readLineFromStdin("? ", url):
+      echo "入力を中断しました"
+      return 1
+    if not url.parseUri.path.endsWith(".js"):
+      echo &"入力したURLが不正です。 url = {url}"
+      return 1
+    echo ""
 
-proc validate(pageFiles: seq[string]): int =
+    var genreId: string
+    echo("""URLの分類を選択してください。
+      1 )  tag
+      2 )  player""")
+    if not readLineFromStdin("? ", genreId):
+      echo "入力を中断しました"
+      return 1
+    var genre: string
+    case genreId:
+    of "1": genre = "tag"
+    of "2": genre = "player"
+    else:
+      echo &"入力が不正でした。 genre = {genre}"
+      return 1
+    echo ""
+    
+    var comment: string
+    echo "自由なコメントを入力してください。(空欄も可）"
+    if not readLineFromStdin("? ", comment):
+      echo "入力を中断しました"
+      return 1
+    echo ""
+
+    var yn: string
+    echo(&"""以上の入力で、探索者を追加しますか？ [y/n]
+      name ....... {name}
+      url ........ {url}
+      genre ...... {genre}
+      comment .... {comment}""")
+    if not readLineFromStdin("? ", yn):
+      echo "入力を中断しました"
+      return 1
+    case yn.toLowerAscii
+    of "y":
+      var pages = parseFile(targetFile).to(GettingPages)
+      pages.add(GettingPage(name: name, url: url, genre: genre, comment: comment))
+      writeFile(targetFile, pages.`$$`.parseJson.pretty)
+      echo &"設定ファイルを更新しました。 targetFile = {targetFile}"
+    of "n":
+      echo "追加をキャンセルしました。"
+    else:
+      echo &"入力が不正でした。 genre = {genre}"
+      return 1
+
+proc validate(): int =
   ## データ取得先指定のJSONファイルの書式をチェックする。
   ## チェック項目は以下の通り。
   ##
@@ -582,9 +594,8 @@ proc validate(pageFiles: seq[string]): int =
   ## 2. URLはjsか？
   ## 3. genreはtagまたはplayerか？
   info "Start validation."
-  let pageFile = pageFiles[0]
   # オブジェクトマッピング
-  for page in parseFile(pageFile).to(GettingPages):
+  for page in parseFile(targetFile).to(GettingPages):
     # chekc URL
     if not page.url.parseUri.path.endsWith(".js"):
       error &"URLが不正でした。 url = {page.url}"
