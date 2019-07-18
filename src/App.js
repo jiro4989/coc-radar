@@ -217,11 +217,11 @@ class App extends React.Component {
                     <input type="button" className="user-input" value="選択全解除" onClick={this.clearSelected}></input>
                   </div>
                 </div>
-                <Tags
+                {/* <Tags
                   tags={this.state.tags}
                   updateSearchWord={this.updateSearchWord}
                   selectByTag={this.selectByTag}
-                  />
+                  /> */}
                 <PlayerTable
                   players={this.state.filteredPlayers}
                   switchSelected={this.switchSelected}
