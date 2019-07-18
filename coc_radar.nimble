@@ -4,7 +4,7 @@ version       = "0.1.0"
 author        = "jiro4989"
 description   = "A new awesome nimble package"
 license       = "MIT"
-srcDir        = "src"
+srcDir        = "tools"
 bin           = @["coc_radar"]
 binDir        = "bin"
 
