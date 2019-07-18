@@ -202,7 +202,7 @@ type
     data_id: int64
     phrase: string
     data_title: string
-    save_limitate: string
+    #save_limitate: string
     dodontof_send_to: string
     dodontof_url: string
     dodontof_room: string
