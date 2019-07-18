@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "585fa4091d115f072bec32d77b201219",
+    "revision": "daafed0a89a175294d6464b253232a7f",
     "url": "/coc-radar/index.html"
   },
   {
-    "revision": "a2b33efb604f172801d0",
+    "revision": "5c8a9973f3b30cbd73de",
     "url": "/coc-radar/static/css/main.6f775aad.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coc-radar/static/js/2.67443de9.chunk.js"
   },
   {
-    "revision": "a2b33efb604f172801d0",
-    "url": "/coc-radar/static/js/main.fba4bfff.chunk.js"
+    "revision": "5c8a9973f3b30cbd73de",
+    "url": "/coc-radar/static/js/main.f4435d16.chunk.js"
   },
   {
     "revision": "4d079906ccc1fb794d19",
