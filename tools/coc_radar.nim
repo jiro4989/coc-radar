@@ -402,8 +402,8 @@ proc toPc*(this: SrcPc, url: string): Pc =
     var data: NegotiationArts # TCAP
     data.winOver = CValue(name: "言いくるめ", num: this.TCAP[0].parseInt)
     data.credit = CValue(name: "信用", num: this.TCAP[1].parseInt)
-    data.haggle = CValue(name: "説得", num: this.TCAP[2].parseInt)
-    data.argue = CValue(name: "値切り", num: this.TCAP[3].parseInt)
+    data.haggle = CValue(name: "値切り", num: this.TCAP[2].parseInt)
+    data.argue = CValue(name: "説得", num: this.TCAP[3].parseInt)
     data.nativeLanguage = CValue(name: "母国語", num: this.TCAP[4].parseInt)
     pc.param.negotiationArts = data
   block:
