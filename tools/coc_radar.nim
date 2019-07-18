@@ -447,7 +447,7 @@ proc fetchPcsWithTag(client: HttpClient, url: string): seq[IndexPc] =
   let tag = url.parseUri.query.split("=")[1]
   # キーがからの箇所が存在してるので削除してから変換
   for tagObj in client.retryGet(url).parseJson.to(SrcTags):
-    let pc = tagObj.toIndexPc(@[tag])
+    let pc = tagObj.toIndexPc(@[tag.decodeUrl])
     result.add(pc)
 
 proc fetchPcs(client: HttpClient, url: string): seq[IndexPc] =
