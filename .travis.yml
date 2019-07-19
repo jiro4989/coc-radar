@@ -36,6 +36,7 @@ script:
   - coc_radar -h
   - npm i
   - npm run build
+  - npm test
 
 before_deploy:
   - ./deploy.sh
