@@ -12,6 +12,7 @@ cache:
   directories:
     - $HOME/.nimble
     - $HOME/.choosenim
+    - node_modules
 
 addons:
   apt:
