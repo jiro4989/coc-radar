@@ -33,6 +33,8 @@ before_script:
   - set +e
 
 script:
+  - nim -v
+  - nimble -v
   - nimble install -Y
   - coc_radar -h
   - npm i
