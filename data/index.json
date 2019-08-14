@@ -8,7 +8,6 @@
 {"id": "1818521", "name": "白井 妖(しらい あや)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1818521"},
 {"id": "1843917", "name": "瀬波 沙梨(せなみ さな)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1843917"},
 {"id": "1874500", "name": "黒崎 透(くろさき とおる)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1874500"},
-{"id": "1892049", "name": "鷹垣 仁(たかがき じん)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1892049"},
 {"id": "1900096", "name": "古宮 朝霞(こみや あさか)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1900096"},
 {"id": "1903248", "name": "神田 紫乃(かんだ しの)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1903248"},
 {"id": "1949985", "name": "鈴久名 やよい(すずくな やよい)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1949985"},
@@ -16,7 +15,6 @@
 {"id": "1983217", "name": "四ツ塚 祈(よつづか いのり)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/1983217"},
 {"id": "2038209", "name": "御剣　桜花(みつるぎ　おうか)　ロスト", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2038209"},
 {"id": "2057788", "name": "大月 聖歌(おおつき せいか)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2057788"},
-{"id": "2092567", "name": "御剣　散花(みつるぎ　さんか)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2092567"},
 {"id": "2099779", "name": "九条　來(くじょうライ)　　旧姓：七海　來(ななみライ)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2099779"},
 {"id": "2132702", "name": "シャルロット＝クロエ(Charlotte＝Chloe)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2132702"},
 {"id": "2153969", "name": "無花果　夜十(いちじく　やと)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2153969"},
@@ -69,6 +67,7 @@
 {"id": "2530201", "name": "三ヶ峰　焔", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2530201"},
 {"id": "2532917", "name": "七咲 星(ななさき せい)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2532917"},
 {"id": "2534157", "name": "松村 真司（まつむら しんじ）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2534157"},
+{"id": "2540365", "name": "天音 治(あまね はる)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2540365"},
 {"id": "2541728", "name": "桝　シアン(ます　しあん)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2541728"},
 {"id": "2542670", "name": "八雲 七生 （やくも ななせ）", "tags": [], "url": "https://charasheet.vampire-blood.net/2542670.js"},
 {"id": "2547739", "name": "霧原カスミ", "tags": [], "url": "https://charasheet.vampire-blood.net/2547739.js"},
@@ -77,7 +76,7 @@
 {"id": "2550890", "name": "二之宮　陽菜(にのみや　ひな)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2550890"},
 {"id": "2555256", "name": "鞍馬　玄八", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2555256"},
 {"id": "2555323", "name": "長谷川 裕二（はせがわ ゆうじ）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2555323"},
-{"id": "2559086", "name": "喜多　美波（きた　みなみ）", "tags": [], "url": "https://charasheet.vampire-blood.net/2559086.js"},
+{"id": "2559086", "name": "喜多　美波（きた　みなみ）", "tags": ["ゑす"], "url": "https://charasheet.vampire-blood.net/2559086.js"},
 {"id": "2559101", "name": "橋田 護（はしだ まもる）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2559101"},
 {"id": "2559112", "name": "水上 陸", "tags": ["はいえん"], "url": "https://charasheet.vampire-blood.net/2559112.js"},
 {"id": "2559480", "name": "飯島 誠（いいじま まこと）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2559480"},
@@ -94,5 +93,6 @@
 {"id": "2582956", "name": "柊　麗(ひいらぎ　うらら)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2582956"},
 {"id": "2596814", "name": "蘭　凛々(らん　りんりん)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2596814"},
 {"id": "2601770", "name": "九条　蓮(くじょう　れん)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2601770"},
-{"id": "2602873", "name": "黛　京介(まゆずみ　きょうすけ)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2602873"}
+{"id": "2602873", "name": "黛　京介(まゆずみ　きょうすけ)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2602873"},
+{"id": "2604780", "name": "糺川　葉(ただすがわ　よう)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2604780"}
 ]
