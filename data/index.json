@@ -27,6 +27,7 @@
 {"id": "2457001", "name": "久保 俊明 （くぼ としあき）", "tags": [], "url": "https://charasheet.vampire-blood.net/2457001.js"},
 {"id": "2459885", "name": "源氏名 チョコ 本名 大塚 俊夫　ロスト", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2459885"},
 {"id": "2468904", "name": "マッスル光子(ﾐﾂｺ)　", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2468904"},
+{"id": "2485266", "name": "ルーツ＝シャルロッテ", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2485266"},
 {"id": "2493064", "name": "久保田　睡花", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2493064"},
 {"id": "2495423", "name": "琴寄　雪奈(ことよせ　ゆきな)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2495423"},
 {"id": "2505794", "name": "瀬端 友愛(せばた ともよし)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2505794"},
@@ -54,7 +55,6 @@
 {"id": "2548512", "name": "嘉数　翡翠", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2548512"},
 {"id": "2550043", "name": "練 習男（れん しゅうお）", "tags": ["1234567890", "abc"], "url": "https://charasheet.vampire-blood.net/2550043.js"},
 {"id": "2550890", "name": "二之宮　陽菜(にのみや　ひな)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2550890"},
-{"id": "2555256", "name": "鞍馬　玄八", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2555256"},
 {"id": "2555323", "name": "長谷川 裕二（はせがわ ゆうじ）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2555323"},
 {"id": "2559086", "name": "喜多　美波（きた　みなみ）", "tags": ["ゑす"], "url": "https://charasheet.vampire-blood.net/2559086.js"},
 {"id": "2559101", "name": "橋田 護（はしだ まもる）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2559101"},
@@ -86,7 +86,6 @@
 {"id": "2622653", "name": "ガロ・フォーティア(HN：リオ)", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2622653"},
 {"id": "2623858", "name": "綾衣笠　唯(あやいがさ　ゆい)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2623858"},
 {"id": "2624243", "name": "三島 康一郎（みしま こういちろう）", "tags": ["jiro"], "url": "https://charasheet.vampire-blood.net/2624243"},
-{"id": "2632201", "name": "", "tags": ["＃ライ"], "url": "https://charasheet.vampire-blood.net/2632201"},
 {"id": "2640917", "name": "ケアレ・スミス", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2640917"},
 {"id": "2644458", "name": "井寺井　笛真(いてらい　てきま)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2644458"},
 {"id": "2645019", "name": "船越 櫂(ふなこし かい)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2645019"},
@@ -99,5 +98,6 @@
 {"id": "2659696", "name": "轟　亮平", "tags": [], "url": "https://charasheet.vampire-blood.net/2659696.js"},
 {"id": "2662963", "name": "", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2662963"},
 {"id": "2666252", "name": "大導寺 ことり(だいどうじ -)", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2666252"},
-{"id": "2672357", "name": "", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2672357"}
+{"id": "2672357", "name": "", "tags": ["PL：鈴華"], "url": "https://charasheet.vampire-blood.net/2672357"},
+{"id": "2679011", "name": "三ヶ峰　鳳仙(さがみね　ほうせん)", "tags": ["さぬんこ"], "url": "https://charasheet.vampire-blood.net/2679011"}
 ]
